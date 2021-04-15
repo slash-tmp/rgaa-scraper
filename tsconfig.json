@@ -1,7 +1,8 @@
 {
-  "include": ["src/**/*"],
+  "include": ["./src/**/*"],
   "compilerOptions": {
     "strict": true,
-    "target": "es2017"
+    "target": "es2017",
+    "esModuleInterop": true
   }
 }
