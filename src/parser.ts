@@ -46,6 +46,6 @@ export function parseTestLi(liCheerio: cheerio.Cheerio): CriterionTest {
 
   return {
     id,
-    text: pText + '\n' + listText,
+    text: `${pText}${listText.length ? '\n' + listText : ''}`,
   }
 }

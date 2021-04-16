@@ -24,7 +24,7 @@ describe('parseCriteriaArticle', () => {
 })
 
 describe('parseTestLi', () => {
-  it('returns a CriterionTest', async () => {
+  it('returns a multiline CriterionTest', async () => {
     const html = await loadFixtureHtml('test_1-4-1.html')
 
     const result = parseTestLi(cheerio.load(html)('li'))
@@ -36,6 +36,17 @@ describe('parseTestLi', () => {
         '- S’il est présent, le contenu de l’attribut title est pertinent ;\n' +
         '- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n' +
         '- S’il est présent, le passage de texte associé via l’attribut WAI-ARIA aria-labelledby est pertinent.'
+    )
+  })
+
+  it('returns a single line CriterionTest', async () => {
+    const html = await loadFixtureHtml('test_3-1-3.html')
+
+    const result = parseTestLi(cheerio.load(html)('li'))
+
+    expect(result.id).toEqual('3.1.3')
+    expect(result.text).toEqual(
+      'Pour chaque image véhiculant une information, l’information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?'
     )
   })
 })
