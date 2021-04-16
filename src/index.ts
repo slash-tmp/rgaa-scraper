@@ -1,13 +1,30 @@
 import Crawler from 'crawler'
 import type { CrawlerRequestResponse } from 'crawler'
-import { promises as fs } from 'fs'
 
 import { parseCriteriaArticle, parseTestLi } from './parser'
+import { RgaaCrawlerResult } from './types'
 
 const RGAA_URL =
   'https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/'
 
-async function crawlRgaa({ $ }: CrawlerRequestResponse): Promise<void> {
+function queueAsPromise(
+  uri: string,
+  crawler: Crawler
+): Promise<CrawlerRequestResponse> {
+  return new Promise((resolve, reject) => {
+    crawler.direct({
+      uri,
+      callback(error, response) {
+        if (error) {
+          reject(error)
+        }
+        resolve(response)
+      },
+    })
+  })
+}
+
+function parseRgaaPage({ $ }: CrawlerRequestResponse): RgaaCrawlerResult {
   const criteria = $('#criteres article')
     .toArray()
     .map(el => parseCriteriaArticle($(el)))
@@ -16,26 +33,20 @@ async function crawlRgaa({ $ }: CrawlerRequestResponse): Promise<void> {
     .toArray()
     .map(el => parseTestLi($(el)))
 
-  const json = JSON.stringify({ criteria, tests }, null, 2)
-  await fs.writeFile('rgaa.json', json, { encoding: 'utf-8' })
-
-  console.log(`${criteria.length} criterias written to \`rgaa.json\``)
-  console.log(`${tests.length} tests written to \`rgaa.json\``)
+  return {
+    criteria,
+    tests,
+  }
 }
 
-function run() {
+export async function crawlRgaa(): Promise<RgaaCrawlerResult> {
   const crawler = new Crawler({})
 
-  crawler.queue({
-    uri: RGAA_URL,
-    callback(error, res, done) {
-      if (error) {
-        console.log(error)
-        done()
-      }
-      crawlRgaa(res).finally(done)
-    },
-  })
-}
+  // fetch RGAA page
+  const res = await queueAsPromise(RGAA_URL, crawler)
 
-run()
+  // parse the page for criteria and tests
+  const data = parseRgaaPage(res)
+
+  return data
+}

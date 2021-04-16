@@ -7,3 +7,8 @@ export interface CriterionTest {
   id: string
   text: string
 }
+
+export interface RgaaCrawlerResult {
+  criteria: Criterion[]
+  tests: CriterionTest[]
+}

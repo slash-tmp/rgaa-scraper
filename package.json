@@ -2,7 +2,10 @@
   "name": "rgaa-crawler",
   "private": true,
   "version": "1.0.0",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
   "scripts": {
+    "build": "tsc --declaration",
     "dev": "ts-node-dev --respawn --clear src/index.ts",
     "test": "jest",
     "test:watch": "jest --watch",

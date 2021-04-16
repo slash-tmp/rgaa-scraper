@@ -1,9 +1,13 @@
 {
   "include": ["./src/**/*", "sheet/api.js"],
+  "exclude": ["./src/**/__tests__"],
   "compilerOptions": {
+    "outDir": "./build",
     "strict": true,
     "target": "es2017",
     "esModuleInterop": true,
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "sourceMap": true,
+    "module": "CommonJS"
   }
 }
