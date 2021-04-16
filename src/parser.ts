@@ -1,11 +1,12 @@
-import { Criteria } from './types'
+import $ from 'cheerio'
+import { Criterion, CriterionTest } from './types'
 import { reduceWhitespaces } from './utils'
 
 const criteriaRegEx = /^Critère ((\d+\.)+) (.*)$/
 
 export function parseCriteriaArticle(
   articleCheerio: cheerio.Cheerio
-): Criteria {
+): Criterion {
   const title = articleCheerio.find('h4')
 
   // remove the button element from the title
@@ -26,5 +27,25 @@ export function parseCriteriaArticle(
       .filter(i => i)
       .join('.'),
     title: match[3],
+  }
+}
+
+export function parseTestLi(liCheerio: cheerio.Cheerio): CriterionTest {
+  // should have the following format : "test-1-2-3"
+  const liId = liCheerio.attr('id')
+  if (!liId) throw new Error('Cant parse test : no id attribute')
+  const id = liId.split('-').slice(1).join('.')
+
+  const pText = reduceWhitespaces(liCheerio.find('p').first().text())
+
+  const listText = liCheerio
+    .find('ul li p')
+    .toArray()
+    .map(el => '- ' + reduceWhitespaces($(el).text()))
+    .join('\n')
+
+  return {
+    id,
+    text: pText + '\n' + listText,
   }
 }

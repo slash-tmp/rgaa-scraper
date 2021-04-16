@@ -1,8 +1,9 @@
 {
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "sheet/api.js"],
   "compilerOptions": {
     "strict": true,
     "target": "es2017",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "moduleResolution": "Node"
   }
 }

@@ -1,9 +1,9 @@
-export interface Criteria {
+export interface Criterion {
   id: string
   title: string
 }
 
-export interface CriteriaTest {
+export interface CriterionTest {
   id: string
   text: string
 }

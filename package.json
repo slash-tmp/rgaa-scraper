@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "ts-node-dev --respawn --clear src/index.ts",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage"
   },
   "devDependencies": {
     "@types/crawler": "^1.2.1",

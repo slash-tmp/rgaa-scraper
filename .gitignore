@@ -1,2 +1,8 @@
+# npm dependencies
 node_modules
+
+# scraped data
 rgaa.json
+
+# test coverage report
+coverage
