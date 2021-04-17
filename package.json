@@ -1,5 +1,5 @@
 {
-  "name": "rgaa-crawler",
+  "name": "@slash-tmp/rgaa-crawler",
   "private": true,
   "version": "1.0.0",
   "main": "./build/index.js",
