@@ -8,7 +8,13 @@ export interface CriterionTest {
   text: string
 }
 
+export interface Topic {
+  id: string
+  topic: string
+}
+
 export interface RgaaCrawlerResult {
   criteria: Criterion[]
   tests: CriterionTest[]
+  topics: Topic[]
 }

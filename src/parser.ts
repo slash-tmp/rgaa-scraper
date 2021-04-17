@@ -1,5 +1,5 @@
 import $ from 'cheerio'
-import { Criterion, CriterionTest } from './types'
+import { Criterion, CriterionTest, Topic } from './types'
 import { reduceWhitespaces } from './utils'
 
 const criteriaRegEx = /^Critère ((\d+\.)+) (.*)$/
@@ -47,5 +47,18 @@ export function parseTestLi(liCheerio: cheerio.Cheerio): CriterionTest {
   return {
     id,
     text: `${pText}${listText.length ? '\n' + listText : ''}`,
+  }
+}
+
+const topicRegex = /(\d\d?)\. (.+)/
+
+export function parseTopicA(aCheerio: cheerio.Cheerio): Topic {
+  const match = aCheerio.text().match(topicRegex)
+  if (!match || !match[1] || !match[2]) {
+    throw new Error('Cant parse topic : ' + aCheerio.text())
+  }
+  return {
+    id: match[1],
+    topic: match[2],
   }
 }

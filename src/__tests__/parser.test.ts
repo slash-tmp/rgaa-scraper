@@ -2,7 +2,7 @@ import cheerio from 'cheerio'
 import { promises as fs } from 'fs'
 import path from 'path'
 
-import { parseCriteriaArticle, parseTestLi } from '../parser'
+import { parseCriteriaArticle, parseTestLi, parseTopicA } from '../parser'
 
 async function loadFixtureHtml(filename: string): Promise<string> {
   const htmlPath = path.join(__dirname, 'criteria-articles', filename)
@@ -48,5 +48,15 @@ describe('parseTestLi', () => {
     expect(result.text).toEqual(
       'Pour chaque image véhiculant une information, l’information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?'
     )
+  })
+})
+
+describe('parseTopicA', () => {
+  it('returns a Topic', async () => {
+    const html = `<a href="#topic11">11. Structuration de l'information</a>`
+    const result = parseTopicA(cheerio.load(html)('a'))
+
+    expect(result.id).toEqual('11')
+    expect(result.topic).toEqual("Structuration de l'information")
   })
 })
