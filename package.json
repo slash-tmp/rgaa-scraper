@@ -1,6 +1,12 @@
 {
   "name": "@slash-tmp/rgaa-crawler",
-  "private": true,
+  "repository": "git://github.com/slash-tmp/rgaa-crawler.git",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "build/*"
+  ],
   "version": "1.0.0",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
