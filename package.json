@@ -1,6 +1,16 @@
 {
   "name": "@slash-tmp/rgaa-crawler",
+  "author": {
+    "name": "Adrien Boutigny",
+    "email": "adrien@slash-tmp.dev"
+  },
   "repository": "git://github.com/slash-tmp/rgaa-crawler.git",
+  "description": "",
+  "keywords": [
+    "a11y",
+    "accessibility",
+    "rgaa"
+  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
