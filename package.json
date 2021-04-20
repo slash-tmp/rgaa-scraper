@@ -5,7 +5,7 @@
     "email": "adrien@slash-tmp.dev"
   },
   "repository": "git://github.com/slash-tmp/rgaa-crawler.git",
-  "description": "",
+  "description": "Crawl RGAA's website and fetch criteria and tests into a JSON format.",
   "keywords": [
     "a11y",
     "accessibility",
