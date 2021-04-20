@@ -1,16 +1,28 @@
 {
   "name": "@slash-tmp/rgaa-crawler",
-  "author": {
-    "name": "Adrien Boutigny",
-    "email": "adrien@slash-tmp.dev"
-  },
-  "repository": "git://github.com/slash-tmp/rgaa-crawler.git",
   "description": "Crawl RGAA's website and fetch criteria and tests into a JSON format.",
   "keywords": [
     "a11y",
     "accessibility",
     "rgaa"
   ],
+  "author": {
+    "name": "Adrien Boutigny",
+    "email": "adrien@slash-tmp.dev"
+  },
+  "contributors": [
+    {
+      "name": "Quentin Bellanger",
+      "email": "quentin@slash-tmp.dev"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/slash-tmp/rgaa-crawler",
+  "repository": "git://github.com/slash-tmp/rgaa-crawler.git",
+  "bugs": {
+    "email": "contact@slash-tmp.dev",
+    "url": "https://github.com/slash-tmp/rgaa-crawler/issues"
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
