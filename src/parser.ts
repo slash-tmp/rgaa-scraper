@@ -1,12 +1,12 @@
 import $ from 'cheerio'
-import { Criterion, CriterionTest, Topic } from './types'
+import { RgaaRawCriterion, RgaaRawTest, RawRgaaTopic } from './types'
 import { reduceWhitespaces } from './utils'
 
 const criteriaRegEx = /^Critère ((\d+\.)+) (.*)$/
 
 export function parseCriteriaArticle(
   articleCheerio: cheerio.Cheerio
-): Criterion {
+): RgaaRawCriterion {
   const title = articleCheerio.find('h4')
 
   // remove the button element from the title
@@ -30,7 +30,7 @@ export function parseCriteriaArticle(
   }
 }
 
-export function parseTestLi(liCheerio: cheerio.Cheerio): CriterionTest {
+export function parseTestLi(liCheerio: cheerio.Cheerio): RgaaRawTest {
   // should have the following format : "test-1-2-3"
   const liId = liCheerio.attr('id')
   if (!liId) throw new Error('Cant parse test : no id attribute')
@@ -46,19 +46,19 @@ export function parseTestLi(liCheerio: cheerio.Cheerio): CriterionTest {
 
   return {
     id,
-    text: `${pText}${listText.length ? '\n' + listText : ''}`,
+    title: `${pText}${listText.length ? '\n' + listText : ''}`,
   }
 }
 
 const topicRegex = /(\d\d?)\. (.+)/
 
-export function parseTopicA(aCheerio: cheerio.Cheerio): Topic {
+export function parseTopicA(aCheerio: cheerio.Cheerio): RawRgaaTopic {
   const match = aCheerio.text().match(topicRegex)
   if (!match || !match[1] || !match[2]) {
     throw new Error('Cant parse topic : ' + aCheerio.text())
   }
   return {
     id: match[1],
-    topic: match[2],
+    title: match[2],
   }
 }
