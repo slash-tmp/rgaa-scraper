@@ -7,6 +7,7 @@ import {
   RgaaRawCrawlerResult,
   RgaaRawCriterion,
 } from './types'
+import { filterTests } from './utils'
 
 export default class RgaaCriterionWrapper implements RgaaCriterion {
   id: string
@@ -39,28 +40,7 @@ export default class RgaaCriterionWrapper implements RgaaCriterion {
   tests(filters?: RgaaFilter) {
     return this._root.tests
       .filter(test => test.id.startsWith(this.id))
-      .filter(test => {
-        if (!filters || Object.keys(filters).length === 0) {
-          return true
-        }
-
-        if (
-          filters.search &&
-          !test.title.toLowerCase().includes(filters.search.toLowerCase())
-        ) {
-          return false
-        }
-
-        if (filters.topic && !test.id.startsWith(filters.topic)) {
-          return false
-        }
-
-        if (filters.criterion && !test.id.startsWith(filters.criterion)) {
-          return false
-        }
-
-        return true
-      })
+      .filter(filterTests(filters))
       .map(test => new RgaaTestWrapper(test, this._root))
   }
 }

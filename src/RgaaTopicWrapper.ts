@@ -8,6 +8,7 @@ import {
   RgaaTest,
   RgaaTopic,
 } from './types'
+import { filterTests } from './utils'
 
 export default class RgaaTopicWrapper implements RgaaTopic {
   id: string
@@ -26,9 +27,10 @@ export default class RgaaTopicWrapper implements RgaaTopic {
       .map(criterion => new RgaaCriterionWrapper(criterion, this._root))
   }
 
-  tests() {
+  tests(filters?: RgaaFilter) {
     return this._root.tests
       .filter(test => test.id.startsWith(this.id))
+      .filter(filterTests(filters))
       .map(test => new RgaaTestWrapper(test, this._root))
   }
 }
