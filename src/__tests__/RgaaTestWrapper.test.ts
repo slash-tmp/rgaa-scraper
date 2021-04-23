@@ -41,13 +41,11 @@ describe('RgaaTestWrapper', () => {
 
     expect(test.id).toEqual('1.2.3')
     expect(test.title).toEqual('Foobar foo')
-    expect(test.criterion).toEqual({
-      id: '1.2',
-      title: 'Criterium foobar foo',
-    })
-    expect(test.topic).toEqual({
-      id: '1',
-      title: 'Topic foobar foo',
-    })
+
+    expect(test.criterion).toHaveProperty('id', '1.2')
+    expect(test.criterion).toHaveProperty('title', 'Criterium foobar foo')
+
+    expect(test.topic).toHaveProperty('id', '1')
+    expect(test.topic).toHaveProperty('title', 'Topic foobar foo')
   })
 })

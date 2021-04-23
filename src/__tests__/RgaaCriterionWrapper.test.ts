@@ -55,10 +55,9 @@ describe('Rgaa criterion Wrapper', () => {
     })
     expect(criterion.particularCases).toEqual('Foobaz')
     expect(criterion.technicalNotes).toEqual('Foobar')
-    expect(criterion.topic).toEqual({
-      id: '1',
-      title: 'Topic foobar foo',
-    })
+
+    expect(criterion.topic).toHaveProperty('id', '1')
+    expect(criterion.topic).toHaveProperty('title', 'Topic foobar foo')
   })
 
   it('only returns tests that match criterion id', () => {

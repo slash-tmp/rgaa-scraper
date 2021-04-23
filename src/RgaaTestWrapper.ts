@@ -1,9 +1,11 @@
+import RgaaCriterionWrapper from './RgaaCriterionWrapper'
+import RgaaTopicWrapper from './RgaaTopicWrapper'
 import type {
   RgaaRawCrawlerResult,
   RgaaRawTest,
   RgaaTest,
-  RgaaRawCriterion,
-  RgaaRawTopic,
+  RgaaCriterion,
+  RgaaTopic,
 } from './types'
 
 export default class RgaaTestWrapper implements RgaaTest {
@@ -17,13 +19,19 @@ export default class RgaaTestWrapper implements RgaaTest {
     this._root = root
   }
 
-  get criterion(): RgaaRawCriterion {
+  get criterion(): RgaaCriterion {
     const criterionId = this.id.split('.').slice(0, 2).join('.')
-    return this._root.criteria.find(criterion => criterion.id === criterionId)!
+    return new RgaaCriterionWrapper(
+      this._root.criteria.find(criterion => criterion.id === criterionId)!,
+      this._root
+    )
   }
 
-  get topic(): RgaaRawTopic {
+  get topic(): RgaaTopic {
     const topicId = this.id.split('.')[0]
-    return this._root.topics.find(topic => topic.id === topicId)!
+    return new RgaaTopicWrapper(
+      this._root.topics.find(topic => topic.id === topicId)!,
+      this._root
+    )
   }
 }

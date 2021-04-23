@@ -1,4 +1,5 @@
 import RgaaTestWrapper from './RgaaTestWrapper'
+import RgaaTopicWrapper from './RgaaTopicWrapper'
 import {
   RgaaCrawlerResult,
   RgaaCriterion,
@@ -29,7 +30,10 @@ export default class RgaaCriterionWrapper implements RgaaCriterion {
 
   get topic() {
     const topicId = this.id.split('.')[0]
-    return this._root.topics.find(topic => topic.id === topicId)!
+    return new RgaaTopicWrapper(
+      this._root.topics.find(topic => topic.id === topicId)!,
+      this._root
+    )
   }
 
   tests(filters?: RgaaFilter) {

@@ -29,8 +29,7 @@ export interface RgaaRawCriterion {
 
 export interface RgaaCriterion extends RgaaRawCriterion {
   tests: (filter?: RgaaFilter) => RgaaTest[]
-  topic: RgaaRawTopic
-  // TODO: topic: RgaaTopic
+  topic: RgaaTopic
 }
 
 export interface RgaaRawTest {
@@ -39,10 +38,8 @@ export interface RgaaRawTest {
 }
 
 export interface RgaaTest extends RgaaRawTest {
-  // TODO: criterion: RgaaCriterion
-  criterion: RgaaRawCriterion
-  // TODO: topic: RgaaTopic
-  topic: RgaaRawTopic
+  criterion: RgaaCriterion
+  topic: RgaaTopic
 }
 
 export interface RgaaCrawlerOptions {
