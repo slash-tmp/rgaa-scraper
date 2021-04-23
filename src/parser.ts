@@ -1,5 +1,5 @@
 import $ from 'cheerio'
-import { RgaaRawCriterion, RgaaRawTest, RawRgaaTopic } from './types'
+import { RgaaRawCriterion, RgaaRawTest, RgaaRawTopic } from './types'
 import { reduceWhitespaces } from './utils'
 
 const criteriaRegEx = /^Critère ((\d+\.)+) (.*)$/
@@ -52,7 +52,7 @@ export function parseTestLi(liCheerio: cheerio.Cheerio): RgaaRawTest {
 
 const topicRegex = /(\d\d?)\. (.+)/
 
-export function parseTopicA(aCheerio: cheerio.Cheerio): RawRgaaTopic {
+export function parseTopicA(aCheerio: cheerio.Cheerio): RgaaRawTopic {
   const match = aCheerio.text().match(topicRegex)
   if (!match || !match[1] || !match[2]) {
     throw new Error('Cant parse topic : ' + aCheerio.text())

@@ -1,16 +1,17 @@
 export interface RgaaFilter {
-  level?: 'A' | 'AA'
+  // TODO: implement the `level` filter
+  // level?: 'A' | 'AA'
   topic?: string
   search?: string
   criterion?: string
 }
 
-export interface RawRgaaTopic {
+export interface RgaaRawTopic {
   id: string
   title: string
 }
 
-export interface RgaaTopic extends RawRgaaTopic {
+export interface RgaaTopic extends RgaaRawTopic {
   criteria: (filter?: RgaaFilter) => RgaaCriterion[]
   tests: (filter?: RgaaFilter) => RgaaTest[]
 }
@@ -19,8 +20,8 @@ export interface RgaaRawCriterion {
   id: string
   title: string
   references?: {
-    wcag: null | string[]
-    techniques: null | string[]
+    wcag?: string[]
+    techniques?: string[]
   }
   particularCases?: string
   technicalNotes?: string
@@ -28,7 +29,8 @@ export interface RgaaRawCriterion {
 
 export interface RgaaCriterion extends RgaaRawCriterion {
   tests: (filter?: RgaaFilter) => RgaaTest[]
-  topic: RawRgaaTopic
+  topic: RgaaRawTopic
+  // TODO: topic: RgaaTopic
 }
 
 export interface RgaaRawTest {
@@ -37,8 +39,10 @@ export interface RgaaRawTest {
 }
 
 export interface RgaaTest extends RgaaRawTest {
-  criterion: RgaaCriterion
-  topic: RawRgaaTopic
+  // TODO: criterion: RgaaCriterion
+  criterion: RgaaRawCriterion
+  // TODO: topic: RgaaTopic
+  topic: RgaaRawTopic
 }
 
 export interface RgaaCrawlerOptions {
@@ -47,6 +51,12 @@ export interface RgaaCrawlerOptions {
    * Defaults to `text`.
    */
   format?: 'markdown' | 'text'
+}
+
+export interface RgaaRawCrawlerResult {
+  topics: RgaaRawTopic[]
+  criteria: RgaaRawCriterion[]
+  tests: RgaaRawTest[]
 }
 
 export interface RgaaCrawlerResult {

@@ -2,7 +2,7 @@ import Crawler from 'crawler'
 import type { CrawlerRequestResponse } from 'crawler'
 
 import { parseCriteriaArticle, parseTestLi, parseTopicA } from './parser'
-import { RgaaCrawlerResult, RawRgaaTopic } from './types'
+import { RgaaCrawlerResult, RgaaRawTopic } from './types'
 
 const RGAA_URL =
   'https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/'
@@ -33,7 +33,7 @@ function parseRgaaPage({ $ }: CrawlerRequestResponse): RgaaCrawlerResult {
     .toArray()
     .map(el => parseTestLi($(el)))
 
-  const topics: RawRgaaTopic[] = $('ol#topics-list li a')
+  const topics: RgaaRawTopic[] = $('ol#topics-list li a')
     .toArray()
     .map(el => parseTopicA($(el)))
 
