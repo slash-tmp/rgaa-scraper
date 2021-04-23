@@ -2,7 +2,7 @@ import Crawler from 'crawler'
 import type { CrawlerRequestResponse } from 'crawler'
 
 import { parseCriteriaArticle, parseTestLi, parseTopicA } from './parser'
-import { RgaaCrawlerResult, RgaaRawTopic } from './types'
+import { RgaaCrawlerResult, RgaaRawCrawlerResult, RgaaRawTopic } from './types'
 
 const RGAA_URL =
   'https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/'
@@ -24,7 +24,7 @@ function queueAsPromise(
   })
 }
 
-function parseRgaaPage({ $ }: CrawlerRequestResponse): RgaaCrawlerResult {
+function parseRgaaPage({ $ }: CrawlerRequestResponse): RgaaRawCrawlerResult {
   const criteria = $('#criteres article')
     .toArray()
     .map(el => parseCriteriaArticle($(el)))
@@ -44,7 +44,7 @@ function parseRgaaPage({ $ }: CrawlerRequestResponse): RgaaCrawlerResult {
   }
 }
 
-export async function crawlRgaa(): Promise<RgaaCrawlerResult> {
+export async function crawlRgaa(): Promise<RgaaRawCrawlerResult> {
   const crawler = new Crawler({})
 
   // fetch RGAA page

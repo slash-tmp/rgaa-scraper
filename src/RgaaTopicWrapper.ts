@@ -19,6 +19,11 @@ export default class RgaaTopicWrapper implements RgaaTopic {
     this.id = data.id
     this.title = data.title
     this._root = root
+
+    // hides the _root property from console.log and JSON.stringify
+    Object.defineProperty(this, '_root', {
+      enumerable: false,
+    })
   }
 
   criteria(filters?: RgaaFilter) {

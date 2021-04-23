@@ -27,6 +27,11 @@ export default class RgaaCriterionWrapper implements RgaaCriterion {
     this.particularCases = data.particularCases
     this.technicalNotes = data.technicalNotes
     this._root = root
+
+    // hides the _root property from console.log and JSON.stringify
+    Object.defineProperty(this, '_root', {
+      enumerable: false,
+    })
   }
 
   get topic() {
