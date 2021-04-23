@@ -1,29 +1,34 @@
-import { RgaaFilter, RgaaRawTest, RgaaRawTopic } from './types'
+import {
+  RgaaFilter,
+  RgaaRawCriterion,
+  RgaaRawTest,
+  RgaaRawTopic,
+} from './types'
 
 export function reduceWhitespaces(str: string): string {
   return str.replace(/\s+/g, ' ')
 }
 
-export function filterTests(
+export function filterElements(
   filters?: RgaaFilter
-): (test: RgaaRawTest) => boolean {
-  return test => {
+): (element: RgaaRawTest | RgaaRawCriterion) => boolean {
+  return element => {
     if (!filters || Object.keys(filters).length === 0) {
       return true
     }
 
     if (
       filters.search &&
-      !test.title.toLowerCase().includes(filters.search.toLowerCase())
+      !element.title.toLowerCase().includes(filters.search.toLowerCase())
     ) {
       return false
     }
 
-    if (filters.topic && !test.id.startsWith(filters.topic)) {
+    if (filters.topic && !element.id.startsWith(filters.topic)) {
       return false
     }
 
-    if (filters.criterion && !test.id.startsWith(filters.criterion)) {
+    if (filters.criterion && !element.id.startsWith(filters.criterion)) {
       return false
     }
 

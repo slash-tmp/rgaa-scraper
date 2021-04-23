@@ -1,5 +1,5 @@
 import { RgaaRawTest } from '../types'
-import { filterTests, reduceWhitespaces } from '../utils'
+import { filterElements, reduceWhitespaces } from '../utils'
 
 describe('reduceWhitespaces', () => {
   it('replaces multiple consecutive spaces with a single space', () => {
@@ -18,29 +18,37 @@ describe('filterTests', () => {
   }
 
   it('returns true if there are no filters or filters is empty', () => {
-    expect(filterTests()(testFixture)).toBe(true)
-    expect(filterTests({})(testFixture)).toBe(true)
+    expect(filterElements()(testFixture)).toBe(true)
+    expect(filterElements({})(testFixture)).toBe(true)
   })
 
   it('filters tests based on search text', () => {
-    expect(filterTests({ search: 'bar' })(testFixture)).toBe(true)
-    expect(filterTests({ search: 'abracadabra' })(testFixture)).toBe(false)
+    expect(filterElements({ search: 'bar' })(testFixture)).toBe(true)
+    expect(filterElements({ search: 'abracadabra' })(testFixture)).toBe(false)
   })
 
   it('filters based on topic', () => {
-    expect(filterTests({ topic: '1' })(testFixture)).toBe(true)
-    expect(filterTests({ topic: '2' })(testFixture)).toBe(false)
+    expect(filterElements({ topic: '1' })(testFixture)).toBe(true)
+    expect(filterElements({ topic: '2' })(testFixture)).toBe(false)
   })
 
   it('filters based on criterion', () => {
-    expect(filterTests({ criterion: '1.1' })(testFixture)).toBe(true)
-    expect(filterTests({ criterion: '1.2' })(testFixture)).toBe(false)
+    expect(filterElements({ criterion: '1.1' })(testFixture)).toBe(true)
+    expect(filterElements({ criterion: '1.2' })(testFixture)).toBe(false)
   })
 
   it('filters based on search and topic', () => {
-    expect(filterTests({ search: 'bar', topic: '1' })(testFixture)).toBe(true)
-    expect(filterTests({ search: 'bar', topic: '2' })(testFixture)).toBe(false)
-    expect(filterTests({ search: 'toto', topic: '1' })(testFixture)).toBe(false)
-    expect(filterTests({ search: 'toto', topic: '2' })(testFixture)).toBe(false)
+    expect(filterElements({ search: 'bar', topic: '1' })(testFixture)).toBe(
+      true
+    )
+    expect(filterElements({ search: 'bar', topic: '2' })(testFixture)).toBe(
+      false
+    )
+    expect(filterElements({ search: 'toto', topic: '1' })(testFixture)).toBe(
+      false
+    )
+    expect(filterElements({ search: 'toto', topic: '2' })(testFixture)).toBe(
+      false
+    )
   })
 })
