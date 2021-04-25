@@ -1,5 +1,6 @@
 import RgaaTestWrapper from './RgaaTestWrapper'
 import RgaaTopicWrapper from './RgaaTopicWrapper'
+import { RgaaRootWrapper } from './RgaaRootWrapper'
 import {
   RgaaCrawlerResult,
   RgaaCriterion,
@@ -9,7 +10,9 @@ import {
 } from './types'
 import { filterElements } from './utils'
 
-export default class RgaaCriterionWrapper implements RgaaCriterion {
+export default class RgaaCriterionWrapper
+  extends RgaaRootWrapper
+  implements RgaaCriterion {
   id: string
   title: string
   references?: {
@@ -18,20 +21,14 @@ export default class RgaaCriterionWrapper implements RgaaCriterion {
   }
   particularCases?: string
   technicalNotes?: string
-  private _root: RgaaRawCrawlerResult
 
   constructor(data: RgaaRawCriterion, root: RgaaRawCrawlerResult) {
+    super(root)
     this.id = data.id
     this.title = data.title
     this.references = data.references
     this.particularCases = data.particularCases
     this.technicalNotes = data.technicalNotes
-    this._root = root
-
-    // hides the _root property from console.log and JSON.stringify
-    Object.defineProperty(this, '_root', {
-      enumerable: false,
-    })
   }
 
   get topic() {

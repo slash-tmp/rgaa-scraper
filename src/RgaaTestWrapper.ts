@@ -1,5 +1,6 @@
 import RgaaCriterionWrapper from './RgaaCriterionWrapper'
 import RgaaTopicWrapper from './RgaaTopicWrapper'
+import { RgaaRootWrapper } from './RgaaRootWrapper'
 import type {
   RgaaRawCrawlerResult,
   RgaaRawTest,
@@ -8,20 +9,16 @@ import type {
   RgaaTopic,
 } from './types'
 
-export default class RgaaTestWrapper implements RgaaTest {
+export default class RgaaTestWrapper
+  extends RgaaRootWrapper
+  implements RgaaTest {
   id: string
   title: string
-  private _root: RgaaRawCrawlerResult
 
   constructor(data: RgaaRawTest, root: RgaaRawCrawlerResult) {
+    super(root)
     this.id = data.id
     this.title = data.title
-    this._root = root
-
-    // hides the _root property from console.log and JSON.stringify
-    Object.defineProperty(this, '_root', {
-      enumerable: false,
-    })
   }
 
   get criterion(): RgaaCriterion {
