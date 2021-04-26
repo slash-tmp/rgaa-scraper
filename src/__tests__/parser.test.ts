@@ -30,7 +30,7 @@ describe('parseTestLi', () => {
     const result = parseTestLi(cheerio.load(html)('li'))
 
     expect(result.id).toEqual('1.4.1')
-    expect(result.text).toEqual(
+    expect(result.title).toEqual(
       'Pour chaque image (balise <img>) utilisée comme CAPTCHA ou comme image-test, ayant une alternative textuelle, cette alternative est-elle pertinente ?\n' +
         '- S’il est présent, le contenu de l’attribut alt est pertinent ;\n' +
         '- S’il est présent, le contenu de l’attribut title est pertinent ;\n' +
@@ -45,7 +45,7 @@ describe('parseTestLi', () => {
     const result = parseTestLi(cheerio.load(html)('li'))
 
     expect(result.id).toEqual('3.1.3')
-    expect(result.text).toEqual(
+    expect(result.title).toEqual(
       'Pour chaque image véhiculant une information, l’information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?'
     )
   })
@@ -57,6 +57,6 @@ describe('parseTopicA', () => {
     const result = parseTopicA(cheerio.load(html)('a'))
 
     expect(result.id).toEqual('11')
-    expect(result.topic).toEqual("Structuration de l'information")
+    expect(result.title).toEqual("Structuration de l'information")
   })
 })
