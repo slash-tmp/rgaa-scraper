@@ -101,11 +101,11 @@ Liste l'ensemble des tests du RGAA.
 
 ### Filtrer les résultats
 
-Les méthodes mentionnées "filtrable" ci-dessus prennent en paramètre optionnel un objet de filtre avec plusieurs propriétés cumulables :
+Les méthodes mentionnées "🧮 filtrable" ci-dessus prennent en paramètre optionnel un objet de filtre avec plusieurs propriétés cumulables :
 
 - `topic` : filtrer par thématique.
 - `criterion` : filtrer par critère.
-- `search` : filtrer par texte.
+- `search` : filtrer par recherche textuelle.
 - `level` : filtrer par niveau de conformance WCAG.
 
 Quelques exemples :
