@@ -43,10 +43,7 @@ export interface RgaaTest extends RgaaRawTest {
 }
 
 export interface RgaaCrawlerOptions {
-  /**
-   * Text format of the returned texts : `markdown` or `text`.
-   * Defaults to `text`.
-   */
+  /** Text format of the returned texts : `markdown` or `text`. Defaults to `text`. */
   format?: 'markdown' | 'text'
 }
 
