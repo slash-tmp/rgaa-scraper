@@ -1,8 +1,4 @@
-import {
-  RgaaFilter,
-  RgaaRawCriterion,
-  RgaaRawTest,
-} from './types'
+import { RgaaFilter, RgaaRawCriterion, RgaaRawTest } from './types'
 
 export function reduceWhitespaces(str: string): string {
   return str.replace(/\s+/g, ' ')
