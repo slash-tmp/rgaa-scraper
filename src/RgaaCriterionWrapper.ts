@@ -2,7 +2,6 @@ import RgaaTestWrapper from './RgaaTestWrapper'
 import RgaaTopicWrapper from './RgaaTopicWrapper'
 import { RgaaRootWrapper } from './RgaaRootWrapper'
 import {
-  RgaaCrawlerResult,
   RgaaCriterion,
   RgaaFilter,
   RgaaRawCrawlerResult,
@@ -31,15 +30,16 @@ export default class RgaaCriterionWrapper
     this.technicalNotes = data.technicalNotes
   }
 
-  get topic() {
+  get topic(): RgaaTopicWrapper {
     const topicId = this.id.split('.')[0]
     return new RgaaTopicWrapper(
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       this._root.topics.find(topic => topic.id === topicId)!,
       this._root
     )
   }
 
-  tests(filters?: RgaaFilter) {
+  tests(filters?: RgaaFilter): RgaaTestWrapper[] {
     return this._root.tests
       .filter(test => test.id.startsWith(this.id))
       .filter(filterElements(filters))

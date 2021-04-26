@@ -2,7 +2,7 @@ import Crawler from 'crawler'
 import type { CrawlerRequestResponse } from 'crawler'
 
 import { parseCriteriaArticle, parseTestLi, parseTopicA } from './parser'
-import { RgaaCrawlerResult, RgaaRawCrawlerResult, RgaaRawTopic } from './types'
+import { RgaaRawCrawlerResult, RgaaRawTopic } from './types'
 
 const RGAA_URL =
   'https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/'

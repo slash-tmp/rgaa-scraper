@@ -2,11 +2,9 @@ import RgaaCriterionWrapper from './RgaaCriterionWrapper'
 import RgaaTestWrapper from './RgaaTestWrapper'
 import { RgaaRootWrapper } from './RgaaRootWrapper'
 import {
-  RgaaCriterion,
   RgaaFilter,
   RgaaRawCrawlerResult,
   RgaaRawTopic,
-  RgaaTest,
   RgaaTopic,
 } from './types'
 import { filterElements } from './utils'
@@ -23,14 +21,14 @@ export default class RgaaTopicWrapper
     this.title = data.title
   }
 
-  criteria(filters?: RgaaFilter) {
+  criteria(filters?: RgaaFilter): RgaaCriterionWrapper[] {
     return this._root.criteria
       .filter(criterion => criterion.id.startsWith(this.id))
       .filter(filterElements(filters))
       .map(criterion => new RgaaCriterionWrapper(criterion, this._root))
   }
 
-  tests(filters?: RgaaFilter) {
+  tests(filters?: RgaaFilter): RgaaTestWrapper[] {
     return this._root.tests
       .filter(test => test.id.startsWith(this.id))
       .filter(filterElements(filters))

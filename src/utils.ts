@@ -2,7 +2,6 @@ import {
   RgaaFilter,
   RgaaRawCriterion,
   RgaaRawTest,
-  RgaaRawTopic,
 } from './types'
 
 export function reduceWhitespaces(str: string): string {
