@@ -36,12 +36,12 @@ export function parseTestLi(liCheerio: cheerio.Cheerio): RgaaRawTest {
   if (!liId) throw new Error('Cant parse test : no id attribute')
   const id = liId.split('-').slice(1).join('.')
 
-  const pText = reduceWhitespaces(liCheerio.find('p').first().text())
+  const pText = reduceWhitespaces(liCheerio.find('p').first().text()).trim()
 
   const listText = liCheerio
     .find('ul li p')
     .toArray()
-    .map(el => '- ' + reduceWhitespaces($(el).text()))
+    .map(el => '- ' + reduceWhitespaces($(el).text()).trim())
     .join('\n')
 
   return {

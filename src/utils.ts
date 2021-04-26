@@ -4,9 +4,11 @@ export function reduceWhitespaces(str: string): string {
   return str.replace(/\s+/g, ' ')
 }
 
-export function filterElements(
-  filters?: RgaaFilter
-): (element: RgaaRawTest | RgaaRawCriterion) => boolean {
+type FilterElementsFunction = (
+  element: RgaaRawTest | RgaaRawCriterion
+) => boolean
+
+export function filterElements(filters?: RgaaFilter): FilterElementsFunction {
   return element => {
     if (!filters || Object.keys(filters).length === 0) {
       return true
