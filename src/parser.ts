@@ -4,6 +4,24 @@ import { reduceWhitespaces } from './utils'
 
 const criteriaRegEx = /^Critère ((\d+\.)+) (.*)$/
 
+function parseCriterionAside(elements: cheerio.Cheerio[]): string {
+  return elements
+    .map(el => $(el))
+    .map(el => {
+      if (el.is('ul')) {
+        const res = el
+          .children()
+          .toArray()
+          .map(childEl => '- ' + reduceWhitespaces($(childEl).text().trim()))
+          .join('\n')
+        return res
+      } else {
+        return reduceWhitespaces(el.text().trim())
+      }
+    })
+    .join('\n')
+}
+
 export function parseCriteriaArticle(
   articleCheerio: cheerio.Cheerio
 ): RgaaRawCriterion {
@@ -55,28 +73,14 @@ export function parseCriteriaArticle(
       }
     })
 
-  // console.log(asideElements)
-
-  const technicalNotes = asideElements.technicalNotes
-    .map(el => $(el))
-    .map(el => {
-      if (el.is('ul')) {
-        const res = el
-          .children()
-          .toArray()
-          .map(childEl => '- ' + reduceWhitespaces($(childEl).text().trim()))
-          .join('\n')
-        return res
-      } else {
-        return reduceWhitespaces(el.text().trim())
-      }
-    })
-    .join('\n')
+  const technicalNotes = parseCriterionAside(asideElements.technicalNotes)
+  const particularCases = parseCriterionAside(asideElements.particularCases)
 
   return {
     id,
     title,
     ...(!!technicalNotes && { technicalNotes }),
+    ...(!!particularCases && { particularCases }),
   }
 }
 

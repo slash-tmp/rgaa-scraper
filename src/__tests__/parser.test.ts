@@ -48,6 +48,30 @@ describe('parseCriteriaArticle', () => {
         '- « Commander produit X maintenant » est non valide.'
     )
   })
+
+  it('returns a criterion with particular cases', async () => {
+    const html = await loadFixtureHtml('criteria_1-8.html')
+
+    const result = parseCriteriaArticle(cheerio.load(html)('article'))
+
+    expect(result.particularCases).toEqual(
+      'Pour ce critère, il existe une gestion de cas particulier lorsque le texte fait partie du logo, d’une dénomination commerciale, d’un CAPTCHA, d’une image-test ou d’une image dont l’exactitude graphique serait considérée comme essentielle à la bonne transmission de l’information véhiculée par l’image. Dans ces situations, le critère est non applicable pour ces éléments.'
+    )
+  })
+
+  it('returns a criterion with multiline partical cases', async () => {
+    const html = await loadFixtureHtml('criteria_6-1.html')
+
+    const result = parseCriteriaArticle(cheerio.load(html)('article'))
+
+    expect(result.particularCases).toEqual(
+      'Il existe une gestion de cas particuliers pour les tests 6.1.1, 6.1.2, 6.1.3 et 6.1.4 lorsque le lien est ambigu pour tout le monde. Dans cette situation, où il n’est pas possible de rendre le lien explicite dans son contexte, le critère est non applicable.\n' +
+        'Il existe une gestion de cas particuliers pour le test 6.1.5 lorsque :\n' +
+        '- La ponctuation et les lettres majuscules sont présentes dans le texte de l’intitulé visible : elles peuvent être ignorées dans le nom accessible sans porter à conséquence ;\n' +
+        '- Le texte de l’intitulé visible sert de symbole : le texte ne doit pas être interprété littéralement au niveau du nom accessible. Le nom doit exprimer la fonction véhiculée par le symbole (par exemple, “B” au niveau d’un éditeur de texte aura pour nom accessible “Mettre en gras”, le signe “>” en fonction du contexte signifiera “Suivant” ou “Lancer la vidéo”). Le cas des symboles mathématiques fait cependant exception (voir la note ci-dessous).\n' +
+        'Note : si l’étiquette visible représente une expression mathématique, les symboles mathématiques peuvent être repris littéralement pour servir d’étiquette au nom accessible (ex. : “A>B”). Il est laissé à l’utilisateur le soin d’opérer la correspondance entre l’expression et ce qu’il doit épeler compte tenu de la connaissance qu’il a du fonctionnement de son logiciel de saisie vocale (“A plus grand que B” ou “A supérieur à B”).'
+    )
+  })
 })
 
 describe('parseTestLi', () => {
