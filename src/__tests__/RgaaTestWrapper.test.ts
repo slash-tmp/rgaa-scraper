@@ -1,4 +1,5 @@
 import RgaaTestWrapper from '../RgaaTestWrapper'
+import { RgaaLevel } from '../types'
 
 const testData = {
   tests: [
@@ -12,11 +13,13 @@ const testData = {
       id: '1.2',
       title: 'Criterium foobar foo',
       references: {},
+      level: 'AA' as RgaaLevel,
     },
     {
       id: '1.3',
       title: 'Criterium foobar foo',
       references: {},
+      level: 'A' as RgaaLevel,
     },
   ],
   topics: [

@@ -1,4 +1,5 @@
 import RgaaCriterionWrapper from '../RgaaCriterionWrapper'
+import { RgaaLevel } from '../types'
 
 const testData = {
   tests: [
@@ -20,6 +21,7 @@ const testData = {
       id: '1.2',
       title: 'Criterium foobar foo',
       references: {},
+      level: 'AA' as RgaaLevel,
     },
   ],
   topics: [
@@ -45,6 +47,7 @@ describe('Rgaa criterion Wrapper', () => {
         },
         technicalNotes: 'Foobar',
         particularCases: 'Foobaz',
+        level: 'A',
       },
       testData
     )
@@ -71,6 +74,7 @@ describe('Rgaa criterion Wrapper', () => {
         },
         technicalNotes: 'Foobar',
         particularCases: 'Foobaz',
+        level: 'A',
       },
       testData
     )
@@ -88,6 +92,7 @@ describe('Rgaa criterion Wrapper', () => {
         },
         technicalNotes: 'Foobar',
         particularCases: 'Foobaz',
+        level: 'A',
       },
       testData
     )
@@ -105,6 +110,7 @@ describe('Rgaa criterion Wrapper', () => {
         },
         technicalNotes: 'Foobar',
         particularCases: 'Foobaz',
+        level: 'AA',
       },
       testData
     )
@@ -122,6 +128,7 @@ describe('Rgaa criterion Wrapper', () => {
         },
         technicalNotes: 'Foobar',
         particularCases: 'Foobaz',
+        level: 'A',
       },
       testData
     )
@@ -140,6 +147,7 @@ describe('Rgaa criterion Wrapper', () => {
         },
         technicalNotes: 'Foobar',
         particularCases: 'Foobaz',
+        level: 'AA',
       },
       testData
     )

@@ -1,6 +1,8 @@
+export type RgaaLevel = 'A' | 'AA'
+
 export interface RgaaFilter {
   // TODO: implement the `level` filter
-  // level?: 'A' | 'AA'
+  // level?: RgaaLevel
   topic?: string
   search?: string
   criterion?: string
@@ -25,7 +27,7 @@ export interface RgaaRawCriterion {
   }
   particularCases?: string
   technicalNotes?: string
-  level: 'A' | 'AA'
+  level: RgaaLevel
 }
 
 export interface RgaaCriterion extends RgaaRawCriterion {

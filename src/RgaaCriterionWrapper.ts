@@ -4,6 +4,7 @@ import { RgaaRootWrapper } from './RgaaRootWrapper'
 import {
   RgaaCriterion,
   RgaaFilter,
+  RgaaLevel,
   RgaaRawCrawlerResult,
   RgaaRawCriterion,
 } from './types'
@@ -20,6 +21,7 @@ export default class RgaaCriterionWrapper
   }
   particularCases?: string
   technicalNotes?: string
+  level: RgaaLevel
 
   constructor(data: RgaaRawCriterion, root: RgaaRawCrawlerResult) {
     super(root)
@@ -28,6 +30,7 @@ export default class RgaaCriterionWrapper
     this.references = data.references
     this.particularCases = data.particularCases
     this.technicalNotes = data.technicalNotes
+    this.level = data.level
   }
 
   get topic(): RgaaTopicWrapper {
