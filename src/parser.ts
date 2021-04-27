@@ -49,7 +49,6 @@ export function parseCriteriaArticle(
   const asideElements = {
     technicalNotes: [] as cheerio.Cheerio[],
     particularCases: [] as cheerio.Cheerio[],
-    references: [] as cheerio.Cheerio[],
   }
   let currentSection: null | keyof typeof asideElements = null
 
@@ -58,16 +57,14 @@ export function parseCriteriaArticle(
     .toArray()
     .map(el => $(el))
     .forEach(el => {
-      if (el.is('h5') && el.text().includes('Notes techniques')) {
-        currentSection = 'technicalNotes'
-      } else if (el.is('h5') && el.text().includes('Cas particuliers')) {
-        currentSection = 'particularCases'
-      } else if (
-        el.is('h5') &&
-        (el.text().includes('Correspondances WCAG 2.1') ||
-          el.text().includes('Correspondances EN 301 549 V2.1.2 (2018-08)'))
-      ) {
-        currentSection = 'references'
+      if (el.is('h5')) {
+        if (el.text().includes('Notes techniques')) {
+          currentSection = 'technicalNotes'
+        } else if (el.text().includes('Cas particuliers')) {
+          currentSection = 'particularCases'
+        } else {
+          currentSection = null
+        }
       } else if (currentSection) {
         asideElements[currentSection].push(el)
       }
@@ -76,10 +73,17 @@ export function parseCriteriaArticle(
   const technicalNotes = parseCriterionAside(asideElements.technicalNotes)
   const particularCases = parseCriterionAside(asideElements.particularCases)
 
+  const techniques = articleCheerio
+    .find('li:contains("Technique(s) suffisante(s) et/ou échec(s) WCAG 2.1") a')
+    .toArray()
+    .map(el => $(el).text())
+
   return {
     id,
     title,
-    references: {},
+    references: {
+      ...(!!techniques && { techniques }),
+    },
     ...(!!technicalNotes && { technicalNotes }),
     ...(!!particularCases && { particularCases }),
   }
