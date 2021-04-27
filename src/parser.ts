@@ -78,11 +78,19 @@ export function parseCriteriaArticle(
     .toArray()
     .map(el => $(el).text())
 
+  const wcagReferences = articleCheerio
+    .find(
+      'h5:contains("Correspondances EN 301 549 V2.1.2 (2018-08)") + ul > li'
+    )
+    .toArray()
+    .map(el => $(el).text().slice(0, -1))
+
   return {
     id,
     title,
     references: {
       ...(!!techniques && { techniques }),
+      ...(!!wcagReferences && { wcag: wcagReferences }),
     },
     ...(!!technicalNotes && { technicalNotes }),
     ...(!!particularCases && { particularCases }),

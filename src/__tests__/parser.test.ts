@@ -86,6 +86,18 @@ describe('parseCriteriaArticle', () => {
       'F65',
     ])
   })
+
+  it('returns a criterion with wcag references', async () => {
+    const html = await loadFixtureHtml('criteria_6-1.html')
+
+    const result = parseCriteriaArticle(cheerio.load(html)('article'))
+
+    expect(result.references.wcag).toEqual([
+      '9.1.1.1 / 1.1.1 Non-text Content (A)',
+      '9.2.4.4 / 2.4.4 Link Purpose (In Context) (A)',
+      '9.2.5.3 / 2.5.3 Label in Name (A)',
+    ])
+  })
 })
 
 describe('parseTestLi', () => {
