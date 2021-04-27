@@ -3,6 +3,5 @@
   "singleQuote": true,
   "arrowParens": "avoid",
   "proseWrap": "always",
-  "plugins": ["prettier-plugin-jsdoc"],
   "tsdoc": true
 }
