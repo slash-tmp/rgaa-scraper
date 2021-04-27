@@ -7,13 +7,13 @@ const criteriaRegEx = /^Critère ((\d+\.)+) (.*)$/
 export function parseCriteriaArticle(
   articleCheerio: cheerio.Cheerio
 ): RgaaRawCriterion {
-  const title = articleCheerio.find('h4')
+  const h4 = articleCheerio.find('h4')
 
   // remove the button element from the title
   articleCheerio.find('button').remove()
 
   // get the title text and clean it
-  const titleText = reduceWhitespaces(title.text().trim())
+  const titleText = reduceWhitespaces(h4.text().trim())
 
   const match = titleText.match(criteriaRegEx)
 
@@ -21,12 +21,62 @@ export function parseCriteriaArticle(
     throw new Error('Cant parse criteria : ' + articleCheerio.find('h4').text())
   }
 
+  const id = match[1]
+    .split('.')
+    .filter(i => i)
+    .join('.')
+
+  const title = match[3]
+
+  const asideElements = {
+    technicalNotes: [] as cheerio.Cheerio[],
+    particularCases: [] as cheerio.Cheerio[],
+    references: [] as cheerio.Cheerio[],
+  }
+  let currentSection: null | keyof typeof asideElements = null
+
+  articleCheerio
+    .find('.aside > *')
+    .toArray()
+    .map(el => $(el))
+    .forEach(el => {
+      if (el.is('h5') && el.text().includes('Notes techniques')) {
+        currentSection = 'technicalNotes'
+      } else if (el.is('h5') && el.text().includes('Cas particuliers')) {
+        currentSection = 'particularCases'
+      } else if (
+        el.is('h5') &&
+        (el.text().includes('Correspondances WCAG 2.1') ||
+          el.text().includes('Correspondances EN 301 549 V2.1.2 (2018-08)'))
+      ) {
+        currentSection = 'references'
+      } else if (currentSection) {
+        asideElements[currentSection].push(el)
+      }
+    })
+
+  // console.log(asideElements)
+
+  const technicalNotes = asideElements.technicalNotes
+    .map(el => $(el))
+    .map(el => {
+      if (el.is('ul')) {
+        const res = el
+          .children()
+          .toArray()
+          .map(childEl => '- ' + reduceWhitespaces($(childEl).text().trim()))
+          .join('\n')
+        return res
+      } else {
+        return reduceWhitespaces(el.text().trim())
+      }
+    })
+    .join('\n')
+
   return {
-    id: match[1]
-      .split('.')
-      .filter(i => i)
-      .join('.'),
-    title: match[3],
+    id,
+    title,
+    ...(!!technicalNotes && { technicalNotes }),
   }
 }
 
