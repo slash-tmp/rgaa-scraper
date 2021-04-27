@@ -1,4 +1,4 @@
-import { RgaaRawTest } from '../types'
+import { RgaaRawCriterion, RgaaRawTest } from '../types'
 import { filterElements, reduceWhitespaces } from '../utils'
 
 describe('reduceWhitespaces', () => {
@@ -50,5 +50,24 @@ describe('filterTests', () => {
     expect(filterElements({ search: 'toto', topic: '2' })(testFixture)).toBe(
       false
     )
+  })
+
+  it('filters based on level', () => {
+    const textCriterion: RgaaRawCriterion = {
+      id: '1.1',
+      title: 'Foobar foo',
+      level: 'A',
+      references: {},
+    }
+    const testCriterion2: RgaaRawCriterion = {
+      id: '1.2',
+      title: 'Lorem ipsum',
+      level: 'AA',
+      references: {},
+    }
+    expect(filterElements({ level: 'A' })(textCriterion)).toBe(true)
+    expect(filterElements({ level: 'AA' })(textCriterion)).toBe(false)
+    expect(filterElements({ level: 'A' })(testCriterion2)).toBe(false)
+    expect(filterElements({ level: 'AA' })(testCriterion2)).toBe(true)
   })
 })

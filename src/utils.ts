@@ -29,6 +29,13 @@ export function filterElements(filters?: RgaaFilter): FilterElementsFunction {
       return false
     }
 
+    if (
+      filters.level &&
+      (element as RgaaRawCriterion).level !== filters.level
+    ) {
+      return false
+    }
+
     return true
   }
 }
