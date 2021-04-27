@@ -98,6 +98,17 @@ describe('parseCriteriaArticle', () => {
       '9.2.5.3 / 2.5.3 Label in Name (A)',
     ])
   })
+
+  it('returns a criterion with level', async () => {
+    const html = await loadFixtureHtml('criteria_6-1.html')
+    const result = parseCriteriaArticle(cheerio.load(html)('article'))
+
+    const html2 = await loadFixtureHtml('criteria_1-8.html')
+    const result2 = parseCriteriaArticle(cheerio.load(html2)('article'))
+
+    expect(result.level).toEqual('A')
+    expect(result2.level).toEqual('AA')
+  })
 })
 
 describe('parseTestLi', () => {

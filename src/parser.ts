@@ -85,6 +85,8 @@ export function parseCriteriaArticle(
     .toArray()
     .map(el => $(el).text().slice(0, -1))
 
+  const level = wcagReferences.some(ref => ref.includes('(AA)')) ? 'AA' : 'A'
+
   return {
     id,
     title,
@@ -94,6 +96,7 @@ export function parseCriteriaArticle(
     },
     ...(!!technicalNotes && { technicalNotes }),
     ...(!!particularCases && { particularCases }),
+    level,
   }
 }
 

@@ -25,6 +25,7 @@ export interface RgaaRawCriterion {
   }
   particularCases?: string
   technicalNotes?: string
+  level: 'A' | 'AA'
 }
 
 export interface RgaaCriterion extends RgaaRawCriterion {
