@@ -83,7 +83,7 @@ export function parseCriteriaArticle(
       'h5:contains("Correspondances EN 301 549 V2.1.2 (2018-08)") + ul > li'
     )
     .toArray()
-    .map(el => $(el).text().slice(0, -1))
+    .map(el => $(el).text().trim().slice(0, -1))
 
   const level = wcagReferences.some(ref => ref.includes('(AA)')) ? 'AA' : 'A'
 
