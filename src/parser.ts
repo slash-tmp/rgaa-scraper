@@ -79,6 +79,7 @@ export function parseCriteriaArticle(
   return {
     id,
     title,
+    references: {},
     ...(!!technicalNotes && { technicalNotes }),
     ...(!!particularCases && { particularCases }),
   }

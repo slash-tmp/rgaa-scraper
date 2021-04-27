@@ -19,7 +19,7 @@ export interface RgaaTopic extends RgaaRawTopic {
 export interface RgaaRawCriterion {
   id: string
   title: string
-  references?: {
+  references: {
     wcag?: string[]
     techniques?: string[]
   }

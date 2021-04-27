@@ -11,10 +11,12 @@ const testData = {
     {
       id: '1.2',
       title: 'Criterium foobar foo',
+      references: {},
     },
     {
       id: '1.3',
       title: 'Criterium foobar foo',
+      references: {},
     },
   ],
   topics: [

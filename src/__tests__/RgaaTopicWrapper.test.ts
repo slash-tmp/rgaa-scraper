@@ -6,45 +6,54 @@ const testData = {
       id: '1.1',
       title:
         'Chaque image porteuse d’information a-t-elle une alternative textuelle ?',
+      references: {},
     },
     {
       id: '1.2',
       title:
         'Chaque image de décoration est-elle correctement ignorée par les technologies d’assistance ?',
+      references: {},
     },
     {
       id: '1.3',
       title:
         'Pour chaque image porteuse d’information ayant une alternative textuelle, cette alternative est-elle pertinente (hors cas particuliers) ?',
+      references: {},
     },
     {
       id: '1.4',
       title:
         'Pour chaque image utilisée comme CAPTCHA ou comme image-test, ayant une alternative textuelle, cette alternative permet-elle d’identifier la nature et la fonction de l’image ?',
+      references: {},
     },
     {
       id: '1.5',
       title:
         'Pour chaque image utilisée comme CAPTCHA, une solution d’accès alternatif au contenu ou à la fonction du CAPTCHA est-elle présente ?',
+      references: {},
     },
     {
       id: '2.1',
       title: 'Chaque cadre a-t-il un titre de cadre ?',
+      references: {},
     },
     {
       id: '2.2',
       title:
         'Pour chaque cadre ayant un titre de cadre, ce titre de cadre est-il pertinent ?',
+      references: {},
     },
     {
       id: '3.1',
       title:
         'Dans chaque page web, l’information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?',
+      references: {},
     },
     {
       id: '3.2',
       title:
         'Dans chaque page web, le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisamment élevé (hors cas particuliers) ?',
+      references: {},
     },
   ],
   tests: [

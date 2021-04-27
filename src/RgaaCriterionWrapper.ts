@@ -14,7 +14,7 @@ export default class RgaaCriterionWrapper
   implements RgaaCriterion {
   id: string
   title: string
-  references?: {
+  references: {
     wcag?: string[]
     techniques?: string[]
   }
