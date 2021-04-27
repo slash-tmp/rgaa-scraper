@@ -1,12 +1,9 @@
 # RGAA Crawler
 
-Ce projet parcourt
-[la page "Critères et test" du **Référentiel général d'amélioration de l'accessibilité"**](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/)
-afin de générer un fichier au format JSON.
+Ce projet parcourt [la page "Critères et tests" du **RGAA (Référentiel général
+d'amélioration de l'accessibilité)"**](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/) afin de fournir l'ensemble des données au format texte dans un fichier JSON.
 
-⚠️ Cette API est fournie en crawlant la page cible et son code HTML. Par
-conséquent, si ce dernier change, il se peut que les résultats ne soient pas
-accessibles.
+⚠️ **Cette API est fournie en [scrapant](https://fr.wiktionary.org/wiki/scraper) la page cible et son code HTML. Par conséquent, si ce dernier change, il se peut que les résultats ne soient plus accessibles.**
 
 ## Installation et utilisation
 
@@ -34,28 +31,28 @@ crawlRgaa().then(data => {
 
 Voici le format de données en sortie :
 
-```json
+```javascript
 {
   "topics": [
     {
       "id": "1",
       "title": "Images"
     },
-    ...
+    // ... suite des thématiques
   ],
   "criteria": [
     {
       "id": "1.1",
       "title": "Chaque image porteuse d’information a-t-elle une alternative textuelle ?"
     },
-    ...
+    // ... suite des critères
   ],
   "tests": [
     {
       "id": "1.1.1",
       "title": "Chaque image (balise <img> ou balise possédant l’attribut WAI-ARIA role=\"img\") porteuse d’information a-t-elle une alternative textuelle ?\n- Chaque image (balise <img> ou balise possédant l’attribut WAI-ARIA role=\"img\") porteuse d’information a-t-elle une alternative textuelle ?"
     },
-    ...
+    // ... suite des tests
   ]
 }
 ```
@@ -66,38 +63,38 @@ Voici le format de données en sortie :
 
 Liste l'ensemble des thématiques du RGAA ("Images", "Cadres"...).
 
-| Propriété | Description |
-|-----------|-------------|
-| `id` | Numéro de la thématique (`"1"`, `"2"`...). |
-| `title` | Descriptif de la thématique. |
-| `criteria()` - 🧮 filtrable | Critères appartenant à la thématique. |
-| `tests()` - 🧮 filtrable | Tests appartenant aux critères de la thématique. |
+| Propriété | Description | Valeur d'exemple |
+|-----------|-------------|------------------|
+| `id` | Numéro de la thématique. | `'1'` |
+| `title` | Descriptif de la thématique. | `'Images'` |
+| `criteria()` - 🧮 filtrable | Critères appartenant à la thématique. | `[{ id: '1.3', title: 'Pour chaque image porteuse d’information ayant une alternative textuelle, cette alternative est-elle pertinente (hors cas particuliers) ?', references: { wcag: ['9.1.1.1 / 1.1.1 Non-text Content (A)', '9.4.1.2 / 4.1.2 Name, Role, Value (A)'], techniques: ['G94', 'G95', 'F30', 'F71', 'G196', 'ARIA6', 'ARIA9', 'ARIA10'] }, particularCases: "Il existe une gestion de cas particuliers lorsque l’image est utilisée comme CAPTCHA ou comme image-test. Dans cette situation, où il n’est pas possible de donner une alternative pertinente sans détruire l’objet du CAPTCHA ou du test, le critère est non applicable.\n" + "Note : le cas des CAPTCHA et des images-test est traité de manière spécifique par le critère 1.4.", technicalNotes: '', level: 'A' }]` |
+| `tests()` - 🧮 filtrable | Tests appartenant aux critères de la thématique. | `[{ id: '1.3.9', title: 'Pour chaque image porteuse d’information et ayant une alternative textuelle, l’alternative textuelle est-elle courte et concise (hors cas particuliers) ?' }, {...}]` |
 
 ### Critères (`criteria`)
 
 Liste l'ensemble des critères du RGAA.
 
-| Propriété | Description |
-|-----------|-------------|
-| `id` | Numéro du critère (`"1.2"`, `"1.3"`...). |
-| `title` | Descriptif du critère. |
-| `level` | Niveau WCAG du critère. |
-| `references` | Références au WCAG et au W3 du critère. |
-| `particularCases` | Cas particuliers d'application du critère. |
-| `technicalNotes` | Note technique sur l'implémentation du critère. |
-| `topic` | Thématique à laquelle est rattaché le critère. |
-| `tests()` - 🧮 filtrable | Tests appartenant au critère. |
+| Propriété | Description | Valeur d'exemple |
+|-----------|-------------|------------------|
+| `id` | Numéro du critère | `'1.2'` |
+| `title` | Descriptif du critère. | `'Chaque image porteuse d’information a-t-elle une alternative textuelle ?'` |
+| `level` | Niveau WCAG du critère. | `'AA'` |
+| `references` | Références au WCAG et au W3 du critère. | `{ wcag: ['9.1.1.1 / 1.1.1 Non-text Content (A)'], techniques: ['G92', 'G74', 'G73', 'H45', 'ARIA6'] }` |
+| `particularCases` | Cas particuliers d'application du critère. | `'Il existe une gestion de cas particuliers lorsque l’image est utilisée comme CAPTCHA ou comme image-test. Dans cette situation, où il n’est pas possible de donner une alternative pertinente sans détruire l’objet du CAPTCHA ou du test, le critère est non applicable.', 'Note : le cas des CAPTCHA et des images-test est traité de manière spécifique par le critère 1.4.'` |
+| `technicalNotes` | Note technique sur l'implémentation du critère. | `'Le texte dans les images vectorielles étant du texte réel, il n’est pas concerné par ce critère.'` |
+| `topic` | Thématique à laquelle est rattaché le critère. | `{ id: '1', title: 'Images' }` |
+| `tests()` - 🧮 filtrable | Tests appartenant au critère. | `[{ id: '1.3.9', title: 'Pour chaque image porteuse d’information et ayant une alternative textuelle, l’alternative textuelle est-elle courte et concise (hors cas particuliers) ?' }, {...}]` |
 
 ### Tests (`tests`)
 
 Liste l'ensemble des tests du RGAA.
 
-| Propriété | Description |
-|-----------|-------------|
-| `id` | Numéro du test (`"1.2.3"`, `"1.3.6"`...). |
-| `title` | Descriptif du test. |
-| `topic` | Thématique à laquelle est rattaché le test. |
-| `criterion` | Critère auquel est rattaché le test. |
+| Propriété | Description | Valeur d'exemple |
+|-----------|-------------|------------------|
+| `id` | Numéro du test. | `'2.1.1'` |
+| `title` | Descriptif du test. | `'Chaque cadre (balise <iframe> ou <frame>) a-t-il un attribut title ?'` |
+| `topic` | Thématique à laquelle est rattaché le test. | `{ id: '2', title: 'Cadres' }` |
+| `criterion` | Critère auquel est rattaché le test. | `{ id: '2.1', title: 'Chaque cadre a-t-il un titre de cadre ?', references: { techniques: [ 'H64' ], wcag: [ '9.4.1.2 / 4.1.2 Name, Role, Value (A)' ] }, particularCases: undefined, technicalNotes: undefined, level: 'A'` |
 
 ### Filtrer les résultats
 
