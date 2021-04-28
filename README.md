@@ -28,7 +28,7 @@ crawlRgaa().then(data => {
   console.log(data.tests())
 
   console.log(
-    `Crawled ${data.topics.length} topics, ${data.criteria.length} criteria and ${data.tests.length} tests.`
+    `Crawled ${data.topics().length} topics, ${data.criteria().length} criteria and ${data.tests().length} tests.`
   )
 })
 ```
