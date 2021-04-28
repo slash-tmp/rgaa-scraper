@@ -45,6 +45,10 @@ function parseRgaaPage({ $ }: CrawlerRequestResponse): RgaaRawCrawlerResult {
   }
 }
 
+/**
+ * Scraps the RGAA website and returns a promise to an object representing
+ * topics, criteria and tests.
+ */
 export async function crawlRgaa(): Promise<RgaaCrawlerResult> {
   const crawler = new Crawler({})
 
@@ -53,8 +57,6 @@ export async function crawlRgaa(): Promise<RgaaCrawlerResult> {
 
   // parse the page for criteria and tests
   const data = parseRgaaPage(res)
-
-  // console.log(data)
 
   return new RgaaResultWrapper(data)
 }
