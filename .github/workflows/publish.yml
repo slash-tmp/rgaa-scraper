@@ -1,0 +1,45 @@
+name: Publish package
+
+on:
+  workflow_dispatch:
+    inputs:
+      releasetype:
+        # TODO: validate input string
+        description: Type of release (major, minor, patch)
+        required: true
+        default: 'patch'
+
+jobs:
+  test:
+    name: Publish package
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@slash-tmp'
+
+      - name: Install NPM dependencies
+        run: yarn install
+
+      - name: Configure Git
+        run: |
+          git config user.name github-actions 
+          git config user.email github-actions@github.com
+
+      - name: Bump package version
+        run: yarn version --${{ github.event.inputs.releasetype }}
+
+      - name: Publish package to Github registry
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push new version commit and tag
+        run: |
+          git push
+          git push --tags
