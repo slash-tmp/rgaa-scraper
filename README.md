@@ -106,8 +106,8 @@ Liste l'ensemble des tests du RGAA.
 
 Les méthodes mentionnées "Filtrable" ci-dessus prennent en paramètre optionnel un objet de filtre avec plusieurs propriétés :
 
-- `topic` : filtrer par thématique.
-- `criterion` : filtrer par critère.
+- `topic` : filtrer par numéro de thématique.
+- `criterion` : filtrer par numéro de critère.
 - `search` : filtrer par recherche textuelle.
 - `level` : filtrer par niveau de conformance WCAG.
 
