@@ -1,0 +1,28 @@
+name: Lint & Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+
+      - run: yarn install
+
+      - name: Check code is properly formatted using Prettier
+        run: yarn prettier --list-different .
+
+      - name: Check code is properly linted using ESLint
+        run: yarn lint
+
+      - name: Check all tests are passing
+        run: yarn test

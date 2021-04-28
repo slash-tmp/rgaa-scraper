@@ -1,9 +1,12 @@
 # RGAA Crawler
 
-Ce projet parcourt [la page "Critères et test" du **Référentiel général
-d'amélioration de l'accessibilité"**](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/) afin de générer un fichier au format JSON.
+Ce projet parcourt
+[la page "Critères et test" du **Référentiel général d'amélioration de l'accessibilité"**](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/)
+afin de générer un fichier au format JSON.
 
-⚠️ Cette API est fournie en crawlant la page cible et son code HTML. Par conséquent, si ce dernier change, il se peut que les résultats ne soient pas accessibles.
+⚠️ Cette API est fournie en crawlant la page cible et son code HTML. Par
+conséquent, si ce dernier change, il se peut que les résultats ne soient pas
+accessibles.
 
 ## Utilisation
 
