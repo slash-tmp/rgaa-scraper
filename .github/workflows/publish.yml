@@ -31,7 +31,10 @@ jobs:
       - name: Bump package version
         run: yarn version --${{ github.event.inputs.releasetype }}
 
-      # TODO: publish package
+      - name: Publish package to Github registry
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push new version commit and tag
         run: |
