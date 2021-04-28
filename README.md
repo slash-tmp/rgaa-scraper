@@ -1,7 +1,7 @@
 # RGAA Crawler
 
 Ce projet parcourt [la page **"Critères et tests"** du RGAA (Référentiel général
-d'amélioration de l'accessibilité)"**](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/) afin de fournir l'ensemble des données au format texte brut (plain text).
+d'amélioration de l'accessibilité)"](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/) afin de fournir l'ensemble des données au format texte brut (plain text).
 
 ⚠️ **Cette API est fournie en [scrapant](https://fr.wiktionary.org/wiki/scraper) la page cible et son code HTML. Par conséquent, si ce dernier change, il se peut que les résultats ne soient plus accessibles.**
 
