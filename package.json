@@ -39,7 +39,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "lint": "eslint src",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "yarn build"
   },
   "devDependencies": {
     "@types/crawler": "^1.2.1",
