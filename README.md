@@ -42,19 +42,18 @@ crawlRgaa().then(data => {
 ## API
 
 Les propriétés marquée d'un astérisque (\*) sont des
-[accesseurs](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Property_accessors)
-et les propriétés marquée d'un double astérisque (\*\*) sont des méthodes.
+[accesseurs](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Property_accessors).
 
 ### Thématiques (`topics`)
 
 Liste l'ensemble des thématiques du RGAA ("Images", "Cadres"...).
 
-| Propriété        | Description                                                                                                                                                   |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`             | Numéro de la thématique.                                                                                                                                      |
-| `title`          | Descriptif de la thématique.                                                                                                                                  |
-| `criteria()`\*\* | Critères appartenant à la thématique. [**Filtrable**](#filtrer-les-résultats) par thématique (`topic`), niveau WCAG (`level`) et texte (`search`).            |
-| `tests()`\*\*    | Tests appartenant aux critères de la thématique. [**Filtrable**](#filtrer-les-résultats) par thématique (`topic`), critère (`criterion`) et texte (`search`). |
+| Propriété    | Description                                                                                                                                                                          |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`         | Numéro de la thématique.                                                                                                                                                             |
+| `title`      | Descriptif de la thématique.                                                                                                                                                         |
+| `criteria()` | Méthode retournant les critères appartenant à la thématique. [**Filtrable**](#filtrer-les-résultats) par thématique (`topic`), niveau WCAG (`level`) et texte (`search`).            |
+| `tests()`    | Méthode retournant les tests appartenant aux critères de la thématique. [**Filtrable**](#filtrer-les-résultats) par thématique (`topic`), critère (`criterion`) et texte (`search`). |
 
 Exemple de thématique :
 
@@ -95,16 +94,16 @@ Exemple de thématique :
 
 Liste l'ensemble des critères du RGAA.
 
-| Propriété         | Description                                                                                                                                |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`              | Numéro du critère                                                                                                                          |
-| `title`           | Descriptif du critère.                                                                                                                     |
-| `level`           | Niveau WCAG du critère.                                                                                                                    |
-| `references`      | Références au WCAG et au W3 du critère.                                                                                                    |
-| `particularCases` | Cas particuliers d'application du critère.                                                                                                 |
-| `technicalNotes`  | Note technique sur l'implémentation du critère.                                                                                            |
-| `topic`\*         | Thématique à laquelle est rattaché le critère.                                                                                             |
-| `tests()`\*\*     | Tests appartenant au critère. [**Filtrable**](#filtrer-les-résultats) par thématique (`topic`), critère (`criterion`) et texte (`search`). |
+| Propriété         | Description                                                                                                                                                       |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`              | Numéro du critère                                                                                                                                                 |
+| `title`           | Descriptif du critère.                                                                                                                                            |
+| `level`           | Niveau WCAG du critère.                                                                                                                                           |
+| `references`      | Références au WCAG et au W3 du critère.                                                                                                                           |
+| `particularCases` | Cas particuliers d'application du critère.                                                                                                                        |
+| `technicalNotes`  | Note technique sur l'implémentation du critère.                                                                                                                   |
+| `topic`\*         | Thématique à laquelle est rattaché le critère.                                                                                                                    |
+| `tests()`         | Méthode retournant les tests appartenant au critère. [**Filtrable**](#filtrer-les-résultats) par thématique (`topic`), critère (`criterion`) et texte (`search`). |
 
 Exemple de critère :
 
