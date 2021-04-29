@@ -1,8 +1,12 @@
 # RGAA Crawler
 
-Ce projet parcourt [la page **"Critères et tests"** du RGAA (Référentiel général d'amélioration de l'accessibilité)"](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/) afin de fournir l'ensemble des données au format texte brut (plain text).
+Ce projet parcourt
+[la page **"Critères et tests"** du RGAA (Référentiel général d'amélioration de l'accessibilité)"](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/)
+afin de fournir l'ensemble des données au format texte brut (plain text).
 
-⚠️ **Cette API est fournie en [scrapant](https://fr.wiktionary.org/wiki/scraper) la page cible et son code HTML. Par conséquent, si ce dernier change, il se peut que les résultats ne soient plus accessibles.**
+⚠️ **Cette API est fournie en [scrapant](https://fr.wiktionary.org/wiki/scraper)
+la page cible et son code HTML. Par conséquent, si ce dernier change, il se peut
+que les résultats ne soient plus accessibles.**
 
 ## Installation et utilisation
 
@@ -16,7 +20,8 @@ npm install @slash-tmp/rgaa-crawler
 yarn add @slash-tmp/rgaa-crawler
 ```
 
-Importer et lancer la fonction `crawlRgaa()` puis récupérer les résultats de la promesse :
+Importer et lancer la fonction `crawlRgaa()` puis récupérer les résultats de la
+promesse :
 
 ```javascript
 const { crawlRgaa } = require('rgaa-crawler')
@@ -27,25 +32,29 @@ crawlRgaa().then(data => {
   console.log(data.tests())
 
   console.log(
-    `Crawled ${data.topics().length} topics, ${data.criteria().length} criteria and ${data.tests().length} tests.`
+    `Crawled ${data.topics().length} topics, ${
+      data.criteria().length
+    } criteria and ${data.tests().length} tests.`
   )
 })
 ```
 
 ## API
 
-Les propriétés marquée d'un astérisque (*) sont des [accesseurs](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Property_accessors) et les propriétés marquée d'un double astérisque (**) sont des méthodes.
+Les propriétés marquée d'un astérisque (\*) sont des
+[accesseurs](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Property_accessors)
+et les propriétés marquée d'un double astérisque (\*\*) sont des méthodes.
 
 ### Thématiques (`topics`)
 
 Liste l'ensemble des thématiques du RGAA ("Images", "Cadres"...).
 
-| Propriété | Description |
-|-----------|-------------|
-| `id` | Numéro de la thématique. |
-| `title` | Descriptif de la thématique. |
-| `criteria()`** | Critères appartenant à la thématique. [**Filtrable**](#filtrer-les-résultats) par thématique (`topic`), niveau WCAG (`level`) et texte (`search`). |
-| `tests()`** | Tests appartenant aux critères de la thématique. [**Filtrable**](#filtrer-les-résultats) par thématique (`topic`), critère (`criterion`) et texte (`search`). |
+| Propriété        | Description                                                                                                                                                   |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`             | Numéro de la thématique.                                                                                                                                      |
+| `title`          | Descriptif de la thématique.                                                                                                                                  |
+| `criteria()`\*\* | Critères appartenant à la thématique. [**Filtrable**](#filtrer-les-résultats) par thématique (`topic`), niveau WCAG (`level`) et texte (`search`).            |
+| `tests()`\*\*    | Tests appartenant aux critères de la thématique. [**Filtrable**](#filtrer-les-résultats) par thématique (`topic`), critère (`criterion`) et texte (`search`). |
 
 Exemple de thématique :
 
@@ -86,16 +95,16 @@ Exemple de thématique :
 
 Liste l'ensemble des critères du RGAA.
 
-| Propriété | Description |
-|-----------|-------------|
-| `id` | Numéro du critère |
-| `title` | Descriptif du critère. |
-| `level` | Niveau WCAG du critère. |
-| `references` | Références au WCAG et au W3 du critère. |
-| `particularCases` | Cas particuliers d'application du critère. |
-| `technicalNotes` | Note technique sur l'implémentation du critère. |
-| `topic`* | Thématique à laquelle est rattaché le critère. |
-| `tests()`** | Tests appartenant au critère. [**Filtrable**](#filtrer-les-résultats) par thématique (`topic`), critère (`criterion`) et texte (`search`). |
+| Propriété         | Description                                                                                                                                |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`              | Numéro du critère                                                                                                                          |
+| `title`           | Descriptif du critère.                                                                                                                     |
+| `level`           | Niveau WCAG du critère.                                                                                                                    |
+| `references`      | Références au WCAG et au W3 du critère.                                                                                                    |
+| `particularCases` | Cas particuliers d'application du critère.                                                                                                 |
+| `technicalNotes`  | Note technique sur l'implémentation du critère.                                                                                            |
+| `topic`\*         | Thématique à laquelle est rattaché le critère.                                                                                             |
+| `tests()`\*\*     | Tests appartenant au critère. [**Filtrable**](#filtrer-les-résultats) par thématique (`topic`), critère (`criterion`) et texte (`search`). |
 
 Exemple de critère :
 
@@ -125,16 +134,17 @@ Exemple de critère :
   }
 }
 ```
+
 ### Tests (`tests`)
 
 Liste l'ensemble des tests du RGAA.
 
-| Propriété | Description |
-|-----------|-------------|
-| `id` | Numéro du test. |
-| `title` | Descriptif du test. |
-| `topic`* | Thématique à laquelle est rattaché le test. |
-| `criterion`* | Critère auquel est rattaché le test. |
+| Propriété     | Description                                 |
+| ------------- | ------------------------------------------- |
+| `id`          | Numéro du test.                             |
+| `title`       | Descriptif du test.                         |
+| `topic`\*     | Thématique à laquelle est rattaché le test. |
+| `criterion`\* | Critère auquel est rattaché le test.        |
 
 Exemple de test :
 
@@ -162,7 +172,8 @@ Exemple de test :
 
 ### Filtrer les résultats
 
-Les méthodes mentionnées "Filtrable" ci-dessus prennent en paramètre optionnel un objet de filtre avec plusieurs propriétés :
+Les méthodes mentionnées "Filtrable" ci-dessus prennent en paramètre optionnel
+un objet de filtre avec plusieurs propriétés :
 
 - `topic` : filtrer par numéro de thématique.
 - `criterion` : filtrer par numéro de critère.
@@ -191,6 +202,7 @@ crawlRgaa().then(data => {
   console.log(data.tests({ topic: '3', level: 'A' }))
 })
 ```
+
 ## Développement
 
 Installer les dépendances :
