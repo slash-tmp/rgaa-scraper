@@ -1,7 +1,6 @@
 # RGAA Crawler
 
-Ce projet parcourt [la page **"Critères et tests"** du RGAA (Référentiel général
-d'amélioration de l'accessibilité)"](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/) afin de fournir l'ensemble des données au format texte brut (plain text).
+Ce projet parcourt [la page **"Critères et tests"** du RGAA (Référentiel général d'amélioration de l'accessibilité)"](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/) afin de fournir l'ensemble des données au format texte brut (plain text).
 
 ⚠️ **Cette API est fournie en [scrapant](https://fr.wiktionary.org/wiki/scraper) la page cible et son code HTML. Par conséquent, si ce dernier change, il se peut que les résultats ne soient plus accessibles.**
 
@@ -31,34 +30,6 @@ crawlRgaa().then(data => {
     `Crawled ${data.topics().length} topics, ${data.criteria().length} criteria and ${data.tests().length} tests.`
   )
 })
-```
-
-Voici le format de données en sortie :
-
-```javascript
-{
-  "topics": [
-    {
-      "id": "1",
-      "title": "Images"
-    },
-    // ... suite des thématiques
-  ],
-  "criteria": [
-    {
-      "id": "1.1",
-      "title": "Chaque image porteuse d’information a-t-elle une alternative textuelle ?"
-    },
-    // ... suite des critères
-  ],
-  "tests": [
-    {
-      "id": "1.1.1",
-      "title": "Chaque image (balise <img> ou balise possédant l’attribut WAI-ARIA role=\"img\") porteuse d’information a-t-elle une alternative textuelle ?\n- Chaque image (balise <img> ou balise possédant l’attribut WAI-ARIA role=\"img\") porteuse d’information a-t-elle une alternative textuelle ?"
-    },
-    // ... suite des tests
-  ]
-}
 ```
 
 ## API
