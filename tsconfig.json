@@ -1,6 +1,6 @@
 {
-  "include": ["./src/**/*", "sheet/api.js"],
-  "exclude": ["./src/**/__tests__"],
+  "include": ["./src/**/*"],
+  "exclude": ["./src/**/__tests__", "./src/dev.ts"],
   "compilerOptions": {
     "outDir": "./build",
     "strict": true,
