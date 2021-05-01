@@ -5,6 +5,12 @@ import RgaaResultWrapper from './RgaaResultWrapper'
 import { parseCriteriaArticle, parseTestLi, parseTopicA } from './parser'
 import { RgaaCrawlerResult, RgaaRawCrawlerResult, RgaaRawTopic } from './types'
 
+export { default as RgaaResultWrapper } from './RgaaResultWrapper'
+export { default as RgaaCriterionWrapper } from './RgaaCriterionWrapper'
+export { default as RgaaTopicWrapper } from './RgaaTopicWrapper'
+export { default as RgaaTestWrapper } from './RgaaTestWrapper'
+export * from './types'
+
 const RGAA_URL =
   'https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/'
 
