@@ -30,6 +30,7 @@
     "build/*"
   ],
   "version": "1.0.0",
+  "sideEffects": false,
   "main": "./build/cjs/index.js",
   "module": "./build/esm/index.js",
   "types": "./build/index.d.ts",

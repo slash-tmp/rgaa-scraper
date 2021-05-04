@@ -1,4 +1,4 @@
-import $ from 'cheerio'
+import * as $ from 'cheerio'
 import { RgaaRawCriterion, RgaaRawTest, RgaaRawTopic } from './types'
 import { reduceWhitespaces } from './utils'
 
