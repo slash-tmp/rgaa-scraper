@@ -1,4 +1,4 @@
-import * as Crawler from 'crawler'
+import Crawler from 'crawler'
 import type { CrawlerRequestResponse } from 'crawler'
 
 import RgaaResultWrapper from './RgaaResultWrapper'
