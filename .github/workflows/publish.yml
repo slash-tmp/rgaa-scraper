@@ -34,6 +34,9 @@ jobs:
       - name: Bump package version
         run: yarn version --${{ github.event.inputs.releasetype }}
 
+      - name: Build library
+        run: yarn build
+
       - name: Publish package to Github registry
         run: npm publish
         env:
