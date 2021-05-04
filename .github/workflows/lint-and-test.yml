@@ -28,3 +28,6 @@ jobs:
 
       - name: Check all tests are passing
         run: yarn test
+
+      - name: Check the library builds correctly
+        run: yarn build
