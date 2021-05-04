@@ -3,8 +3,11 @@ import type { CrawlerRequestResponse } from 'crawler'
 
 import RgaaResultWrapper from './RgaaResultWrapper'
 import { parseCriteriaArticle, parseTestLi, parseTopicA } from './parser'
-import type { RgaaCrawlerResult, RgaaRawCrawlerResult, RgaaRawTopic } from './types'
-
+import type {
+  RgaaCrawlerResult,
+  RgaaRawCrawlerResult,
+  RgaaRawTopic,
+} from './types'
 
 const RGAA_URL =
   'https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/'

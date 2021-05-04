@@ -5,6 +5,6 @@
     "strict": true,
     "target": "es2015",
     "moduleResolution": "Node",
-    "sourceMap": true,
+    "sourceMap": true
   }
 }
