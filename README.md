@@ -20,10 +20,8 @@ npm install @slash-tmp/rgaa-crawler
 yarn add @slash-tmp/rgaa-crawler
 ```
 
-### Utilisation côté serveur
-
-Importer et lancer la fonction `crawlRgaa()` puis récupérer le résultat de la
-promesse :
+La fonction `crawlRgaa()` (**utilisable côté serveur uniquement**), renvoie une
+promesse qui permet de récupérer les résultats :
 
 ```javascript
 const { crawlRgaa } = require('rgaa-crawler')
@@ -37,12 +35,12 @@ crawlRgaa().then(rgaaData => {
 })
 ```
 
-### Utilisation côté client
+Les classes `RgaaTopicWrapper`, `RgaaCriterionWrapper`, `RgaaTestWrapper` et
+`RgaaResultWrapper` sont instantiables manuellement et permettent de formatter
+les données en entrée.
 
-⚠️ **Il est nécessaire d'avoir l'ensemble des données (critères et tests) déjà
-présentes dans le projet.**
-
-Importer la classe `RgaaResultWrapper` et l'instancier.
+⚠️ **Il est donc nécessaire d'avoir l'ensemble des données (thématiques,
+critères et tests) déjà présentes dans le projet.**
 
 ```javascript
 import { RgaaResultWrapper } from '@slash-tmp/rgaa-crawler'
