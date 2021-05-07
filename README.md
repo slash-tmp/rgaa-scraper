@@ -39,8 +39,8 @@ crawlRgaa().then(rgaaData => {
 
 ### Utilisation côté client
 
-⚠️ **Il est nécessaire d'avoir un fichier `.json` avec l'ensemble des données
-(critères et tests) correctement formattées dans le projet.**
+⚠️ **Il est nécessaire d'avoir l'ensemble des données (critères et tests) déjà
+présentes dans le projet.**
 
 Importer la classe `RgaaResultWrapper` et l'instancier.
 
