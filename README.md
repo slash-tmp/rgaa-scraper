@@ -20,23 +20,40 @@ npm install @slash-tmp/rgaa-crawler
 yarn add @slash-tmp/rgaa-crawler
 ```
 
-Importer et lancer la fonction `crawlRgaa()` puis récupérer les résultats de la
-promesse :
+La fonction `crawlRgaa()` (**utilisable côté serveur uniquement**), renvoie une
+promesse qui permet de récupérer les résultats :
 
 ```javascript
 const { crawlRgaa } = require('rgaa-crawler')
 
-crawlRgaa().then(data => {
-  console.log(data.topics())
-  console.log(data.criteria())
-  console.log(data.tests())
-
+crawlRgaa().then(rgaaData => {
   console.log(
-    `Crawled ${data.topics().length} topics, ${
-      data.criteria().length
-    } criteria and ${data.tests().length} tests.`
+    `Fetched ${rgaaData.topics().length} topics, ${
+      rgaaData.criteria().length
+    } criteria and ${rgaaData.tests().length} tests.`
   )
 })
+```
+
+Les classes `RgaaTopicWrapper`, `RgaaCriterionWrapper`, `RgaaTestWrapper` et
+`RgaaResultWrapper` sont instantiables manuellement et permettent de formatter
+les données en entrée.
+
+⚠️ **Il est donc nécessaire d'avoir l'ensemble des données (thématiques,
+critères et tests) déjà présentes dans le projet.**
+
+```javascript
+import { RgaaResultWrapper } from '@slash-tmp/rgaa-crawler'
+
+import rawRgaaData from './rgaa.json'
+
+const rgaaData = new RgaaResultWrapper(rawRgaaData)
+
+console.log(
+  `Fetched ${rgaaData.topics().length} topics, ${
+    rgaaData.criteria().length
+  } criteria and ${rgaaData.tests().length} tests.`
+)
 ```
 
 ## API
