@@ -200,9 +200,9 @@ scrapeRgaa().then(data => {
 
 ### Classes "wrapper"
 
-La valeur résolue de la promesse renvoyé par la fonction `scrapeRgaa()` est une
+La valeur résolue de la promesse renvoyée par la fonction `scrapeRgaa()` est une
 instance de `RgaaResultWrapper`. Cette classe ainsi que les classes ci-dessous
-peuvent être importée.
+peuvent être importées.
 
 - `RgaaCriterionWrapper`
 - `RgaaRootWrapper`
