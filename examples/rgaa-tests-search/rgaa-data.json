@@ -1,0 +1,2897 @@
+{
+  "topics": [
+    {
+      "id": "1",
+      "title": "Images"
+    },
+    {
+      "id": "2",
+      "title": "Cadres"
+    },
+    {
+      "id": "3",
+      "title": "Couleurs"
+    },
+    {
+      "id": "4",
+      "title": "Multimédia"
+    },
+    {
+      "id": "5",
+      "title": "Tableaux"
+    },
+    {
+      "id": "6",
+      "title": "Liens"
+    },
+    {
+      "id": "7",
+      "title": "Scripts"
+    },
+    {
+      "id": "8",
+      "title": "Éléments obligatoires"
+    },
+    {
+      "id": "9",
+      "title": "Structuration de l'information"
+    },
+    {
+      "id": "10",
+      "title": "Présentation de l'information"
+    },
+    {
+      "id": "11",
+      "title": "Formulaires"
+    },
+    {
+      "id": "12",
+      "title": "Navigation"
+    },
+    {
+      "id": "13",
+      "title": "Consultation"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "1.1",
+      "title": "Chaque image porteuse d’information a-t-elle une alternative textuelle ?",
+      "references": {
+        "techniques": [
+          "H36",
+          "H37",
+          "H53",
+          "H24",
+          "F65"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "1.2",
+      "title": "Chaque image de décoration est-elle correctement ignorée par les technologies d’assistance ?",
+      "references": {
+        "techniques": [
+          "H67",
+          "G196",
+          "C9",
+          "F39",
+          "F38",
+          "ARIA4",
+          "ARIA10"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)",
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "technicalNotes": "Lorsqu’une image est associée à une légende, la note technique WCAG recommande de prévoir systématiquement une alternative textuelle (cf. critère 1.9). Dans ce cas le critère 1.2 est non applicable.\nDans le cas d’une image vectorielle (balise <svg>) de décoration qui serait affichée au travers d’un élément <use href=\"...\"> enfant de l’élément <svg>, le test 1.2.4 s’appliquera également à la balise <svg> associée par le biais de la balise <use>.\nUn attribut WAI-ARIA role=\"presentation\" peut être utilisé sur les images de décoration et les zones non cliquables de décoration. Le rôle \"none\" introduit en ARIA 1.1 et synonyme du rôle \"presentation\" peut être aussi utilisé. Il reste préférable cependant d’utiliser le rôle \"presentation\" en attendant un support satisfaisant du rôle \"none\".",
+      "level": "A"
+    },
+    {
+      "id": "1.3",
+      "title": "Pour chaque image porteuse d’information ayant une alternative textuelle, cette alternative est-elle pertinente (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G94",
+          "G95",
+          "F30",
+          "F71",
+          "G196",
+          "ARIA6",
+          "ARIA9",
+          "ARIA10"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)",
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particuliers lorsque l’image est utilisée comme CAPTCHA ou comme image-test. Dans cette situation, où il n’est pas possible de donner une alternative pertinente sans détruire l’objet du CAPTCHA ou du test, le critère est non applicable.\nNote : le cas des CAPTCHA et des images-test est traité de manière spécifique par le critère 1.4.",
+      "level": "A"
+    },
+    {
+      "id": "1.4",
+      "title": "Pour chaque image utilisée comme CAPTCHA ou comme image-test, ayant une alternative textuelle, cette alternative permet-elle d’identifier la nature et la fonction de l’image ?",
+      "references": {
+        "techniques": [
+          "G100",
+          "G143"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "1.5",
+      "title": "Pour chaque image utilisée comme CAPTCHA, une solution d’accès alternatif au contenu ou à la fonction du CAPTCHA est-elle présente ?",
+      "references": {
+        "techniques": [
+          "G144"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "1.6",
+      "title": "Chaque image porteuse d’information a-t-elle, si nécessaire, une description détaillée ?",
+      "references": {
+        "techniques": [
+          "G92",
+          "G74",
+          "G73",
+          "H45",
+          "ARIA6"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)"
+        ]
+      },
+      "technicalNotes": "Dans le cas du SVG, le manque de support de l’élément <title> et <desc> par les technologies d’assistance crée une difficulté dans le cas de l’implémentation de l’alternative textuelle de l’image et de sa description détaillée. Dans ce cas, il est recommandé d’utiliser l’attribut WAI-ARIA aria-label pour implémenter à la fois l’alternative textuelle courte et la référence à description détaillée adjacente ou l’attribut WAI-ARIA aria-labelledby pour associer les passages de texte faisant office d’alternative courte et de description détaillée.\nL’utilisation de l’attribut WAI-ARIA aria-describedby n’est pas recommandée pour lier une image (<img>, <object>, <embed>, <canvas>) à sa description détaillée, par manque de support des technologies d’assistance. Néanmoins, lorsqu’il est utilisé, l’attribut devra nécessairement faire référence à l’id de la zone contenant la description détaillée.\nLa description détaillée adjacente peut être implémentée via une balise <figcaption>, dans ce cas le critère 1.9 doit être vérifié (utilisation de <figure> et des attributs WAI-ARIA role=\"figure\" et aria-label, notamment).",
+      "level": "A"
+    },
+    {
+      "id": "1.7",
+      "title": "Pour chaque image porteuse d’information ayant une description détaillée, cette description est-elle pertinente ?",
+      "references": {
+        "techniques": [
+          "G92",
+          "F67"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "1.8",
+      "title": "Chaque image texte porteuse d’information, en l’absence d’un mécanisme de remplacement, doit si possible être remplacée par du texte stylé. Cette règle est-elle respectée (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G136",
+          "G140",
+          "C22",
+          "C30"
+        ],
+        "wcag": [
+          "9.1.4.5 / 1.4.5 Images of Text (AA)"
+        ]
+      },
+      "particularCases": "Pour ce critère, il existe une gestion de cas particulier lorsque le texte fait partie du logo, d’une dénomination commerciale, d’un CAPTCHA, d’une image-test ou d’une image dont l’exactitude graphique serait considérée comme essentielle à la bonne transmission de l’information véhiculée par l’image. Dans ces situations, le critère est non applicable pour ces éléments.",
+      "technicalNotes": "Le texte dans les images vectorielles étant du texte réel, il n’est pas concerné par ce critère.",
+      "level": "AA"
+    },
+    {
+      "id": "1.9",
+      "title": "Chaque légende d’image est-elle, si nécessaire, correctement reliée à l’image correspondante ?",
+      "references": {
+        "techniques": [
+          "G140",
+          "ARIA4",
+          "ARIA6"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)",
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "technicalNotes": "L’implémentation d’un attribut WAI-ARIA role=\"group\" ou role=\"figure\" sur l’élément parent <figure> est destiné à pallier le manque de support actuel des éléments <figure> par les technologies d’assistance. L’utilisation d’un élément <figcaption> pour associer une légende à une image impose au minimum l’utilisation d’un attribut WAI-ARIA aria-label sur l’élément parent <figure> dont le contenu sera identique au contenu de l’élément <figcaption>. Pour s’assurer d’un support optimal, il peut également être fait une association explicite entre le contenu de l’alternative textuelle de l’image et le contenu de l’élément <figcaption>, par exemple :\n<img src=\"image.png\" alt=\"Photo : soleil couchant\" /><figcaption>Photo : crédit xxx</figcaption>\nLes attributs WAI-ARIA aria-labelledby et aria-describedby ne peuvent pas être utilisés actuellement par manque de support par les technologies d’assistance.\nNote : les images légendées doivent par ailleurs respecter le critère 1.1 et le critère 1.3 relatifs aux images porteuses d’information.",
+      "level": "A"
+    },
+    {
+      "id": "2.1",
+      "title": "Chaque cadre a-t-il un titre de cadre ?",
+      "references": {
+        "techniques": [
+          "H64"
+        ],
+        "wcag": [
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "2.2",
+      "title": "Pour chaque cadre ayant un titre de cadre, ce titre de cadre est-il pertinent ?",
+      "references": {
+        "techniques": [
+          "H64"
+        ],
+        "wcag": [
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "3.1",
+      "title": "Dans chaque page web, l’information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?",
+      "references": {
+        "techniques": [
+          "G14",
+          "G182",
+          "G111",
+          "G117",
+          "G138",
+          "G205"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)",
+          "9.1.4.1 / 1.4.1 Use of color (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "3.2",
+      "title": "Dans chaque page web, le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisamment élevé (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G18",
+          "G136",
+          "G148",
+          "G174",
+          "G145",
+          "C29"
+        ],
+        "wcag": [
+          "9.1.4.3 / 1.4.3 Contrast (Minimum) (AA)"
+        ]
+      },
+      "particularCases": "Dans ces situations, les critères sont non applicables pour ces éléments ;\n- Le texte fait partie d’un logo ou d’un nom de marque d’un organisme ou d’une société ;\n- Le texte ou l’image de texte est purement décoratif ;\n- Le texte fait partie d’une image véhiculant une information mais le texte lui-même n’apporte aucune information essentielle ;\n- Le texte ou l’image de texte fait partie d’un élément d’interface sur lequel aucune action n’est possible (par exemple un bouton avec l’attribut disabled).",
+      "level": "AA"
+    },
+    {
+      "id": "3.3",
+      "title": "Dans chaque page web, les couleurs utilisées dans les composants d’interface ou les éléments graphiques porteurs d’informations sont-elles suffisamment contrastées (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G18",
+          "G195",
+          "G207",
+          "G174",
+          "G145",
+          "G183",
+          "F78"
+        ],
+        "wcag": [
+          "9.1.4.11 / 1.4.11 Non-text Contrast (AA)"
+        ]
+      },
+      "particularCases": "Les cas suivants sont non applicables pour ce critère :\n- Composant d’interface inactif (par exemple, un bouton avec un attribut disabled) sur lequel aucune action n’est possible ;\n- Composant d’interface pour lequel l’apparence est gérée par les styles natifs du navigateur sans aucune modification par l’auteur (par exemple, le style au focus natif dans Chrome ou Firefox) ;\n- Composant d’interface pour lequel la couleur n’est pas nécessaire pour identifier le composant ou son état (par exemple, un groupe de liens faisant office de navigation dont la position dans la page, la taille et la couleur du texte permettent de comprendre qu’il s’agit de liens même si la couleur du soulignement des liens avec le fond blanc n’a pas un ratio de 3:1 et que le texte lui a un ratio de 4.5:1) ;\n- élément graphique ou parties d’élément graphique non porteur d’information ou ayant une alternative (description longue, informations identiques visibles dans la page) ;\n- élément graphique ou parties d’élément graphique faisant partie d’un logo ou du nom de marque d’un organisme ou d’une société ;\n- élément graphique ou parties d’élément graphique dont la présentation est essentielle à l’information véhiculée (par exemple, drapeaux, logotypes, photos de personnes ou de scènes, captures d’écran, diagrammes médicaux, carte de chaleurs) ;\n- élément graphique ou parties d’élément graphique dynamiques dont le contraste au survol / focus est suffisant.",
+      "level": "AA"
+    },
+    {
+      "id": "4.1",
+      "title": "Chaque média temporel pré-enregistré a-t-il, si nécessaire, une transcription textuelle ou une audiodescription (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G58",
+          "G69",
+          "G78",
+          "G158",
+          "G159",
+          "G173",
+          "G8",
+          "G166",
+          "H96",
+          "SM6",
+          "SM7"
+        ],
+        "wcag": [
+          "9.1.2.1 / 1.2.1 Audio-only and Video-only (Prerecorded) (A)",
+          "9.1.2.3 / 1.2.3 Audio Description or Media Alternative (Prerecorded) (A)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particulier lorsque :\n- Le média temporel est utilisé à des fins décoratives (c’est-à-dire qu’il n’apporte aucune information) ;\n- Le média temporel est lui-même une alternative à un contenu de la page (une vidéo en langue des signes ou la vocalisation d’un texte, par exemple) ;\n- Le média temporel est utilisé pour accéder à une version agrandie ;\n- Le média temporel est utilisé comme un CAPTCHA ;\n- Le média temporel fait partie d’un test qui deviendrait inutile si la transcription textuelle, les sous-titres synchronisés ou l’audiodescription étaient communiqués ;\n- Pour les services de l’État, les collectivités territoriales et leurs établissements : si le média temporel a été publié entre le 23 septembre 2019 et le 23 septembre 2020 sur un site internet, intranet ou extranet créé depuis le 23 septembre 2018, il est exempté de l’obligation d’accessibilité ;\n- Pour les personnes de droit privé mentionnées aux 2° à 4° du I de l’article 47 de la loi du 11 février 2005 : si le média temporel a été publié avant le 23 septembre 2020, il est exempté de l’obligation d’accessibilité.\nDans ces situations, le critère est non applicable.\nCe cas particulier s’applique également aux critères 4.2, 4.3, 4.5.",
+      "level": "A"
+    },
+    {
+      "id": "4.2",
+      "title": "Pour chaque média temporel pré-enregistré ayant une transcription textuelle ou une audiodescription synchronisée, celles-ci sont-elles pertinentes (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "F30",
+          "F67",
+          "SM6",
+          "SM7"
+        ],
+        "wcag": [
+          "9.1.2.1 / 1.2.1 Audio-only and Video-only (Prerecorded) (A)",
+          "9.1.2.3 / 1.2.3 Audio Description and Media Alternative (Prerecorded) (A)"
+        ]
+      },
+      "particularCases": "Voir cas particuliers critère 4.1.",
+      "level": "A"
+    },
+    {
+      "id": "4.3",
+      "title": "Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G58",
+          "G93",
+          "G87",
+          "H95",
+          "SM11",
+          "SM12",
+          "F74",
+          "F75"
+        ],
+        "wcag": [
+          "9.1.2.2 / 1.2.2 Captions (Prerecorded) (A)"
+        ]
+      },
+      "particularCases": "Voir cas particuliers critère 4.1.",
+      "level": "A"
+    },
+    {
+      "id": "4.4",
+      "title": "Pour chaque média temporel synchronisé pré-enregistré ayant des sous-titres synchronisés, ces sous-titres sont-ils pertinents ?",
+      "references": {
+        "techniques": [
+          "G93",
+          "G87",
+          "SM11",
+          "SM12",
+          "F8",
+          "F74",
+          "F75"
+        ],
+        "wcag": [
+          "9.1.2.2 / 1.2.2 Captions (Prerecorded) (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "4.5",
+      "title": "Chaque média temporel pré-enregistré a-t-il, si nécessaire, une audiodescription synchronisée (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G8",
+          "G58",
+          "G78",
+          "G173",
+          "H96",
+          "SM1",
+          "SM2",
+          "SM6",
+          "SM7"
+        ],
+        "wcag": [
+          "9.1.2.5 / 1.2.5 Audio Description (Prerecorded) (AA)"
+        ]
+      },
+      "particularCases": "Voir cas particuliers critère 4.1.",
+      "level": "AA"
+    },
+    {
+      "id": "4.6",
+      "title": "Pour chaque média temporel pré-enregistré ayant une audiodescription synchronisée, celle-ci est-elle pertinente ?",
+      "references": {
+        "techniques": [
+          "SM1",
+          "SM2",
+          "SM6",
+          "SM7"
+        ],
+        "wcag": [
+          "9.1.2.5 / 1.2.5 Audio Description (Prerecorded) (AA)"
+        ]
+      },
+      "level": "AA"
+    },
+    {
+      "id": "4.7",
+      "title": "Chaque média temporel est-il clairement identifiable (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G68",
+          "G100"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particulier lorsque le média temporel est utilisé à des fins décoratives (c’est-à-dire qu’il n’apporte aucune information). Dans cette situation, le critère est non applicable.",
+      "level": "A"
+    },
+    {
+      "id": "4.8",
+      "title": "Chaque média non temporel a-t-il, si nécessaire, une alternative (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "H35",
+          "H46"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particulier lorsque :\n- Le média non temporel est utilisé à des fins décoratives (c’est-à-dire qu’il n’apporte aucune information) ;\n- Le média non temporel est diffusé dans un environnement maîtrisé ;\n- Le média non temporel est inséré via JavaScript en vérifiant la présence et la version du plug-in, en remplacement d’un contenu alternatif déjà présent.\nDans ces situations, le critère est non applicable.",
+      "level": "A"
+    },
+    {
+      "id": "4.9",
+      "title": "Pour chaque média non temporel ayant une alternative, cette alternative est-elle pertinente ?",
+      "references": {
+        "techniques": [
+          "H46",
+          "F30"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "4.10",
+      "title": "Chaque son déclenché automatiquement est-il contrôlable par l’utilisateur ?",
+      "references": {
+        "techniques": [
+          "G60",
+          "G170",
+          "G171",
+          "F23",
+          "F93"
+        ],
+        "wcag": [
+          "9.1.4.2 / 1.4.2 Audio Control (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "4.11",
+      "title": "La consultation de chaque média temporel est-elle, si nécessaire, contrôlable par le clavier et tout dispositif de pointage ?",
+      "references": {
+        "techniques": [
+          "G4",
+          "G90",
+          "G202"
+        ],
+        "wcag": [
+          "9.2.1.1 / 2.1.1 Keyboard (A)",
+          "9.2.1.2 / 2.1.2 No Keyboard Trap (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "4.12",
+      "title": "La consultation de chaque média non temporel est-elle contrôlable par le clavier et tout dispositif de pointage ?",
+      "references": {
+        "techniques": [
+          "G4",
+          "G90"
+        ],
+        "wcag": [
+          "9.2.1.1 / 2.1.1 Keyboard (A)",
+          "9.2.1.2 / 2.1.2 No Keyboard Trap (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "4.13",
+      "title": "Chaque média temporel et non temporel est-il compatible avec les technologies d’assistance (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G10",
+          "G135",
+          "F15",
+          "F54"
+        ],
+        "wcag": [
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particulier lorsque le média temporel ou non temporel est utilisé à des fins décoratives (c’est-à-dire qu’il n’apporte aucune information). Dans ces situations, le critère est non applicable.",
+      "level": "A"
+    },
+    {
+      "id": "5.1",
+      "title": "Chaque tableau de données complexe a-t-il un résumé ?",
+      "references": {
+        "techniques": [
+          "H73"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)"
+        ]
+      },
+      "technicalNotes": "La spécification HTML propose plusieurs méthodes pour lier un résumé à un tableau (tableau lié à un passage de texte avec l’attribut aria-describedby, tableau groupé dans un élément figure avec un résumé présent dans un élément figcaption ou un élément p, résumé présent dans un élément details contenu dans l’élément caption). Ces méthodes n’ont pas un support suffisant pour être utilisées actuellement.",
+      "level": "A"
+    },
+    {
+      "id": "5.2",
+      "title": "Pour chaque tableau de données complexe ayant un résumé, celui-ci est-il pertinent ?",
+      "references": {
+        "techniques": [
+          "H73"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "5.3",
+      "title": "Pour chaque tableau de mise en forme, le contenu linéarisé reste-t-il compréhensible ?",
+      "references": {
+        "techniques": [
+          "F49",
+          "ARIA4"
+        ],
+        "wcag": [
+          "9.1.3.2 / 1.3.2 Meaningful Sequence (A)",
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "5.4",
+      "title": "Pour chaque tableau de données ayant un titre, le titre est-il correctement associé au tableau de données ?",
+      "references": {
+        "techniques": [
+          "H39"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "5.5",
+      "title": "Pour chaque tableau de données ayant un titre, celui-ci est-il pertinent ?",
+      "references": {
+        "techniques": [
+          "H39"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "5.6",
+      "title": "Pour chaque tableau de données, chaque en-tête de colonne et chaque en-tête de ligne sont-ils correctement déclarés ?",
+      "references": {
+        "techniques": [
+          "H51",
+          "F91"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "5.7",
+      "title": "Pour chaque tableau de données, la technique appropriée permettant d’associer chaque cellule avec ses en-têtes est-elle utilisée (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "H43",
+          "H63",
+          "F90"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)"
+        ]
+      },
+      "particularCases": "Dans le cas de tableaux de données ayant des en-têtes sur une seule ligne ou une seule colonne, les en-têtes peuvent être structurés à l’aide de balise <th> sans attribut scope.",
+      "technicalNotes": "Si l’attribut headers est implémenté sur une cellule déjà reliée à un en-tête (de ligne ou de colonne) avec l’attribut scope (avec la valeur col ou row), c’est l’en-tête ou les en-têtes référencés par l’attribut headers qui seront restitués aux technologies d’assistance. Les en-têtes reliés avec l’attribut scope seront ignorés.",
+      "level": "A"
+    },
+    {
+      "id": "5.8",
+      "title": "Chaque tableau de mise en forme ne doit pas utiliser d’éléments propres aux tableaux de données. Cette règle est-elle respectée ?",
+      "references": {
+        "techniques": [
+          "F46"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "6.1",
+      "title": "Chaque lien est-il explicite (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "H30",
+          "H78",
+          "H79",
+          "H80",
+          "H81",
+          "G53",
+          "G91",
+          "F63",
+          "F89",
+          "ARIA7",
+          "ARIA8"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)",
+          "9.2.4.4 / 2.4.4 Link Purpose (In Context) (A)",
+          "9.2.5.3 / 2.5.3 Label in Name (A)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particuliers pour les tests 6.1.1, 6.1.2, 6.1.3 et 6.1.4 lorsque le lien est ambigu pour tout le monde. Dans cette situation, où il n’est pas possible de rendre le lien explicite dans son contexte, le critère est non applicable.\nIl existe une gestion de cas particuliers pour le test 6.1.5 lorsque :\n- La ponctuation et les lettres majuscules sont présentes dans le texte de l’intitulé visible : elles peuvent être ignorées dans le nom accessible sans porter à conséquence ;\n- Le texte de l’intitulé visible sert de symbole : le texte ne doit pas être interprété littéralement au niveau du nom accessible. Le nom doit exprimer la fonction véhiculée par le symbole (par exemple, “B” au niveau d’un éditeur de texte aura pour nom accessible “Mettre en gras”, le signe “>” en fonction du contexte signifiera “Suivant” ou “Lancer la vidéo”). Le cas des symboles mathématiques fait cependant exception (voir la note ci-dessous).\nNote : si l’étiquette visible représente une expression mathématique, les symboles mathématiques peuvent être repris littéralement pour servir d’étiquette au nom accessible (ex. : “A>B”). Il est laissé à l’utilisateur le soin d’opérer la correspondance entre l’expression et ce qu’il doit épeler compte tenu de la connaissance qu’il a du fonctionnement de son logiciel de saisie vocale (“A plus grand que B” ou “A supérieur à B”).",
+      "technicalNotes": "Lorsque l’intitulé visible est complété par une autre expression dans le nom accessible :\n- WCAG insiste sur le placement de l’intitulé visible au début du nom accessible sans toutefois réserver l’exclusivité de cet emplacement ;\n- WCAG considère comme un cas d’échec une correspondance non exacte de la chaîne de caractères de l’intitulé visible au sein du nom accessible.\nPar exemple, si l’on considère l’intitulé visible « Commander maintenant » complété dans le nom accessible par l’expression «produit X », on peut avoir les différents cas suivants :\n- « Commander maintenant produit X» est valide (bonne pratique) ;\n- « Produit X : commander maintenant » est valide ;\n- « Commander produit X maintenant » est non valide.",
+      "level": "A"
+    },
+    {
+      "id": "6.2",
+      "title": "Dans chaque page web, chaque lien a-t-il un intitulé ?",
+      "references": {
+        "techniques": [
+          "H30",
+          "G91",
+          "F89"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)",
+          "9.2.4.4 / 2.4.4 Link Purpose (In Context) (A)"
+        ]
+      },
+      "technicalNotes": "Une ancre n’est pas un lien même si pendant longtemps l’élément <a> a servi de support à cette technique. Elle n’est donc pas concernée par le présent critère.",
+      "level": "A"
+    },
+    {
+      "id": "7.1",
+      "title": "Chaque script est-il, si nécessaire, compatible avec les technologies d’assistance ?",
+      "references": {
+        "techniques": [
+          "G10",
+          "G135",
+          "G136",
+          "F15",
+          "F19",
+          "F20",
+          "F42",
+          "F59",
+          "F79",
+          "ARIA4",
+          "ARIA5",
+          "ARIA18",
+          "ARIA19",
+          "SCR21"
+        ],
+        "wcag": [
+          "9.2.5.3 / 2.5.3 Label in Name (A)",
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particuliers pour le test 7.1.3 lorsque :\n- La ponctuation et les lettres majuscules sont présentes dans le texte de l’intitulé visible : elles peuvent être ignorées dans le nom accessible sans porter à conséquence ;\n- Le texte de l’intitulé visible sert de symbole : le texte ne doit pas être interprété littéralement au niveau du nom accessible. Le nom doit exprimer la fonction véhiculée par le symbole (par exemple, “B” au niveau d’un éditeur de texte aura pour nom accessible “Mettre en gras”, le signe “>” en fonction du contexte signifiera “Suivant” ou “Lancer la vidéo”). Le cas des symboles mathématiques fait cependant exception (voir la note ci-dessous).\nNote : si l’étiquette visible représente une expression mathématique, les symboles mathématiques peuvent être repris littéralement pour servir d’étiquette au nom accessible (ex. : “A>B”). Il est laissé à l’utilisateur le soin d’opérer la correspondance entre l’expression et ce qu’il doit épeler compte tenu de la connaissance qu’il a du fonctionnement de son logiciel de saisie vocale (“A plus grand que B” ou “A supérieur à B”).",
+      "technicalNotes": "Le critère 7.1 implémente la notion de « compatible avec les technologies d’assistance » telle que définie par les WCAG, ainsi que le recours à WAI-ARIA pour rendre un composant ou une fonctionnalité accessible. Le bon usage de WAI-ARIA est vérifié via les tests 7.1.1, 7.1.2, 7.1.3.\nNote importante : dans un environnement HTML5, beaucoup de composants peuvent nécessiter JavaScript pour fonctionner ; en conséquence la fourniture d’une alternative à un composant JavaScript qui ne pourrait pas être rendu accessible devra bénéficier d’une méthode spécifique au composant en cause, permettant de le remplacer par une alternative accessible (et de le réactiver). Cela signifie que la désactivation de JavaScript pour l’ensemble de la page ne sera pas acceptée comme une méthode valable, à moins qu’elle ne remette pas en cause l’utilisation des autres composants.",
+      "level": "A"
+    },
+    {
+      "id": "7.2",
+      "title": "Pour chaque script ayant une alternative, cette alternative est-elle pertinente ?",
+      "references": {
+        "techniques": [
+          "G136",
+          "F19",
+          "F20"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)",
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "7.3",
+      "title": "Chaque script est-il contrôlable par le clavier et par tout dispositif de pointage (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G90",
+          "G202",
+          "F42",
+          "F54",
+          "F55",
+          "SCR2",
+          "SCR20",
+          "SCR29",
+          "SCR35"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)",
+          "9.2.1.1 / 2.1.1 Keyboard (A)",
+          "9.2.4.7 / 2.4.7 Focus Visible (AA)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particuliers lorsque la fonctionnalité dépend de l’utilisation d’un gestionnaire d’événement sans équivalent universel ; par exemple, une application de dessin à main levée ne pourra pas être rendue contrôlable au clavier. Dans ces situations, le critère est non applicable.",
+      "level": "AA"
+    },
+    {
+      "id": "7.4",
+      "title": "Pour chaque script qui initie un changement de contexte, l’utilisateur est-il averti ou en a-t-il le contrôle ?",
+      "references": {
+        "techniques": [
+          "G13",
+          "G76",
+          "G80",
+          "G107",
+          "H32",
+          "H84",
+          "F9",
+          "F22",
+          "F36",
+          "F37",
+          "F41",
+          "SCR19"
+        ],
+        "wcag": [
+          "9.3.2.1 / 3.2.1 On Focus (A)",
+          "9.3.2.2 / 3.2.2 On Input (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "7.5",
+      "title": "Dans chaque page web, les messages de statut sont-ils correctement restitués par les technologies d’assistance ?",
+      "references": {
+        "techniques": [
+          "ARIA19",
+          "ARIA22",
+          "ARIA23"
+        ],
+        "wcag": [
+          "9.4.1.3 / 4.1.3 Status Messages (AA)"
+        ]
+      },
+      "technicalNotes": "Les rôles WAI-ARIA log, status et alert ont implicitement une valeur d’attribut WAI-ARIA aria-live et aria-atomic. On pourra donc considérer (conformément à la spécification WAI-ARIA 1.1) que :\n- Un attribut WAI-ARIA aria-live=\"polite\" associé à un message de statut peut valoir pour un rôle WAI-ARIA log ;\n- Un attribut WAI-ARIA aria-live=\"polite\" et un attribut WAI-ARIA aria-atomic=\"true\" associés à un message de statut peuvent valoir pour un rôle WAI-ARIA status ;\n- Un attribut WAI-ARIA aria-live=\"assertive\" et un attribut WAI-ARIA aria-atomic=\"true\" associés à un message de statut peuvent valoir pour un rôle WAI-ARIA alert.\nC’est sous réserve que la nature du message de statut satisfasse bien à la correspondance implicitement établie. Dans le cas d’un message de statut indiquant la progression d’un processus et matérialisé graphiquement par une barre de progression, un rôle WAI-ARIA progressbar explicite est nécessaire.",
+      "level": "AA"
+    },
+    {
+      "id": "8.1",
+      "title": "Chaque page web est-elle définie par un type de document ?",
+      "references": {
+        "techniques": [
+          "G134",
+          "G192"
+        ],
+        "wcag": [
+          "9.4.1.1 / 4.1.1 Parsing (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "8.2",
+      "title": "Pour chaque page web, le code source généré est-il valide selon le type de document spécifié ?",
+      "references": {
+        "techniques": [
+          "H74",
+          "H93",
+          "H94",
+          "F70",
+          "F77"
+        ],
+        "wcag": [
+          "9.4.1.1 / 4.1.1 Parsing (A)",
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "8.3",
+      "title": "Dans chaque page web, la langue par défaut est-elle présente ?",
+      "references": {
+        "techniques": [
+          "H57"
+        ],
+        "wcag": [
+          "9.3.1.1 / 3.1.1 Language of Page (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "8.4",
+      "title": "Pour chaque page web ayant une langue par défaut, le code de langue est-il pertinent ?",
+      "references": {
+        "techniques": [
+          "H57"
+        ],
+        "wcag": [
+          "9.3.1.1 / 3.1.1 Language of Page (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "8.5",
+      "title": "Chaque page web a-t-elle un titre de page ?",
+      "references": {
+        "techniques": [
+          "G88",
+          "G127",
+          "H25"
+        ],
+        "wcag": [
+          "9.2.4.2 / 2.4.2 Page Titled (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "8.6",
+      "title": "Pour chaque page web ayant un titre de page, ce titre est-il pertinent ?",
+      "references": {
+        "techniques": [
+          "G88",
+          "G127",
+          "H25"
+        ],
+        "wcag": [
+          "9.2.4.2 / 2.4.2 Page Titled (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "8.7",
+      "title": "Dans chaque page web, chaque changement de langue est-il indiqué dans le code source (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "H58"
+        ],
+        "wcag": [
+          "9.3.1.2 / 3.1.2 Language of Parts (AA)"
+        ]
+      },
+      "particularCases": "Il y a une gestion de cas particuliers sur le changement de langue pour les cas suivants :\n- Nom propre, le critère est non applicable ;\n- Nom commun de langue étrangère présent dans le dictionnaire officiel de la langue (voir note 1 ci-dessous) par défaut de la page web, le critère est non applicable ;\n- Le terme de langue étrangère soumis, via un champ de formulaire et rappelé dans la page (par exemple comme indication du terme recherché dans le cas d’un moteur de recherche), le critère est non applicable ;\n- Passage de texte dont la langue ne peut pas être déterminée : le critère est non applicable ;\n- Terme ou passage de texte issus d’une langue morte ou imaginaire pour laquelle il n’existe pas d’interprétation vocale : le critère est non applicable.\nNote 1 : le dictionnaire officiel est celui recommandé par l’académie en charge de la langue en question. Pour la France, par exemple, le lien vers le dictionnaire officiel se trouve sur le site de l’Académie française à l’adresse suivante : http://www.academie-francaise.fr/le-dictionnaire/la-9e-edition. Pour toute demande auprès du service du dictionnaire de l’Académie française, utiliser le formulaire de contact du service du dictionnaire.\nNote 2 : pour les noms communs de langue étrangère, absents dans le dictionnaire officiel de la langue par défaut de la page web, et qui sont passés dans le langage commun (exemple : newsletter) : le critère est applicable, uniquement lorsque l’absence d’indication de langue peut provoquer une incompréhension pour la restitution.",
+      "level": "AA"
+    },
+    {
+      "id": "8.8",
+      "title": "Dans chaque page web, le code de langue de chaque changement de langue est-il valide et pertinent ?",
+      "references": {
+        "techniques": [
+          "H58"
+        ],
+        "wcag": [
+          "9.3.1.2 / 3.1.2 Language of Parts (AA)"
+        ]
+      },
+      "level": "AA"
+    },
+    {
+      "id": "8.9",
+      "title": "Dans chaque page web, les balises ne doivent pas être utilisées uniquement à des fins de présentation. Cette règle est-elle respectée ?",
+      "references": {
+        "techniques": [
+          "G115",
+          "H88",
+          "F43",
+          "F92"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "8.10",
+      "title": "Dans chaque page web, les changements du sens de lecture sont-ils signalés ?",
+      "references": {
+        "techniques": [
+          "H56"
+        ],
+        "wcag": [
+          "9.1.3.2 / 1.3.2 Meaningful Sequence (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "9.1",
+      "title": "Dans chaque page web, l’information est-elle structurée par l’utilisation appropriée de titres ?",
+      "references": {
+        "techniques": [
+          "G115",
+          "G130",
+          "H42",
+          "G141",
+          "ARIA4",
+          "ARIA12"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)",
+          "9.2.4.1 / 2.4.1 Bypass Blocks (A)",
+          "9.2.4.6 / 2.4.6 Headings and Labels (AA)",
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "technicalNotes": "WAI-ARIA permet de définir des titres via le rôle heading et l’attribut aria-level (indication du niveau de titre). Bien qu’il soit préférable d’utiliser l’élément de titre natif en HTML <hx>, l’utilisation du rôle WAI-ARIA heading est compatible avec l’accessibilité.",
+      "level": "AA"
+    },
+    {
+      "id": "9.2",
+      "title": "Dans chaque page web, la structure du document est-elle cohérente (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G115",
+          "ARIA11"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)"
+        ]
+      },
+      "particularCases": "Lorsque le doctype déclaré dans la page n’est pas le doctype HTML5, ce critère est non applicable.",
+      "technicalNotes": "La balise <main> peut être utilisée plusieurs fois dans le même document HTML. Néanmoins, il ne peut y avoir en permanence qu’une seule balise visible et lisible par les technologies d’assistances, les autres devant disposer d’un attribut hidden ou d’un style permettant de les masquer aux technologies d’assistances. À noter cependant que l’utilisation d’un style seul restera insuffisante pour assurer l’unicité d’une balise <main> visible en cas de désactivation des feuilles de styles.",
+      "level": "A"
+    },
+    {
+      "id": "9.3",
+      "title": "Dans chaque page web, chaque liste est-elle correctement structurée ?",
+      "references": {
+        "techniques": [
+          "G115",
+          "G153",
+          "H40",
+          "H48",
+          "F2"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)"
+        ]
+      },
+      "technicalNotes": "Les attributs WAI-ARIA role=\"list\" et role=\"listitem\" peuvent nécessiter l’utilisation des attributs WAI-ARIA aria-setsize et aria-posinset dans le cas où l’ensemble de la liste n’est pas disponible via le DOM généré au moment de la consultation.\nLes attributs WAI-ARIA role=\"tree\", role=\"tablist\", role=\"menu\", role=\"combobox\" et role=\"listbox\" ne sont pas équivalents à une liste HTML <ul> ou <ol>.\nVoir : The roles model - list",
+      "level": "A"
+    },
+    {
+      "id": "9.4",
+      "title": "Dans chaque page web, chaque citation est-elle correctement indiquée ?",
+      "references": {
+        "techniques": [
+          "G115",
+          "H49",
+          "F2"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "10.1",
+      "title": "Dans le site web, des feuilles de styles sont-elles utilisées pour contrôler la présentation de l’information ?",
+      "references": {
+        "techniques": [
+          "G140",
+          "F32",
+          "F33",
+          "F34",
+          "F48",
+          "C6",
+          "C8",
+          "C18",
+          "C22"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)",
+          "9.1.3.2 / 1.3.2 Meaningful Sequence (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "10.2",
+      "title": "Dans chaque page web, le contenu visible porteur d’information reste-t-il présent lorsque les feuilles de styles sont désactivées ?",
+      "references": {
+        "techniques": [
+          "G140",
+          "F3",
+          "F87"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)",
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "10.3",
+      "title": "Dans chaque page web, l’information reste-t-elle compréhensible lorsque les feuilles de styles sont désactivées ?",
+      "references": {
+        "techniques": [
+          "G59",
+          "G140",
+          "F1"
+        ],
+        "wcag": [
+          "9.1.3.2 / 1.3.2 Meaningful Sequence (A)",
+          "9.2.4.3 / 2.4.3 Focus Order (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "10.4",
+      "title": "Dans chaque page web, le texte reste-t-il lisible lorsque la taille des caractères est augmentée jusqu’à 200%, au moins (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G146",
+          "G179",
+          "F69",
+          "F80",
+          "SCR34",
+          "C12",
+          "C13",
+          "C14",
+          "C17",
+          "C28"
+        ],
+        "wcag": [
+          "9.1.4.4 / 1.4.4 Resize Text (AA)"
+        ]
+      },
+      "particularCases": "Dans le cas des textes en image et des sous-titres de vidéo, le critère est non applicable.",
+      "level": "AA"
+    },
+    {
+      "id": "10.5",
+      "title": "Dans chaque page web, les déclarations CSS de couleurs de fond d’élément et de police sont-elles correctement utilisées ?",
+      "references": {
+        "techniques": [
+          "F24"
+        ],
+        "wcag": [
+          "9.1.4.3 / 1.4.3 Contrast (Minimum) (AA)"
+        ]
+      },
+      "level": "AA"
+    },
+    {
+      "id": "10.6",
+      "title": "Dans chaque page web, chaque lien dont la nature n’est pas évidente est-il visible par rapport au texte environnant ?",
+      "references": {
+        "techniques": [
+          "G183",
+          "F73"
+        ],
+        "wcag": [
+          "9.1.4.1 / 1.4.1 Use of Color (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "10.7",
+      "title": "Dans chaque page web, pour chaque élément recevant le focus, la prise de focus est-elle visible ?",
+      "references": {
+        "techniques": [
+          "G149",
+          "G165",
+          "G183",
+          "G195",
+          "F73",
+          "F78",
+          "SCR31",
+          "C15"
+        ],
+        "wcag": [
+          "9.1.4.1 / 1.4.1 Use of Color (A)",
+          "9.2.4.7 / 2.4.7 Focus Visible (AA)"
+        ]
+      },
+      "level": "AA"
+    },
+    {
+      "id": "10.8",
+      "title": "Pour chaque page web, les contenus cachés ont-ils vocation à être ignorés par les technologies d’assistance ?",
+      "references": {
+        "techniques": [
+          "G57"
+        ],
+        "wcag": [
+          "9.1.3.2 / 1.3.2 Meaningful Sequence (A)",
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "technicalNotes": "WAI-ARIA propose un attribut aria-hidden (true ou false) qui permet d’inhiber la restitution d’un contenu en direction des technologies d’assistance, sans action sur sa visibilité en direction des agents utilisateurs : un contenu avec aria-hidden=\"true\" ne sera donc plus vocalisable, mais restera visible.\nSauf si le contenu contrôlé par aria-hidden n’a pas vocation à être restitué par les technologies d’assistance, la valeur de l’attribut aria-hidden doit être cohérente avec l’état affiché ou masqué du contenu à l’écran.\nLa spécification HTML5 propose un attribut hidden qui permet de rendre indisponible (quand l’attribut hidden est présent) un contenu dans le DOM généré (de manière similaire au type=\"hidden\" sur un contrôle de formulaire).\nIl est possible d’avoir des situations où un contenu contrôlé par hidden ou aria-hidden se trouve momentanément dans un état incohérent avec le statut affiché ou masqué du contenu, par exemple si l’on désire rendre disponible un élément, mais que son affichage à l’écran reste dépendant d’une action ultérieure. Dans ce cas, c’est l’état final du contenu qui doit être considéré.",
+      "level": "A"
+    },
+    {
+      "id": "10.9",
+      "title": "Dans chaque page web, l’information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée ?",
+      "references": {
+        "techniques": [
+          "G96",
+          "G140",
+          "F14",
+          "F26"
+        ],
+        "wcag": [
+          "9.1.3.3 / 1.3.3 Sensory Characteristics (A)",
+          "9.1.4.1 / 1.4.1 Use of Color (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "10.10",
+      "title": "Dans chaque page web, l’information ne doit pas être donnée par la forme, taille ou position uniquement. Cette règle est-elle implémentée de façon pertinente ?",
+      "references": {
+        "techniques": [
+          "G96",
+          "G140",
+          "F14",
+          "F26"
+        ],
+        "wcag": [
+          "9.1.3.3 / 1.3.3 Sensory Characteristics (A)",
+          "9.1.4.1 / 1.4.1 Use of Color (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "10.11",
+      "title": "Pour chaque page web, les contenus peuvent-ils être présentés sans avoir recours à un défilement vertical pour une fenêtre ayant une hauteur de 256px ou à un défilement horizontal pour une fenêtre ayant une largeur de 320px (hors cas particuliers) ?",
+      "references": {
+        "techniques": [],
+        "wcag": [
+          "9.1.4.10 / 1.4.10 Reflow (AA)"
+        ]
+      },
+      "particularCases": "Font exception à ce critère, les contenus dont l’agencement requiert deux dimensions pour être compris ou utilisés comme :\n- Les images, les graphiques ou les vidéos ;\n- Les jeux (jeux de plateforme, par exemple) ;\n- Les présentations (type diaporama, par exemple) ;\n- Les tableaux de données ;\n- Les interfaces où il est nécessaire d’avoir un ascenseur horizontal lors de la manipulation de l’interface.\nNote : la majorité des navigateurs sur les systèmes d’exploitation sur mobile (Android, iOS) ne gère pas correctement la redistribution en cas de zoom. Dans ce contexte, le critère sera considéré comme non applicable sur ces environnements.",
+      "technicalNotes": "Lorsqu’il est ici question de pixel, il s’agit du pixel CSS tel que défini par le W3C (https://www.w3.org/TR/css3-values/#reference-pixel).",
+      "level": "AA"
+    },
+    {
+      "id": "10.12",
+      "title": "Dans chaque page web, les propriétés d’espacement du texte peuvent-elles être redéfinies par l’utilisateur sans perte de contenu ou de fonctionnalité (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "C8",
+          "C21",
+          "C35",
+          "C36"
+        ],
+        "wcag": [
+          "9.1.4.12 / 1.4.12 Text Spacing (AA)"
+        ]
+      },
+      "particularCases": "Font exception à ce critère, les contenus pour lesquels l’utilisateur n’a pas de possibilité de personnalisation :\n- Les sous-titres directement intégrés à une vidéo ;\n- Les images texte ;\n- Le texte au sein d’une balise <canvas>.",
+      "level": "AA"
+    },
+    {
+      "id": "10.13",
+      "title": "Dans chaque page web, les contenus additionnels apparaissant à la prise de focus ou au survol d’un composant d’interface sont-ils contrôlables par l’utilisateur (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "F95"
+        ],
+        "wcag": [
+          "9.1.4.13 / 1.4.13 Content on Hover or Focus (AA)"
+        ]
+      },
+      "particularCases": "Lorsque le contenu additionnel est contrôlé par l’agent utilisateur (par exemple, attribut title ou validation native de formulaire) ou correspond à une fenêtre modale conforme au motif de conception WAI-ARIA dialog, le critère 10.13 est non applicable.\nLorsque le contenu additionnel ne masque ou ne remplace aucun contenu porteur d’information, le test 10.13.1 est non applicable.",
+      "level": "AA"
+    },
+    {
+      "id": "10.14",
+      "title": "Dans chaque page web, les contenus additionnels apparaissant via les styles CSS uniquement peuvent-ils être rendus visibles au clavier et par tout dispositif de pointage ?",
+      "references": {
+        "techniques": [
+          "G202"
+        ],
+        "wcag": [
+          "9.2.1.1 / 2.1.1 Keyboard (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "11.1",
+      "title": "Chaque champ de formulaire a-t-il une étiquette ?",
+      "references": {
+        "techniques": [
+          "G82",
+          "G131",
+          "H44",
+          "H65",
+          "F68",
+          "F82",
+          "F86",
+          "ARIA6",
+          "ARIA9",
+          "ARIA14",
+          "ARIA16"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)",
+          "9.2.4.6 / 2.4.6 Headings and Labels (AA)",
+          "9.3.3.2 / 3.3.2 Labels or Instructions (A)",
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "level": "AA"
+    },
+    {
+      "id": "11.2",
+      "title": "Chaque étiquette associée à un champ de formulaire est-elle pertinente (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G82",
+          "G131",
+          "H44",
+          "H65",
+          "ARIA6",
+          "ARIA9",
+          "ARIA14",
+          "ARIA16"
+        ],
+        "wcag": [
+          "9.2.4.6 / 2.4.6 Headings and Labels (AA)",
+          "9.2.5.3 / 2.5.3 Label in Name (A)",
+          "9.3.3.2 / 3.3.2 Labels or Instructions (A)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particuliers pour le test 11.2.5 lorsque :\n- La ponctuation et les lettres majuscules sont présentes dans le texte de l’intitulé visible : elles peuvent être ignorées dans le nom accessible sans porter à conséquence ;\n- Le texte de l’intitulé visible sert de symbole : le texte ne doit pas être interprété littéralement au niveau du nom accessible. Le nom doit exprimer la fonction véhiculée par le symbole (par exemple, “B” au niveau d’un éditeur de texte aura pour nom accessible “Mettre en gras”, le signe “>” en fonction du contexte signifiera “Suivant” ou “Lancer la vidéo”). Le cas des symboles mathématiques fait cependant exception (voir la note ci-dessous).\nNote : si l’étiquette visible représente une expression mathématique, les symboles mathématiques peuvent être repris littéralement pour servir d’étiquette au nom accessible (ex. : “A>B”). Il est laissé à l’utilisateur le soin d’opérer la correspondance entre l’expression et ce qu’il doit épeler compte tenu de la connaissance qu’il a du fonctionnement de son logiciel de saisie vocale (“A plus grand que B” ou “A supérieur à B”).\nCe cas particulier s’applique également au test 11.9.3.",
+      "level": "AA"
+    },
+    {
+      "id": "11.3",
+      "title": "Dans chaque formulaire, chaque étiquette associée à un champ de formulaire ayant la même fonction et répétée plusieurs fois dans une même page ou dans un ensemble de pages est-elle cohérente ?",
+      "references": {
+        "techniques": [
+          "F31"
+        ],
+        "wcag": [
+          "9.3.2.4 / 3.2.4 Consistent Identification (AA)"
+        ]
+      },
+      "level": "AA"
+    },
+    {
+      "id": "11.4",
+      "title": "Dans chaque formulaire, chaque étiquette de champ et son champ associé sont-ils accolés (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G162"
+        ],
+        "wcag": [
+          "9.3.3.2 / 3.3.2 Labels or Instructions (A)"
+        ]
+      },
+      "particularCases": "Les tests 11.4.2 et 11.4.3 seront considérés comme non applicables :\n- Dans le cas où l’étiquette mélange une portion de texte qui se lit de droite à gauche avec une portion de texte qui se lit de gauche à droite ;\n- Dans le cas où un formulaire contient des labels de plusieurs langues qui se liraient de droite à gauche et inversement. Par exemple, un formulaire de commande en arabe qui propose une liste de cases à cocher de produit en langue française ou mixant des produits en langue arabe ou en langue française ;\n- Dans le cas où les champs de type radio ou checkbox et les balises ayant un attribut WAI-ARIA role=\"checkbox\", role=\"radio\" ou role=\"switch\" ne sont pas visuellement présentés sous forme de bouton radio ou de case à cocher\n- Dans le cas où les champs seraient utilisés dans un contexte où il pourrait être légitime, du point de vue de l’expérience utilisateur, de placer les étiquettes de manière différente à celle requise dans les tests 11.4.2 et 11.4.3.",
+      "level": "A"
+    },
+    {
+      "id": "11.5",
+      "title": "Dans chaque formulaire, les champs de même nature sont-ils regroupés, si nécessaire ?",
+      "references": {
+        "techniques": [
+          "H71",
+          "ARIA17"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)",
+          "9.3.3.2 / 3.3.2 Labels or Instructions (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "11.6",
+      "title": "Dans chaque formulaire, chaque regroupement de champs de même nature a-t-il une légende ?",
+      "references": {
+        "techniques": [
+          "H71",
+          "ARIA17"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)",
+          "9.3.3.2 / 3.3.2 Labels or Instructions (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "11.7",
+      "title": "Dans chaque formulaire, chaque légende associée à un regroupement de champs de même nature est-elle pertinente ?",
+      "references": {
+        "techniques": [
+          "H71",
+          "ARIA17"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)",
+          "9.3.3.2 / 3.3.2 Labels or Instructions (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "11.8",
+      "title": "Dans chaque formulaire, les items de même nature d’une liste de choix sont-ils regroupés de manière pertinente ?",
+      "references": {
+        "techniques": [
+          "H85"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)"
+        ]
+      },
+      "technicalNotes": "Il est possible d’utiliser une balise ayant un attribut WAI-ARIA role=\"listbox\" en remplacement d’une balise <select>. En revanche, il est impossible de créer des groupes d’options via l’utilisation de WAI-ARIA. De ce fait, une liste nécessitant un regroupement d’options structurée à l’aide d’une balise ayant un attribut WAI-ARIA role=\"listbox\" sera considérée comme non conforme au critère 11.8.",
+      "level": "A"
+    },
+    {
+      "id": "11.9",
+      "title": "Dans chaque formulaire, l’intitulé de chaque bouton est-il pertinent (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "H36",
+          "H91",
+          "ARIA6",
+          "ARIA9",
+          "ARIA14",
+          "ARIA16"
+        ],
+        "wcag": [
+          "9.2.5.3 / 2.5.3 Label in Name (A)",
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "particularCases": "Pour le test 11.9.2, voir cas particuliers critère 11.2.",
+      "level": "A"
+    },
+    {
+      "id": "11.10",
+      "title": "Dans chaque formulaire, le contrôle de saisie est-il utilisé de manière pertinente (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G83",
+          "G84",
+          "G85",
+          "G89",
+          "G184",
+          "H44",
+          "H81",
+          "H89",
+          "H90",
+          "F81",
+          "SCR18",
+          "SCR32",
+          "ARIA1",
+          "ARIA2",
+          "ARIA6",
+          "ARIA9",
+          "ARIA16",
+          "ARIA21"
+        ],
+        "wcag": [
+          "9.3.3.1 / 3.3.1 Error Identification (A)",
+          "9.3.3.2 / 3.3.2 Labels or Instructions (A)"
+        ]
+      },
+      "particularCases": "Le test 11.10.1 et le test 11.10.2 seront considérés comme non applicables lorsque le formulaire comporte un seul champ de formulaire ou qu’il indique les champs optionnels de manière :\n- Visible ;\n- Dans la balise <label> ou dans la légende associée au champ.\nDans le cas où l’ensemble des champs d’un formulaire sont obligatoires, les tests 11.10.1 et 11.10.2 restent applicables.",
+      "technicalNotes": "Dans un long formulaire dont la majorité des champs sont obligatoires, on pourrait constater que ce sont les quelques champs restés facultatifs qui sont explicitement signalés comme tels. Dans ce cas, il faudrait s’assurer que :\n- Un message précise visuellement en haut de formulaire que “tous les champs sont obligatoires sauf ceux indiqués comme étant facultatifs” ;\n- Une mention “facultatif” est présente visuellement dans le libellé des champs facultatifs ou dans la légende d’un groupe de champs facultatifs ;\n- Un attribut required ou aria-required=\"true\" reste associé à chaque champ qui n’est pas concerné par ce caractère facultatif.]",
+      "level": "A"
+    },
+    {
+      "id": "11.11",
+      "title": "Dans chaque formulaire, le contrôle de saisie est-il accompagné, si nécessaire, de suggestions facilitant la correction des erreurs de saisie ?",
+      "references": {
+        "techniques": [
+          "G84",
+          "G85",
+          "G89",
+          "G177",
+          "H89"
+        ],
+        "wcag": [
+          "9.3.3.3 / 3.3.3 Error Suggestion (AA)"
+        ]
+      },
+      "technicalNotes": "Certains types de contrôles en HTML5 proposent des messages d’aide à la saisie automatique : par exemple le type email affiche un message du type « veuillez saisir une adresse e-mail valide » dans le cas où l’adresse e-mail saisie ne correspond pas au format attendu. Ces messages sont personnalisables via l’API Constraint Validation, ce qui permet de personnaliser les messages d’erreur et de valider le critère. L’attribut pattern permet d’effectuer automatiquement des contrôles de format (via des expressions régulières) et affiche un message d’aide personnalisable via l’attribut title : ce dispositif valide également le critère.\nRéférence : HTML 5.2 - 4.10.20.3 The constraint validation API.",
+      "level": "AA"
+    },
+    {
+      "id": "11.12",
+      "title": "Pour chaque formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou à un examen, ou dont la validation a des conséquences financières ou juridiques, les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?",
+      "references": {
+        "techniques": [
+          "G98",
+          "G99",
+          "G155",
+          "G164",
+          "G168"
+        ],
+        "wcag": [
+          "9.3.3.4 / 3.3.4 Error Prevention (Legal, Financial, Data) (AA)"
+        ]
+      },
+      "level": "AA"
+    },
+    {
+      "id": "11.13",
+      "title": "La finalité d’un champ de saisie peut-elle être déduite pour faciliter le remplissage automatique des champs avec les données de l’utilisateur ?",
+      "references": {
+        "techniques": [
+          "H98"
+        ],
+        "wcag": [
+          "9.1.3.5 / 1.3.5 Identify Input Purpose (AA)"
+        ]
+      },
+      "technicalNotes": "La liste des valeurs possibles pour l’attribut autocomplete repose sur la liste des valeurs présentes dans la spécification WCAG2.1 qui reprend elle-même la liste des valeurs de type “field name” de la spécification HTML5.2. Le critère WCAG demande à ce que l’une de ces valeurs soit présente pour qualifier un champ de saisie concernant l’utilisateur.\nCe que le critère WCAG laisse implicite, ce sont les différentes règles de construction possibles pour obtenir une valeur (simple ou composée) pour l’attribut autocomplete. C’est cependant l’affaire du développeur de fournir à l’attribut autocomplete une valeur ou un ensemble de valeurs valides au regard des exigences de l’algorithme fourni par la spécification HTML5.2. Ainsi, un attribut autocomplete ne peut contenir qu’une seule valeur de type “field name”, comme \"name\" ou \"street-address\". On peut avoir également un ensemble composé de différentes valeurs comme, par exemple, autocomplete=\"shipping name\" ou autocomplete=\"section-software shipping street-address\" : \"section-software\" renvoie à une valeur de type “scope” et \"shipping\" à une valeur de type “hint set”, mais toujours une seule valeur de type “field name”.",
+      "level": "AA"
+    },
+    {
+      "id": "12.1",
+      "title": "Chaque ensemble de pages dispose-t-il de deux systèmes de navigation différents, au moins (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G63",
+          "G64",
+          "G161"
+        ],
+        "wcag": [
+          "9.2.4.5 / 2.4.5 Multiple Ways (AA)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particulier lorsque le site web est constitué d’une seule page ou d’un nombre très limité de pages (cf. note). Dans ce cas-là, le critère est non applicable.\nLe critère est également non applicable pour les pages d’un ensemble de pages qui sont le résultat ou une partie d’un processus (un processus de paiement ou de prise de commande, par exemple).\nNote : l’appréciation d’un nombre très limité de pages devrait être réservé à un site dont l’ensemble des pages sont atteignables depuis la page d’accueil.",
+      "level": "AA"
+    },
+    {
+      "id": "12.2",
+      "title": "Dans chaque ensemble de pages, le menu et les barres de navigation sont-ils toujours à la même place (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G61",
+          "F66"
+        ],
+        "wcag": [
+          "9.3.2.3 / 3.2.3 Consistent Navigation (AA)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particuliers lorsque :\n- La page est la page d’accueil ;\n- Le site web est constitué d’une seule page ;\n- Le changement fait suite à une modification initiée par l’utilisateur.\nDans ces situations, le critère est non applicable.",
+      "level": "AA"
+    },
+    {
+      "id": "12.3",
+      "title": "La page « plan du site » est-elle pertinente ?",
+      "references": {
+        "techniques": [
+          "G63"
+        ],
+        "wcag": [
+          "9.2.4.5 / 2.4.5 Multiple Ways (AA)"
+        ]
+      },
+      "level": "AA"
+    },
+    {
+      "id": "12.4",
+      "title": "Dans chaque ensemble de pages, la page « plan du site » est-elle atteignable de manière identique ?",
+      "references": {
+        "techniques": [
+          "G61",
+          "G63"
+        ],
+        "wcag": [
+          "9.2.4.5 / 2.4.5 Multiple Ways (AA)",
+          "9.3.2.3 / 3.2.3 Consistent Navigation (AA)"
+        ]
+      },
+      "level": "AA"
+    },
+    {
+      "id": "12.5",
+      "title": "Dans chaque ensemble de pages, le moteur de recherche est-il atteignable de manière identique ?",
+      "references": {
+        "techniques": [
+          "G61",
+          "F66"
+        ],
+        "wcag": [
+          "9.3.2.3 / 3.2.3 Consistent Navigation (AA)"
+        ]
+      },
+      "level": "AA"
+    },
+    {
+      "id": "12.6",
+      "title": "Les zones de regroupement de contenus présentes dans plusieurs pages web (zones d’en-tête, de navigation principale, de contenu principal, de pied de page et de moteur de recherche) peuvent-elles être atteintes ou évitées ?",
+      "references": {
+        "techniques": [
+          "H69",
+          "G115",
+          "ARIA4",
+          "ARIA11"
+        ],
+        "wcag": [
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)",
+          "9.2.4.1 / 2.4.1 Bypass Blocks (A)",
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "12.7",
+      "title": "Dans chaque page web, un lien d’évitement ou d’accès rapide à la zone de contenu principal est-il présent (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G1",
+          "G59",
+          "G123",
+          "G124",
+          "SCR28",
+          "F66"
+        ],
+        "wcag": [
+          "9.2.4.1 / 2.4.1 Bypass Blocks (A)",
+          "9.2.4.3 / 2.4.3 Focus Order (A)",
+          "9.3.2.3 / 3.2.3 Consistent Navigation (AA)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particuliers lorsque le site web est constitué d’une seule page.\nDans ce cas de figure, l’obligation de la présence d’un lien d’accès rapide est liée au contexte de la page : présence ou absence de navigation ou de contenus additionnels, par exemple. Le critère peut être considéré comme non applicable lorsqu’il est avéré qu’un lien d’accès rapide est inutile.",
+      "level": "AA"
+    },
+    {
+      "id": "12.8",
+      "title": "Dans chaque page web, l’ordre de tabulation est-il cohérent ?",
+      "references": {
+        "techniques": [
+          "G59",
+          "H4",
+          "F44",
+          "F85",
+          "SCR26",
+          "SCR27",
+          "SCR37",
+          "C7"
+        ],
+        "wcag": [
+          "9.2.4.3 / 2.4.3 Focus Order (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "12.9",
+      "title": "Dans chaque page web, la navigation ne doit pas contenir de piège au clavier. Cette règle est-elle respectée ?",
+      "references": {
+        "techniques": [
+          "G21",
+          "H91",
+          "F10"
+        ],
+        "wcag": [
+          "9.2.1.1 / 2.1.1 Keyboard (A)",
+          "9.2.1.2 / 2.1.2 No Keyboard Trap (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "12.10",
+      "title": "Dans chaque page web, les raccourcis clavier n’utilisant qu’une seule touche (lettre minuscule ou majuscule, ponctuation, chiffre ou symbole) sont-ils contrôlables par l’utilisateur ?",
+      "references": {
+        "techniques": [
+          "F99",
+          "G217"
+        ],
+        "wcag": [
+          "9.2.1.4 / 2.1.4 Character Key Shortcuts (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "12.11",
+      "title": "Dans chaque page web, les contenus additionnels apparaissant au survol, à la prise de focus ou à l’activation d’un composant d’interface sont-ils si nécessaire atteignables au clavier ?",
+      "references": {
+        "techniques": [],
+        "wcag": [
+          "9.2.1.1 / 2.1.1 Keyboard (A)"
+        ]
+      },
+      "technicalNotes": "Ce critère adresse les situations où un contenu additionnel contient des composants d’interface avec lesquels il doit être possible d’interagir au clavier. Par exemple, une infobulle personnalisée qui propose un lien dans son contenu.",
+      "level": "A"
+    },
+    {
+      "id": "13.1",
+      "title": "Pour chaque page web, l’utilisateur a-t-il le contrôle de chaque limite de temps modifiant le contenu (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "F40",
+          "F41",
+          "F58",
+          "F61",
+          "G75",
+          "G76",
+          "G110",
+          "G133",
+          "G180",
+          "G186",
+          "G198",
+          "H76",
+          "SCR1",
+          "SCR16",
+          "SCR36",
+          "SVR1"
+        ],
+        "wcag": [
+          "9.2.2.1 / 2.2.1 Timing adjustable (A)",
+          "9.2.2.2 / 2.2.2 Pause, Stop, Hide (A)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particuliers lorsque la limite de temps est essentielle, notamment lorsqu’elle ne pourrait pas être supprimée sans changer fondamentalement le contenu ou les fonctionnalités liées au contenu.\nDans ces situations, le critère est non applicable. Par exemple, le rafraîchissement d’un flux RSS dans une page n’est pas une limite de temps essentielle ; le critère est applicable. En revanche, une redirection automatique qui amène vers la nouvelle version d’une page à partir d’une URL obsolète est essentielle ; le critère est non applicable.",
+      "level": "A"
+    },
+    {
+      "id": "13.2",
+      "title": "Dans chaque page web, l’ouverture d’une nouvelle fenêtre ne doit pas être déclenchée sans action de l’utilisateur. Cette règle est-elle respectée ?",
+      "references": {
+        "techniques": [
+          "F55",
+          "G107"
+        ],
+        "wcag": [
+          "9.3.2.1 / 3.2.1 On focus (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "13.3",
+      "title": "Dans chaque page web, chaque document bureautique en téléchargement possède-t-il, si nécessaire, une version accessible (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "F15",
+          "G10",
+          "G135"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)",
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)",
+          "9.1.3.2 / 1.3.2 Meaningful Sequence (A)",
+          "9.2.4.1 / 2.4.1 Bypass Blocks (A)",
+          "9.2.4.3 / 2.4.3 Focus Order (A)",
+          "9.3.1.1 / 3.1.1 Language of Page (A)",
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particuliers :\n- Pour les personnes de droit privé mentionnées aux 2° à 4° du I de l’article 47 de la loi du 11 février 2005 : si les fichiers bureautiques (ex : PDF, documents Microsoft ou LibreOffice, etc.) ont été publiés avant le 23 septembre 2018 (sauf si ce sont des documents nécessaires pour accomplir une démarche administrative relevant des tâches effectuées par l’organisme concerné), ils sont exemptés de l’obligation d’accessibilité.\nDans cette situation, le critère est non applicable.",
+      "level": "A"
+    },
+    {
+      "id": "13.4",
+      "title": "Pour chaque document bureautique ayant une version accessible, cette version offre-t-elle la même information ?",
+      "references": {
+        "techniques": [
+          "F15",
+          "G10",
+          "G135"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)",
+          "9.1.3.1 / 1.3.1 Info and Relationships (A)",
+          "9.1.3.2 / 1.3.2 Meaningful Sequence (A)",
+          "9.2.4.1 / 2.4.1 Bypass Blocks (A)",
+          "9.2.4.3 / 2.4.3 Focus Order (A)",
+          "9.3.1.1 / 3.1.1 Language of Page (A)",
+          "9.4.1.2 / 4.1.2 Name, Role, Value (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "13.5",
+      "title": "Dans chaque page web, chaque contenu cryptique (art ASCII, émoticône, syntaxe cryptique) a-t-il une alternative ?",
+      "references": {
+        "techniques": [
+          "F71",
+          "F72",
+          "G153",
+          "H86"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "13.6",
+      "title": "Dans chaque page web, pour chaque contenu cryptique (art ASCII, émoticône, syntaxe cryptique) ayant une alternative, cette alternative est-elle pertinente ?",
+      "references": {
+        "techniques": [
+          "F71",
+          "F72",
+          "H86"
+        ],
+        "wcag": [
+          "9.1.1.1 / 1.1.1 Non-text Content (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "13.7",
+      "title": "Dans chaque page web, les changements brusques de luminosité ou les effets de flash sont-ils correctement utilisés ?",
+      "references": {
+        "techniques": [
+          "G15",
+          "G19",
+          "G176"
+        ],
+        "wcag": [
+          "9.2.3.1 / 2.3.1 Three Flashes or Below Threshold (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "13.8",
+      "title": "Dans chaque page web, chaque contenu en mouvement ou clignotant est-il contrôlable par l’utilisateur ?",
+      "references": {
+        "techniques": [
+          "F4",
+          "F7",
+          "F16",
+          "F47",
+          "F50",
+          "G4",
+          "G11",
+          "G152",
+          "G186",
+          "G187",
+          "G191",
+          "SCR22",
+          "SCR33",
+          "SCR36",
+          "SM11",
+          "SM12"
+        ],
+        "wcag": [
+          "9.2.2.1 / 2.2.1 Timing Adjustable (A)",
+          "9.2.2.1 / 2.2.2 Pause, Stop, Hide (A)"
+        ]
+      },
+      "level": "A"
+    },
+    {
+      "id": "13.9",
+      "title": "Dans chaque page web, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) (hors cas particuliers) ?",
+      "references": {
+        "techniques": [],
+        "wcag": [
+          "9.1.3.4 / 1.3.4 Orientation (AA)"
+        ]
+      },
+      "particularCases": "Il existe des interfaces pour lesquelles l’orientation du périphérique est essentielle à leur utilisation.\nDans ces situations, le critère est non applicable. Il peut s’agir d’interfaces de jeu, de piano, de dépôt de chèques bancaires, etc.\nSi l’interface est le seul moyen d’accéder au service proposé, une alternative devrait être mise en place pour pallier cette carence.\nRéférences documentaires :\n- API JS : https://www.w3.org/TR/screen-orientation/ ;\n- API Viewport : https://www.w3.org/TR/css-device-adapt-1/#orientation-desc.",
+      "level": "AA"
+    },
+    {
+      "id": "13.10",
+      "title": "Dans chaque page web, les fonctionnalités utilisables ou disponibles au moyen d’un geste complexe peuvent-elles être également disponibles au moyen d’un geste simple (hors cas particuliers) ?",
+      "references": {
+        "techniques": [
+          "G215",
+          "G216"
+        ],
+        "wcag": [
+          "9.2.5.1 / 2.5.1 Pointer Gestures (A)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particuliers dans deux types de situation :\n- Le critère ne s’applique qu’à des fonctionnalités mises en place par l’auteur du site. Il ne concerne donc pas les gestes requis par l’agent utilisateur ou le système d’exploitation ;\n- Le critère ne s’applique pas aux fonctionnalités dont la réalisation d’un geste complexe est essentielle (exécuter le tracé d’une signature, par exemple).",
+      "level": "A"
+    },
+    {
+      "id": "13.11",
+      "title": "Dans chaque page web, les actions déclenchées au moyen d’un dispositif de pointage sur un point unique de l’écran peuvent-elles faire l’objet d’une annulation (hors cas particuliers) ?",
+      "references": {
+        "techniques": [],
+        "wcag": [
+          "9.2.5.2 / 2.5.2 Pointer Cancellation (A)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particulier lorsque la fonctionnalité nécessite que le comportement attendu soit réalisé lors d’un événement descendant, par exemple, un émulateur de clavier dont les touches doivent s’activer à la pression comme sur un clavier physique. Dans ces situations, le critère est non applicable.",
+      "technicalNotes": "Deux exemples de mécanisme mis en place pour annuler ou abandonner une action déclenchée au moyen d’un dispositif de pointage sur un point unique de l’écran :\n- Une fenêtre modale permettant d’annuler l’action après son achèvement ;\n- Pour une fonction de glisser/déposer, le fait d’abandonner l’action si l’utilisateur relâche l’élément en dehors de la zone cible.",
+      "level": "A"
+    },
+    {
+      "id": "13.12",
+      "title": "Dans chaque page web, les fonctionnalités qui impliquent un mouvement de l’appareil ou vers l’appareil peuvent-elles être satisfaites de manière alternative (hors cas particuliers) ?",
+      "references": {
+        "techniques": [],
+        "wcag": [
+          "9.2.5.4 / 2.5.4 Motion Actuation (A)"
+        ]
+      },
+      "particularCases": "Il existe une gestion de cas particulier lorsque :\n- Le mouvement est essentiel à l’accomplissement de la fonctionnalité (ex. podomètre) ;\n- La détection du mouvement est utilisée pour contrôler une fonctionnalité au travers d’une interface compatible avec l’accessibilité.",
+      "level": "A"
+    }
+  ],
+  "tests": [
+    {
+      "id": "1.1.1",
+      "title": "Chaque image (balise <img> ou balise possédant l’attribut WAI-ARIA role=\"img\") porteuse d’information a-t-elle une alternative textuelle ?\n- Chaque image (balise <img> ou balise possédant l’attribut WAI-ARIA role=\"img\") porteuse d’information a-t-elle une alternative textuelle ?"
+    },
+    {
+      "id": "1.1.2",
+      "title": "Chaque zone d’une image réactive (balise <area>) porteuse d’information a-t-elle une alternative textuelle ?\n- Chaque zone d’une image réactive (balise <area>) porteuse d’information a-t-elle une alternative textuelle ?"
+    },
+    {
+      "id": "1.1.3",
+      "title": "Chaque bouton de type image (balise <input> avec l’attribut type=\"image\") a-t-il une alternative textuelle ?\n- Chaque bouton de type image (balise <input> avec l’attribut type=\"image\") a-t-il une alternative textuelle ?"
+    },
+    {
+      "id": "1.1.4",
+      "title": "Chaque zone cliquable d’une image réactive côté serveur est-elle doublée d’un mécanisme utilisable quel que soit le dispositif de pointage utilisé et permettant d’accéder à la même destination ?\n- Chaque zone cliquable d’une image réactive côté serveur est-elle doublée d’un mécanisme utilisable quel que soit le dispositif de pointage utilisé et permettant d’accéder à la même destination ?"
+    },
+    {
+      "id": "1.1.5",
+      "title": "Chaque image vectorielle (balise <svg>) porteuse d’information, vérifie-t-elle ces conditions ?\n- La balise <svg> possède un attribut WAI-ARIA role=\"img\" ;\n- La balise <svg> a une alternative textuelle."
+    },
+    {
+      "id": "1.1.6",
+      "title": "Chaque image objet (balise <object> avec l’attribut type=\"image/…\") porteuse d’information, vérifie-t-elle une de ces conditions ?\n- La balise <object> possède une alternative textuelle et un attribut role=\"img\" ;\n- L’élément <object> est immédiatement suivi d’un lien ou bouton adjacent permettant d’accéder à un contenu alternatif ;\n- Un mécanisme permet à l’utilisateur de remplacer l’élément <object> par un contenu alternatif."
+    },
+    {
+      "id": "1.1.7",
+      "title": "Chaque image embarquée (balise <embed> avec l’attribut type=\"image/…\") porteuse d’information, vérifie-t-elle une de ces conditions ?\n- La balise <embed> possède une alternative textuelle et un attribut role=\"img\" ;\n- L’élément <embed> est immédiatement suivi d’un lien ou bouton adjacent permettant d’accéder à un contenu alternatif ;\n- Un mécanisme permet à l’utilisateur de remplacer l’élément <embed> par un contenu alternatif."
+    },
+    {
+      "id": "1.1.8",
+      "title": "Chaque image bitmap (balise <canvas>) porteuse d’information, vérifie-t-elle une de ces conditions ?\n- La balise <canvas> possède une alternative textuelle et un attribut role=\"img\" ;\n- Un contenu alternatif est présent entre les balises <canvas> et </canvas> ;\n- L’élément <canvas> est immédiatement suivi d’un lien ou bouton adjacent permettant d’accéder à un contenu alternatif ;\n- Un mécanisme permet à l’utilisateur de remplacer l’élément <canvas> par un contenu alternatif."
+    },
+    {
+      "id": "1.2.1",
+      "title": "Chaque image (balise <img>) de décoration, sans légende, vérifie-t-elle une de ces conditions ?\n- La balise <img> possède un attribut alt vide (alt=\"\") et est dépourvue de tout autre attribut permettant de fournir une alternative textuelle ;\n- La balise <img> possède un attribut WAI-ARIA aria-hidden=\"true\" ou role=\"presentation\"."
+    },
+    {
+      "id": "1.2.2",
+      "title": "Chaque zone non cliquable (balise <area> sans attribut href) de décoration, vérifie-t-elle une de ces conditions ?\n- La balise <area> possède un attribut alt vide (alt=\"\") et est dépourvue de tout autre attribut permettant de fournir une alternative textuelle ;\n- La balise <area> possède un attribut WAI-ARIA aria-hidden=\"true\" ou role=\"presentation\"."
+    },
+    {
+      "id": "1.2.3",
+      "title": "Chaque image objet (balise <object> avec l’attribut type=\"image/…\") de décoration, sans légende, vérifie-t-elle ces conditions ?\n- La balise <object> possède un attribut WAI-ARIA aria-hidden=\"true\" ;\n- La balise <object> est dépourvue d’alternative textuelle ;\n- Il n’y a aucun texte faisant office d’alternative textuelle entre <object> et </object>."
+    },
+    {
+      "id": "1.2.4",
+      "title": "Chaque image vectorielle (balise <svg>) de décoration, sans légende, vérifie-t-elle ces conditions ?\n- La balise <svg> possède un attribut WAI-ARIA aria-hidden=\"true\" ;\n- La balise <svg> et ses enfants sont dépourvus d’alternative textuelle ;\n- Les balises <title> et <desc> sont absentes ou vides ;\n- La balise <svg> et ses enfants sont dépourvus d’attribut title."
+    },
+    {
+      "id": "1.2.5",
+      "title": "Chaque image bitmap (balise <canvas>) de décoration, sans légende, vérifie-t-elle ces conditions ?\n- La balise <canvas> possède un attribut WAI-ARIA aria-hidden=\"true\" ;\n- La balise <canvas> et ses enfants sont dépourvus d’alternative textuelle ;\n- Il n’y a aucun texte faisant office d’alternative textuelle entre <canvas> et </canvas>."
+    },
+    {
+      "id": "1.2.6",
+      "title": "Chaque image embarquée (balise <embed> avec l’attribut type=\"image/…\") de décoration, sans légende, vérifie-t-elle ces conditions ?\n- La balise <embed> possède un attribut WAI-ARIA aria-hidden=\"true\" ;\n- La balise <embed> et ses enfants sont dépourvus d’alternative textuelle."
+    },
+    {
+      "id": "1.3.1",
+      "title": "Pour chaque image (balise <img> ou balise possédant l’attribut WAI-ARIA role=\"img\") porteuse d’information, ayant une alternative textuelle, cette alternative est-elle pertinente (hors cas particuliers) ?\n- S’il est présent, le contenu de l’attribut alt est pertinent ;\n- S’il est présent, le contenu de l’attribut title est pertinent ;\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n- S’il est présent, le passage de texte associé via l’attribut WAI-ARIA aria-labelledby est pertinent."
+    },
+    {
+      "id": "1.3.2",
+      "title": "Pour chaque zone (balise <area>) d’une image réactive porteuse d’information, ayant une alternative textuelle, cette alternative est-elle pertinente (hors cas particuliers) ?\n- S’il est présent, le contenu de l’attribut alt est pertinent ;\n- S’il est présent, le contenu de l’attribut title est pertinent ;\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n- S’il est présent, le passage de texte associé via l’attribut WAI-ARIA aria-labelledby est pertinent."
+    },
+    {
+      "id": "1.3.3",
+      "title": "Pour chaque bouton de type image (balise <input> avec l’attribut type=\"image\"), ayant une alternative textuelle, cette alternative est-elle pertinente (hors cas particuliers) ?\n- S’il est présent, le contenu de l’attribut alt est pertinent ;\n- S’il est présent, le contenu de l’attribut title est pertinent ;\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n- S’il est présent, le passage de texte associé via l’attribut WAI-ARIA aria-labelledby est pertinent."
+    },
+    {
+      "id": "1.3.4",
+      "title": "Pour chaque image objet (balise <object> avec l’attribut type=\"image/…\") porteuse d’information, ayant une alternative textuelle ou un contenu alternatif, cette alternative est-elle pertinente (hors cas particuliers) ?\n- S’il est présent, le contenu de l’attribut title est pertinent ;\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n- S’il est présent, le passage de texte associé via l’attribut WAI-ARIA aria-labelledby est pertinent ;\n- S’il est présent le contenu alternatif est pertinent."
+    },
+    {
+      "id": "1.3.5",
+      "title": "Pour chaque image embarquée (balise <embed> avec l’attribut type=\"image/…\") porteuse d’information, ayant une alternative textuelle ou un contenu alternatif, cette alternative est-elle pertinente (hors cas particuliers) ?\n- S’il est présent, le contenu de l’attribut title est pertinent ;\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n- S’il est présent, le passage de texte associé via l’attribut WAI-ARIA aria-labelledby est pertinent ;\n- S’il est présent le contenu alternatif est pertinent."
+    },
+    {
+      "id": "1.3.6",
+      "title": "Pour chaque image vectorielle (balise <svg>) porteuse d’information, ayant une alternative textuelle, cette alternative est-elle pertinente (hors cas particuliers) ?\n- S’il est présent, le contenu de l’élément <title> est pertinent ;\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n- S’il est présent, le passage de texte associé via l’attribut WAI-ARIA aria-labelledby est pertinent."
+    },
+    {
+      "id": "1.3.7",
+      "title": "Pour chaque image bitmap (balise <canvas>) porteuse d’information, ayant une alternative textuelle ou un contenu alternatif, cette alternative est-elle pertinente (hors cas particuliers) ?\n- S’il est présent, le contenu de l’attribut title est pertinent ;\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n- S’il est présent, le passage de texte associé via l’attribut WAI-ARIA aria-labelledby est pertinent ;\n- S’il est présent le contenu alternatif est pertinent."
+    },
+    {
+      "id": "1.3.8",
+      "title": "Pour chaque image bitmap (balise <canvas>) porteuse d’information et ayant un contenu alternatif entre <canvas> et </canvas>, ce contenu alternatif est-il correctement restitué par les technologies d’assistance ?"
+    },
+    {
+      "id": "1.3.9",
+      "title": "Pour chaque image porteuse d’information et ayant une alternative textuelle, l’alternative textuelle est-elle courte et concise (hors cas particuliers) ?"
+    },
+    {
+      "id": "1.4.1",
+      "title": "Pour chaque image (balise <img>) utilisée comme CAPTCHA ou comme image-test, ayant une alternative textuelle, cette alternative est-elle pertinente ?\n- S’il est présent, le contenu de l’attribut alt est pertinent ;\n- S’il est présent, le contenu de l’attribut title est pertinent ;\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n- S’il est présent, le passage de texte associé via l’attribut WAI-ARIA aria-labelledby est pertinent."
+    },
+    {
+      "id": "1.4.2",
+      "title": "Pour chaque zone (balise <area>) d’une image réactive utilisée comme CAPTCHA ou comme image-test, ayant une alternative textuelle, cette alternative est-elle pertinente ?\n- S’il est présent, le contenu de l’attribut alt est pertinent ;\n- S’il est présent, le contenu de l’attribut title est pertinent ;\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n- S’il est présent, le passage de texte associé via l’attribut WAI-ARIA aria-labelledby est pertinent."
+    },
+    {
+      "id": "1.4.3",
+      "title": "Pour chaque bouton de type image (balise <input> avec l’attribut type=\"image\") utilisé comme CAPTCHA ou comme image-test, ayant une alternative textuelle, cette alternative est-elle pertinente ?\n- S’il est présent, le contenu de l’attribut alt est pertinent ;\n- S’il est présent, le contenu de l’attribut title est pertinent ;\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n- S’il est présent, le passage de texte associé via l’attribut WAI-ARIA aria-labelledby est pertinent."
+    },
+    {
+      "id": "1.4.4",
+      "title": "Pour chaque image objet (balise <object> avec l’attribut type=\"image/…\") utilisée comme CAPTCHA ou comme image-test, ayant une alternative textuelle ou un contenu alternatif, cette alternative est-elle pertinente ?\n- S’il est présent, le contenu de l’attribut title est pertinent ;\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n- S’il est présent, le passage de texte associé via l’attribut WAI-ARIA aria-labelledby est pertinent ;\n- S’il est présent, le contenu alternatif est pertinent."
+    },
+    {
+      "id": "1.4.5",
+      "title": "Pour chaque image embarquée (balise <embed> avec l’attribut type=\"image/…\") utilisée comme CAPTCHA ou comme image-test, ayant une alternative textuelle ou un contenu alternatif, cette alternative est-elle pertinente ?\n- S’il est présent, le contenu de l’attribut title est pertinent ;\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n- S’il est présent, le passage de texte associé via l’attribut WAI-ARIA aria-labelledby est pertinent ;\n- S’il est présent, le contenu alternatif est pertinent."
+    },
+    {
+      "id": "1.4.6",
+      "title": "Pour chaque image vectorielle (balise <svg>) utilisée comme CAPTCHA ou comme image-test, ayant une alternative textuelle, cette alternative est-elle pertinente ?\n- S’il est présent, le contenu de l’attribut title est pertinent ;\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n- S’il est présent, le passage de texte associé via l’attribut WAI-ARIA aria-labelledby est pertinent."
+    },
+    {
+      "id": "1.4.7",
+      "title": "Pour chaque image bitmap (balise <canvas>) utilisée comme CAPTCHA ou comme image-test, ayant une alternative textuelle ou un contenu alternatif, cette alternative est-elle pertinente ?\n- S’il est présent, le contenu de l’attribut title est pertinent ;\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n- S’il est présent, le passage de texte associé via l’attribut WAI-ARIA aria-labelledby est pertinent ;\n- S’il est présent, le contenu alternatif est pertinent."
+    },
+    {
+      "id": "1.5.1",
+      "title": "Chaque image (balises <img>, <area>, <object>, <embed>, <svg>, <canvas> ou possédant un attribut WAI-ARIA role=\"img\") utilisée comme CAPTCHA vérifie-t-elle une de ces conditions ?\n- Il existe une autre forme de CAPTCHA non graphique, au moins ;\n- Il existe une autre solution d’accès à la fonctionnalité qui est sécurisée par le CAPTCHA."
+    },
+    {
+      "id": "1.5.2",
+      "title": "Chaque bouton associé à une image (balise input avec l’attribut type=\"image\") utilisée comme CAPTCHA vérifie-t-il une de ces conditions ?\n- Il existe une autre forme de CAPTCHA non graphique, au moins ;\n- Il existe une autre solution d’accès à la fonctionnalité sécurisée par le CAPTCHA."
+    },
+    {
+      "id": "1.6.1",
+      "title": "Chaque image (balise <img>) porteuse d’information, qui nécessite une description détaillée, vérifie-t-elle une de ces conditions ?\n- Il existe un attribut longdesc qui donne l’adresse (URL) d’une page ou d’un emplacement dans la page contenant la description détaillée ;\n- Il existe une alternative textuelle contenant la référence à une description détaillée adjacente à l’image ;\n- Il existe un lien ou un bouton adjacent permettant d’accéder à la description détaillée."
+    },
+    {
+      "id": "1.6.2",
+      "title": "Chaque image objet (balise <object> avec l’attribut type=\"image/…\") porteuse d’information, qui nécessite une description détaillée, vérifie-t-elle une de ces conditions ?\n- Il existe une alternative textuelle contenant la référence à une description détaillée adjacente à l’image ;\n- Il existe un lien ou un bouton adjacent permettant d’accéder à la description détaillée."
+    },
+    {
+      "id": "1.6.3",
+      "title": "Chaque image embarquée (balise <embed>) porteuse d’information, qui nécessite une description détaillée, vérifie-t-elle une de ces conditions ?\n- Il existe une alternative textuelle contenant la référence à une description détaillée adjacente à l’image ;\n- Il existe un lien ou un bouton adjacent permettant d’accéder à la description détaillée."
+    },
+    {
+      "id": "1.6.4",
+      "title": "Chaque bouton de type image (balise <input> avec l’attribut type=\"image\") porteur d’information, qui nécessite une description détaillée, vérifie-t-elle une de ces conditions ?\n- Il existe une alternative textuelle contenant la référence à une description détaillée adjacente à l’image ;\n- Il existe un lien ou un bouton adjacent permettant d’accéder à la description détaillée ;\n- Il existe un attribut WAI-ARIA aria-describedby associant un passage de texte faisant office de description détaillée."
+    },
+    {
+      "id": "1.6.5",
+      "title": "Chaque image vectorielle (balise <svg>) porteuse d’information, qui nécessite une description détaillée, vérifie-t-elle une de ces conditions ?\n- Il existe un attribut WAI-ARIA aria-label contenant l’alternative textuelle et une référence à une description détaillée adjacente ;\n- Il existe un attribut WAI-ARIA aria-labelledby associant un passage de texte faisant office d’alternative textuelle et un autre faisant office de description détaillée ;\n- Il existe un attribut WAI-ARIA aria-describedby associant un passage de texte faisant office de description détaillée ;\n- Il existe un lien ou un bouton adjacent permettant d’accéder à la description détaillée."
+    },
+    {
+      "id": "1.6.6",
+      "title": "Pour chaque image vectorielle (balise <svg>) porteuse d’information, ayant une description détaillée, la référence éventuelle à la description détaillée dans l’attribut WAI-ARIA aria-label et la description détaillée associée par l’attribut WAI-ARIA aria-labelledby ou aria-describedby sont-elles correctement restituées par les technologies d’assistance ?"
+    },
+    {
+      "id": "1.6.7",
+      "title": "Chaque image bitmap (balise <canvas>), porteuse d’information, qui nécessite une description détaillée, vérifie-t-elle une de ces conditions ?\n- Il existe un attribut WAI-ARIA aria-label contenant l’alternative textuelle et une référence à une description détaillée adjacente ;\n- Il existe un attribut WAI-ARIA aria-labelledby associant un passage de texte faisant office d’alternative textuelle et un autre faisant office de description détaillée ;\n- Il existe un contenu textuel entre <canvas> et </canvas> faisant référence à une description détaillée adjacente à l’image bitmap ;\n- Il existe un contenu textuel entre <canvas> et </canvas> faisant office de description détaillée ;\n- Il existe un lien ou bouton adjacent permettant d’accéder à la description détaillée."
+    },
+    {
+      "id": "1.6.8",
+      "title": "Pour chaque image bitmap (balise <canvas>) porteuse d’information, qui implémente une référence à une description détaillée adjacente, cette référence est-elle correctement restituée par les technologies d’assistance ?"
+    },
+    {
+      "id": "1.6.9",
+      "title": "Pour chaque image (balise <img>, <input> avec l’attribut type=\"image\", <area>, <object>, <embed>, <svg>, <canvas>, ou possédant un attribut WAI-ARIA role=\"img\") porteuse d’information, qui est accompagnée d’une description détaillée et qui utilise un attribut WAI-ARIA aria-describedby, l’attribut WAI-ARIA aria-describedby associe-t-il la description détaillée ?"
+    },
+    {
+      "id": "1.6.10",
+      "title": "Chaque balise possédant un attribut WAI-ARIA role=\"img\" porteuse d’information, qui nécessite une description détaillée, vérifie-t-elle une de ces conditions ?\n- Il existe un attribut WAI-ARIA aria-label contenant l’alternative textuelle et une référence à une description détaillée adjacente ;\n- Il existe un attribut WAI-ARIA aria-labelledby associant un passage de texte faisant office d’alternative textuelle et un autre faisant office de description détaillée ;\n- Il existe un attribut WAI-ARIA aria-describedby associant un passage de texte faisant office de description détaillée ;\n- Il existe un lien ou un bouton adjacent permettant d’accéder à la description détaillée."
+    },
+    {
+      "id": "1.7.1",
+      "title": "Chaque image (balise <img>) porteuse d’information, ayant une description détaillée, vérifie-t-elle ces conditions ?\n- La description détaillée via l’adresse référencée dans l’attribut longdesc est pertinente ;\n- La description détaillée dans la page et signalée par l’alternative textuelle est pertinente ;\n- La description détaillée via un lien ou bouton adjacent est pertinente ;\n- Le passage de texte associé via l’attribut WAI-ARIA aria-describedby est pertinent."
+    },
+    {
+      "id": "1.7.2",
+      "title": "Chaque bouton de type image (balise <input> avec l’attribut type=\"image\") porteur d’information, ayant une description détaillée, vérifie-t-elle ces conditions ?\n- La description détaillée dans la page et signalée par l’alternative textuelle est pertinente ;\n- La description détaillée via un lien ou bouton adjacent est pertinente ;\n- Le passage de texte associé via l’attribut WAI-ARIA aria-describedby est pertinent."
+    },
+    {
+      "id": "1.7.3",
+      "title": "Chaque image objet (balise <object> avec l’attribut type=\"image/…\") porteuse d’information, ayant une description détaillée, vérifie-t-elle ces conditions ?\n- La description détaillée dans la page et signalée par l’alternative textuelle est pertinente ;\n- La description détaillée adjacente à l’image objet est pertinente ;\n- La description détaillée via un lien ou bouton adjacent est pertinente ;\n- Le passage de texte associé via l’attribut WAI-ARIA aria-describedby est pertinent."
+    },
+    {
+      "id": "1.7.4",
+      "title": "Chaque image embarquée (balise <embed> avec l’attribut type=\"image/…\") porteuse d’information, ayant une description détaillée, vérifie-t-elle ces conditions ?\n- La description détaillée dans la page et signalée par l’alternative textuelle est pertinente ;\n- La description détaillée adjacente à l’image embarquée est pertinente ;\n- La description détaillée via un lien ou bouton adjacent est pertinente ;\n- Le passage de texte associé via l’attribut WAI-ARIA aria-describedby est pertinent."
+    },
+    {
+      "id": "1.7.5",
+      "title": "Chaque image vectorielle (balise <svg>) porteuse d’information, ayant une description détaillée, vérifie-t-elle ces conditions ?\n- La description détaillée dans la page et signalée par l’alternative textuelle est pertinente ;\n- La description détaillée dans la page et signalée par le texte contenu dans balise <desc> ou <title> est pertinente ;\n- La description détaillée contenue dans la balise <desc> est pertinente ;\n- La description détaillée via un lien ou bouton adjacent est pertinente ;\n- Le passage de texte associé via l’attribut WAI-ARIA aria-describedby est pertinent."
+    },
+    {
+      "id": "1.7.6",
+      "title": "Chaque image bitmap (balise <canvas>) porteuse d’information, ayant une description détaillée, vérifie-t-elle ces conditions ?\n- La description détaillée dans la page et signalée par l’alternative textuelle est pertinente ;\n- La description détaillée dans la page et signalée par le texte contenu entre <canvas> et </canvas> est pertinente ;\n- La description détaillée contenue entre <canvas> et </canvas> est pertinente ;\n- La description détaillée adjacente à l’image bitmap est pertinente ;\n- La description détaillée via un lien ou bouton adjacent est pertinente ;\n- Le passage de texte associé via l’attribut WAI-ARIA aria-describedby est pertinent."
+    },
+    {
+      "id": "1.8.1",
+      "title": "Chaque image texte (balise <img> ou possédant un attribut WAI-ARIA role=\"img\") porteuse d’information, en l’absence d’un mécanisme de remplacement, doit si possible être remplacée par du texte stylé. Cette règle est-elle respectée (hors cas particuliers) ?"
+    },
+    {
+      "id": "1.8.2",
+      "title": "Chaque bouton « image texte » (balise <input> avec l’attribut type=\"image\") porteur d’information, en l’absence d’un mécanisme de remplacement, doit si possible être remplacé par du texte stylé. Cette règle est-elle respectée (hors cas particuliers) ?"
+    },
+    {
+      "id": "1.8.3",
+      "title": "Chaque image texte objet (balise <object> avec l’attribut type=\"image/…\") porteuse d’information, en l’absence d’un mécanisme de remplacement, doit si possible être remplacée par du texte stylé. Cette règle est-elle respectée (hors cas particuliers) ?"
+    },
+    {
+      "id": "1.8.4",
+      "title": "Chaque image texte embarquée (balise <embed> avec l’attribut type=\"image/…\") porteuse d’information, en l’absence d’un mécanisme de remplacement, doit si possible être remplacée par du texte stylé. Cette règle est-elle respectée (hors cas particuliers) ?"
+    },
+    {
+      "id": "1.8.5",
+      "title": "Chaque image texte bitmap (balise <canvas>) porteuse d’information, en l’absence d’un mécanisme de remplacement, doit si possible être remplacée par du texte stylé. Cette règle est-elle respectée (hors cas particuliers) ?"
+    },
+    {
+      "id": "1.8.6",
+      "title": "Chaque image texte SVG (balise <svg>) porteuse d’information et dont le texte n’est pas complètement structuré au moyen d’éléments <text>, en l’absence d’un mécanisme de remplacement, doit si possible être remplacée par du texte stylé. Cette règle est-elle respectée (hors cas particuliers) ?"
+    },
+    {
+      "id": "1.9.1",
+      "title": "Chaque image pourvue d’une légende (balise <img>, <input> avec l’attribut type=\"image\" ou possédant un attribut WAI-ARIA role=\"img\" associée à une légende adjacente), vérifie-t-elle, si nécessaire, ces conditions ?\n- L’image (balise <img>, <input> avec l’attribut type=\"image\" ou possédant un attribut WAI-ARIA role=\"img\") et sa légende adjacente sont contenues dans une balise <figure> ;\n- La balise <figure> possède un attribut WAI-ARIA role=\"figure\" ou role=\"group\" ;\n- La balise <figure> possède un attribut WAI-ARIA aria-label dont le contenu est identique au contenu de la légende ;\n- La légende est contenue dans une balise <figcaption>."
+    },
+    {
+      "id": "1.9.2",
+      "title": "Chaque image objet pourvue d’une légende (balise <object> avec l’attribut type=\"image/…\" associée à une légende adjacente), vérifie-t-elle, si nécessaire, ces conditions ?\n- L’image objet (balise <object>) et sa légende adjacente sont contenues dans une balise <figure> ;\n- La balise <figure> possède un attribut WAI-ARIA role=\"figure\" ou role=\"group\" ;\n- La balise <figure> possède un attribut WAI-ARIA aria-label dont le contenu est identique au contenu de la légende ;\n- La légende est contenue dans une balise <figcaption>."
+    },
+    {
+      "id": "1.9.3",
+      "title": "Chaque image embarquée pourvue d’une légende (balise <embed> associée à une légende adjacente), vérifie-t-elle, si nécessaire, ces conditions ?\n- L’image embarquée (balise <embed>) et sa légende adjacente sont contenues dans une balise <figure> ;\n- La balise <figure> possède un attribut WAI-ARIA role=\"figure\" ou role=\"group\" ;\n- La balise <figure> possède un attribut WAI-ARIA aria-label dont le contenu est identique au contenu de la légende ;\n- La légende est contenue dans une balise <figcaption>."
+    },
+    {
+      "id": "1.9.4",
+      "title": "Chaque image vectorielle pourvue d’une légende (balise <svg> associée à une légende adjacente), vérifie-t-elle, si nécessaire, ces conditions ?\n- L’image vectorielle (balise <svg>) et sa légende adjacente sont contenues dans une balise <figure> ;\n- La balise <figure> possède un attribut WAI-ARIA role=\"figure\" ou role=\"group\" ;\n- La balise <figure> possède un attribut WAI-ARIA aria-label dont le contenu est identique au contenu de la légende ;\n- La légende est contenue dans une balise <figcaption>."
+    },
+    {
+      "id": "1.9.5",
+      "title": "Chaque image bitmap pourvue d’une légende (balise <canvas> associée à une légende adjacente), vérifie-t-elle, si nécessaire, ces conditions ?\n- L’image bitmap (balise <canvas>) et sa légende adjacente sont contenues dans une balise <figure> ;\n- La balise <figure> possède un attribut WAI-ARIA role=\"figure\" ou role=\"group\" ;\n- La balise <figure> possède un attribut WAI-ARIA aria-label dont le contenu est identique au contenu de la légende ;\n- La légende est contenue dans une balise <figcaption>."
+    },
+    {
+      "id": "2.1.1",
+      "title": "Chaque cadre (balise <iframe> ou <frame>) a-t-il un attribut title ?"
+    },
+    {
+      "id": "2.2.1",
+      "title": "Pour chaque cadre (balise <iframe> ou <frame>) ayant un attribut title, le contenu de cet attribut est-il pertinent ?"
+    },
+    {
+      "id": "3.1.1",
+      "title": "Pour chaque mot ou ensemble de mots dont la mise en couleur est porteuse d’information, l’information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?"
+    },
+    {
+      "id": "3.1.2",
+      "title": "Pour chaque indication de couleur donnée par un texte, l’information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?"
+    },
+    {
+      "id": "3.1.3",
+      "title": "Pour chaque image véhiculant une information, l’information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?"
+    },
+    {
+      "id": "3.1.4",
+      "title": "Pour chaque propriété CSS déterminant une couleur et véhiculant une information, l’information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?"
+    },
+    {
+      "id": "3.1.5",
+      "title": "Pour chaque média temporel véhiculant une information, l’information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?"
+    },
+    {
+      "id": "3.1.6",
+      "title": "Pour chaque média non temporel véhiculant une information, l’information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?"
+    },
+    {
+      "id": "3.2.1",
+      "title": "Dans chaque page web, le texte et le texte en image sans effet de graisse d’une taille restituée inférieure à 24px vérifient-ils une de ces conditions (hors cas particuliers) ?\n- Le rapport de contraste entre le texte et son arrière-plan est de 4.5:1, au moins ;\n- Un mécanisme permet à l’utilisateur d’afficher le texte avec un rapport de contraste de 4.5:1, au moins."
+    },
+    {
+      "id": "3.2.2",
+      "title": "Dans chaque page web, le texte et le texte en image en gras d’une taille restituée inférieure à 18,5px vérifient-ils une de ces conditions (hors cas particuliers) ?\n- Le rapport de contraste entre le texte et son arrière-plan est de 4.5:1, au moins ;\n- Un mécanisme permet à l’utilisateur d’afficher le texte avec un rapport de contraste de 4.5:1, au moins."
+    },
+    {
+      "id": "3.2.3",
+      "title": "Dans chaque page web, le texte et le texte en image sans effet de graisse d’une taille restituée supérieure ou égale à 24px vérifient-ils une de ces conditions (hors cas particuliers) ?\n- Le rapport de contraste entre le texte et son arrière-plan est de 3:1, au moins ;\n- Un mécanisme permet à l’utilisateur d’afficher le texte avec un rapport de contraste de 3:1, au moins."
+    },
+    {
+      "id": "3.2.4",
+      "title": "Dans chaque page web, le texte et le texte en image en gras d’une taille restituée supérieure ou égale à 18,5px vérifient-ils une de ces conditions (hors cas particuliers) ?\n- Le rapport de contraste entre le texte et son arrière-plan est de 3:1, au moins ;\n- Un mécanisme permet à l’utilisateur d’afficher le texte avec un rapport de contraste de 3:1, au moins."
+    },
+    {
+      "id": "3.2.5",
+      "title": "Dans le mécanisme qui permet d’afficher un rapport de contraste conforme, le rapport de contraste entre le texte et la couleur d’arrière-plan est-il suffisamment élevé ?"
+    },
+    {
+      "id": "3.3.1",
+      "title": "Dans chaque page web, le rapport de contraste entre les couleurs d’un composant d’interface dans ses différents états et la couleur d’arrière-plan contiguë vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- Le rapport de contraste est de 3:1, au moins ;\n- Un mécanisme permet un rapport de contraste de 3:1, au moins."
+    },
+    {
+      "id": "3.3.2",
+      "title": "Dans chaque page web, le rapport de contraste des différentes couleurs composant un élément graphique, lorsqu’elles sont nécessaires à sa compréhension, et la couleur d’arrière-plan contiguë, vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- Le rapport de contraste est de 3:1, au moins ;\n- Un mécanisme permet un rapport de contraste de 3:1, au moins."
+    },
+    {
+      "id": "3.3.3",
+      "title": "Dans chaque page web, le rapport de contraste des différentes couleurs contiguës entre elles d’un élément graphique, lorsqu’elles sont nécessaires à sa compréhension, vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- Le rapport de contraste est de 3:1, au moins ;\n- Un mécanisme permet un rapport de contraste de 3:1, au moins."
+    },
+    {
+      "id": "3.3.4",
+      "title": "Dans le mécanisme qui permet d’afficher un rapport de contraste conforme, les couleurs du composant ou des éléments graphiques porteurs d’informations qui le composent, sont-elles suffisamment contrastées ?"
+    },
+    {
+      "id": "4.1.1",
+      "title": "Chaque média temporel pré-enregistré seulement audio, vérifie-t-il, si nécessaire, l’une de ces conditions (hors cas particuliers) ?\n- Il existe une transcription textuelle accessible via un lien ou bouton adjacent ;\n- Il existe une transcription textuelle adjacente clairement identifiable."
+    },
+    {
+      "id": "4.1.2",
+      "title": "Chaque média temporel pré-enregistré seulement vidéo vérifie-t-il, si nécessaire, l’une de ces conditions (hors cas particuliers) ?\n- Il existe une version alternative « audio seulement » accessible via un lien ou bouton adjacent ;\n- Il existe une version alternative « audio seulement » adjacente clairement identifiable ;\n- Il existe une transcription textuelle accessible via un lien ou bouton adjacent ;\n- Il existe une transcription textuelle adjacente clairement identifiable ;\n- Il existe une audiodescription synchronisée ;\n- Il existe une version alternative avec une audiodescription synchronisée accessible via un lien ou bouton adjacent."
+    },
+    {
+      "id": "4.1.3",
+      "title": "Chaque média temporel synchronisé pré-enregistré vérifie-t-il, si nécessaire, une de ces conditions (hors cas particuliers) ?\n- Il existe une transcription textuelle accessible via un lien ou bouton adjacent ;\n- Il existe une transcription textuelle adjacente clairement identifiable ;\n- Il existe une audiodescription synchronisée ;\n- Il existe une version alternative avec une audiodescription synchronisée accessible via un lien ou bouton adjacent."
+    },
+    {
+      "id": "4.2.1",
+      "title": "Pour chaque média temporel pré-enregistré seulement audio, ayant une transcription textuelle, celle-ci est-elle pertinente (hors cas particuliers) ?"
+    },
+    {
+      "id": "4.2.2",
+      "title": "Chaque média temporel pré-enregistré seulement vidéo vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- La transcription textuelle est pertinente ;\n- L’audiodescription synchronisée est pertinente ;\n- L’audiodescription synchronisée de la version alternative est pertinente ;\n- La version alternative audio seulement est pertinente."
+    },
+    {
+      "id": "4.2.3",
+      "title": "Chaque média temporel synchronisé pré-enregistré vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- La transcription textuelle est pertinente ;\n- L’audiodescription synchronisée est pertinente ;\n- L’audiodescription synchronisée de la version alternative est pertinente."
+    },
+    {
+      "id": "4.3.1",
+      "title": "Chaque média temporel synchronisé pré-enregistré vérifie-t-il, si nécessaire, l’une de ces conditions (hors cas particuliers) ?\n- Le média temporel synchronisé possède des sous-titres synchronisés ;\n- Il existe une version alternative possédant des sous-titres synchronisés accessible via un lien ou bouton adjacent."
+    },
+    {
+      "id": "4.3.2",
+      "title": "Pour chaque média temporel synchronisé pré-enregistré possédant des sous-titres synchronisés diffusés via une balise <track>, la balise <track> possède-t-elle un attribut kind=\"captions\" ?"
+    },
+    {
+      "id": "4.4.1",
+      "title": "Pour chaque média temporel synchronisé pré-enregistré ayant des sous-titres synchronisés, ces sous-titres sont-ils pertinents ?"
+    },
+    {
+      "id": "4.5.1",
+      "title": "Chaque média temporel pré-enregistré seulement vidéo vérifie-t-il, si nécessaire, une de ces conditions (hors cas particuliers) ?\n- Il existe une audiodescription synchronisée ;\n- Il existe une version alternative avec une audiodescription synchronisée."
+    },
+    {
+      "id": "4.5.2",
+      "title": "Chaque média temporel synchronisé pré-enregistré vérifie-t-il, si nécessaire, une de ces conditions (hors cas particuliers) ?\n- Il existe une audiodescription synchronisée ;\n- Il existe une version alternative avec une audiodescription synchronisée."
+    },
+    {
+      "id": "4.6.1",
+      "title": "Pour chaque média temporel pré-enregistré seulement vidéo ayant une audiodescription synchronisée, celle-ci est-elle pertinente ?"
+    },
+    {
+      "id": "4.6.2",
+      "title": "Pour chaque média temporel synchronisé ayant une audiodescription synchronisée, celle-ci est-elle pertinente ?"
+    },
+    {
+      "id": "4.7.1",
+      "title": "Pour chaque média temporel seulement son, seulement vidéo ou synchronisé, le contenu textuel adjacent permet-il d’identifier clairement le média temporel (hors cas particuliers) ?"
+    },
+    {
+      "id": "4.8.1",
+      "title": "Chaque média non temporel vérifie-t-il, si nécessaire, une de ces conditions (hors cas particuliers) ?\n- Un lien ou un bouton adjacent, clairement identifiable, permet d’accéder à une page contenant une alternative ;\n- Un lien ou un bouton adjacent, clairement identifiable, permet d’accéder à une alternative dans la page."
+    },
+    {
+      "id": "4.8.2",
+      "title": "Chaque média non temporel associé à une alternative vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- La page référencée par le lien ou bouton adjacent est accessible ;\n- L’alternative dans la page, référencée par le lien ou bouton adjacent, est accessible."
+    },
+    {
+      "id": "4.9.1",
+      "title": "Pour chaque média non temporel ayant une alternative, cette alternative permet-elle d’accéder au même contenu et à des fonctionnalités similaires ?"
+    },
+    {
+      "id": "4.10.1",
+      "title": "Chaque séquence sonore déclenchée automatiquement via une balise <object>, <video>, <audio>, <embed>, <bgsound> ou un code JavaScript vérifie-t-elle une de ces conditions ?\n- La séquence sonore a une durée inférieure ou égale à 3 secondes ;\n- La séquence sonore peut être stoppée sur action de l’utilisateur ;\n- Le volume de la séquence sonore peut être contrôlé par l’utilisateur indépendamment du contrôle de volume du système."
+    },
+    {
+      "id": "4.11.1",
+      "title": "Chaque média temporel a-t-il, si nécessaire, les fonctionnalités de contrôle de sa consultation ?"
+    },
+    {
+      "id": "4.11.2",
+      "title": "Pour chaque média temporel, chaque fonctionnalité vérifie-t-elle une de ces conditions ?\n- La fonctionnalité est accessible par le clavier et tout dispositif de pointage ;\n- Une fonctionnalité accessible par le clavier et tout dispositif de pointage permettant de réaliser la même action est présente dans la page."
+    },
+    {
+      "id": "4.11.3",
+      "title": "Pour chaque média temporel, chaque fonctionnalité vérifie-t-elle une de ces conditions ?\n- La fonctionnalité est activable par le clavier et tout dispositif de pointage ;\n- Une fonctionnalité activable par le clavier et tout dispositif de pointage permettant de réaliser la même action est présente dans la page."
+    },
+    {
+      "id": "4.12.1",
+      "title": "Pour chaque média non temporel, chaque fonctionnalité vérifie-t-elle une de ces conditions ?\n- La fonctionnalité est accessible par le clavier et tout dispositif de pointage ;\n- Une fonctionnalité accessible par le clavier et tout dispositif de pointage permettant de réaliser la même action est présente dans la page."
+    },
+    {
+      "id": "4.12.2",
+      "title": "Pour chaque média non temporel, chaque fonctionnalité vérifie-t-elle une de ces conditions ?\n- La fonctionnalité est activable par le clavier et tout dispositif de pointage ;\n- Une fonctionnalité activable par le clavier et tout dispositif de pointage permettant de réaliser la même action est présente dans la page."
+    },
+    {
+      "id": "4.13.1",
+      "title": "Chaque média temporel et non temporel vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- Le nom, le rôle, la valeur, le paramétrage et les changements d’états des composants d’interfaces sont accessibles aux technologies d’assistance via une API d’accessibilité ;\n- Une alternative compatible avec une API d’accessibilité permet d’accéder aux mêmes fonctionnalités."
+    },
+    {
+      "id": "4.13.2",
+      "title": "Chaque média temporel et non temporel qui possède une alternative compatible avec les technologies d’assistance, vérifie-t-il une de ces conditions ?\n- L’alternative est adjacente au média temporel ou non temporel ;\n- L’alternative est accessible via un lien ou bouton adjacent ;\n- Un mécanisme permet de remplacer le média temporel ou non temporel par son alternative."
+    },
+    {
+      "id": "5.1.1",
+      "title": "Pour chaque tableau de données complexe, un résumé est-il disponible ?"
+    },
+    {
+      "id": "5.2.1",
+      "title": "Pour chaque tableau de données complexe ayant un résumé, celui-ci est-il pertinent ?"
+    },
+    {
+      "id": "5.3.1",
+      "title": "Chaque tableau de mise en forme vérifie-t-il ces conditions ?\n- Le contenu linéarisé reste compréhensible ;\n- La balise <table> possède un attribut role=\"presentation\"."
+    },
+    {
+      "id": "5.4.1",
+      "title": "Pour chaque tableau de données ayant un titre, le titre est-il correctement associé au tableau de données ?"
+    },
+    {
+      "id": "5.5.1",
+      "title": "Pour chaque tableau de données ayant un titre, ce titre permet-il d’identifier le contenu du tableau de données de manière claire et concise ?"
+    },
+    {
+      "id": "5.6.1",
+      "title": "Pour chaque tableau de données, chaque en-tête de colonne s’appliquant à la totalité de la colonne vérifie-t-il une de ces conditions ?\n- L’en-tête de colonnes est structuré au moyen d’une balise <th> ;\n- L’en-tête de colonnes est structuré au moyen d’une balise pourvue d’un attribut WAI-ARIA role=\"columnheader\"."
+    },
+    {
+      "id": "5.6.2",
+      "title": "Pour chaque tableau de données, chaque en-tête de ligne s’appliquant à la totalité de la ligne vérifie-t-il une de ces conditions ?\n- L’en-tête de lignes est structuré au moyen d’une balise <th> ;\n- L’en-tête de lignes est structuré au moyen d’une balise pourvue d’un attribut WAI-ARIA role=\"rowheader\"."
+    },
+    {
+      "id": "5.6.3",
+      "title": "Pour chaque tableau de données, chaque en-tête ne s’appliquant pas à la totalité de la ligne ou de la colonne est-il structuré au moyen d’une balise <th> ?"
+    },
+    {
+      "id": "5.6.4",
+      "title": "Pour chaque tableau de données, chaque cellule associée à plusieurs en-têtes est-elle structurée au moyen d’une balise <td> ou <th> ?"
+    },
+    {
+      "id": "5.7.1",
+      "title": "Pour chaque contenu de balise <th> s’appliquant à la totalité de la ligne ou de la colonne, la balise <th> respecte-t-elle une de ces conditions (hors cas particuliers) ?\n- La balise <th> possède un attribut id unique ;\n- La balise <th> possède un attribut scope ;\n- La balise <th> possède un attribut WAI-ARIA role=\"rowheader\" ou role=\"columnheader\"."
+    },
+    {
+      "id": "5.7.2",
+      "title": "Pour chaque contenu de balise <th> s’appliquant à la totalité de la ligne ou de la colonne et possédant un attribut scope, la balise <th> vérifie-t-elle une de ces conditions ?\n- La balise <th> possède un attribut scope avec la valeur \"row\" pour les en-têtes de ligne ;\n- La balise <th> possède un attribut scope avec la valeur \"col\" pour les en-têtes de colonne."
+    },
+    {
+      "id": "5.7.3",
+      "title": "Pour chaque contenu de balise <th> ne s’appliquant pas à la totalité de la ligne ou de la colonne, la balise <th> vérifie-t-elle ces conditions ?\n- La balise <th> ne possède pas d’attribut scope ;\n- La balise <th> ne possède pas d’attribut WAI-ARIA role=\"rowheader\" ou role=\"columnheader\" ;\n- La balise <th> possède un attribut id unique."
+    },
+    {
+      "id": "5.7.4",
+      "title": "Pour chaque contenu de balise <td> ou <th> associée à un ou plusieurs en-têtes possédant un attribut id, la balise vérifie-t-elle ces conditions ?\n- La balise possède un attribut headers ;\n- L’attribut headers possède la liste des valeurs d’attribut id des en-têtes associés."
+    },
+    {
+      "id": "5.7.5",
+      "title": "Pour chaque balise pourvue d’un attribut WAI-ARIA role=\"rowheader\" ou role=\"columnheader\" dont le contenu s’applique à la totalité de la ligne ou de la colonne, la balise vérifie-t-elle une de ces conditions ?\n- La balise possède un attribut WAI-ARIA role=\"rowheader\" pour les en-têtes de ligne ;\n- La balise possède un attribut WAI-ARIA role=\"columnheader\" pour les en-têtes de colonne."
+    },
+    {
+      "id": "5.8.1",
+      "title": "Chaque tableau de mise en forme (balise <table>) vérifie-t-il ces conditions ?\n- Le tableau de mise en forme (balise <table>) n’a pas d’attribut summary (sinon vide) et ne contient pas de balises <caption>, <th>, <thead>, <tfoot>, <colgroup> ou de balises ayant un attribut WAI-ARIA role=\"rowheader\", role=\"columnheader\" ;\n- Les cellules du tableau de mise en forme (balises <td>) ne possèdent pas d’attributs scope, headers, axis."
+    },
+    {
+      "id": "6.1.1",
+      "title": "Chaque lien texte vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- L’intitulé de lien seul permet d’en comprendre la fonction et la destination ;\n- L’intitulé de lien additionné au contexte du lien permet d’en comprendre la fonction et la destination."
+    },
+    {
+      "id": "6.1.2",
+      "title": "Chaque lien image vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- L’intitulé de lien seul permet d’en comprendre la fonction et la destination ;\n- L’intitulé de lien additionné au contexte du lien permet d’en comprendre la fonction et la destination."
+    },
+    {
+      "id": "6.1.3",
+      "title": "Chaque lien composite vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- L’intitulé de lien seul permet d’en comprendre la fonction et la destination ;\n- L’intitulé de lien additionné au contexte du lien permet d’en comprendre la fonction et la destination."
+    },
+    {
+      "id": "6.1.4",
+      "title": "Chaque lien SVG vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- L’intitulé de lien seul permet d’en comprendre la fonction et la destination ;\n- L’intitulé de lien additionné au contexte du lien permet d’en comprendre la fonction et la destination."
+    },
+    {
+      "id": "6.1.5",
+      "title": "Pour chaque lien ayant un intitulé visible, le nom accessible du lien contient-il au moins l’intitulé visible (hors cas particuliers) ?"
+    },
+    {
+      "id": "6.2.1",
+      "title": "Dans chaque page web, chaque lien a-t-il un intitulé entre <a> et </a> ?"
+    },
+    {
+      "id": "7.1.1",
+      "title": "Chaque script qui génère ou contrôle un composant d’interface vérifie-t-il, si nécessaire, une de ces conditions ?\n- Le nom, le rôle, la valeur, le paramétrage et les changements d’états sont accessibles aux technologies d’assistance via une API d’accessibilité ;\n- Un composant d’interface accessible permettant d’accéder aux mêmes fonctionnalités est présent dans la page ;\n- Une alternative accessible permet d’accéder aux mêmes fonctionnalités."
+    },
+    {
+      "id": "7.1.2",
+      "title": "Chaque script qui génère ou contrôle un composant d’interface respecte-t-il une de ces conditions ?\n- Le composant d’interface est correctement restitué par les technologies d’assistance ;\n- Une alternative accessible permet d’accéder aux mêmes fonctionnalités."
+    },
+    {
+      "id": "7.1.3",
+      "title": "Chaque script qui génère ou contrôle un composant d’interface vérifie-t-il ces conditions (hors cas particuliers) ?\n- Le composant possède un nom pertinent ;\n- Le nom accessible du composant contient au moins l’intitulé visible ;\n- Le composant possède un rôle pertinent."
+    },
+    {
+      "id": "7.2.1",
+      "title": "Chaque script débutant par la balise <script> et ayant une alternative vérifie-t-il une de ces conditions ?\n- L’alternative entre <noscript> et </noscript> permet d’accéder à des contenus et des fonctionnalités similaires ;\n- La page affichée, lorsque JavaScript est désactivé, permet d’accéder à des contenus et des fonctionnalités similaires ;\n- La page alternative permet d’accéder à des contenus et des fonctionnalités similaires ;\n- Le langage de script côté serveur permet d’accéder à des contenus et des fonctionnalités similaires ;\n- L’alternative présente dans la page permet d’accéder à des contenus et des fonctionnalités similaires."
+    },
+    {
+      "id": "7.2.2",
+      "title": "Chaque élément non textuel mis à jour par un script (dans la page, ou dans un cadre) et ayant une alternative vérifie-t-il ces conditions ?\n- L’alternative de l’élément non textuel est mise à jour ;\n- L’alternative mise à jour est pertinente."
+    },
+    {
+      "id": "7.3.1",
+      "title": "Chaque élément possédant un gestionnaire d’événement contrôlé par un script vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- L’élément est accessible par le clavier et tout dispositif de pointage ;\n- Un élément accessible par le clavier et tout dispositif de pointage permettant de réaliser la même action est présent dans la page."
+    },
+    {
+      "id": "7.3.2",
+      "title": "Un script ne doit pas supprimer le focus d’un élément qui le reçoit. Cette règle est-elle respectée (hors cas particuliers) ?"
+    },
+    {
+      "id": "7.4.1",
+      "title": "Chaque script qui initie un changement de contexte vérifie-t-il une de ces conditions ?\n- L’utilisateur est averti par un texte de l’action du script et du type de changement avant son déclenchement ;\n- Le changement de contexte est initié par un bouton (input de type submit, button ou image ou balise <button>) explicite ;\n- Le changement de contexte est initié par un lien explicite."
+    },
+    {
+      "id": "7.5.1",
+      "title": "Chaque message de statut qui informe de la réussite, du résultat d’une action ou bien de l’état d’une application utilise-t-il l’attribut WAI-ARIA role=\"status\" ?"
+    },
+    {
+      "id": "7.5.2",
+      "title": "Chaque message de statut qui présente une suggestion, ou avertit de l’existence d’une erreur utilise-t-il l’attribut WAI-ARIA role=\"alert\" ?"
+    },
+    {
+      "id": "7.5.3",
+      "title": "Chaque message de statut qui indique la progression d’un processus utilise-t-il l’un des attributs WAI-ARIA role=\"log\", role=\"progressbar\" ou role=\"status\" ?"
+    },
+    {
+      "id": "8.1.1",
+      "title": "Pour chaque page web, le type de document (balise doctype) est-il présent ?"
+    },
+    {
+      "id": "8.1.2",
+      "title": "Pour chaque page web, le type de document (balise doctype) est-il valide ?"
+    },
+    {
+      "id": "8.1.3",
+      "title": "Pour chaque page web possédant une déclaration de type de document, celle-ci est-elle située avant la balise <html> dans le code source ?"
+    },
+    {
+      "id": "8.2.1",
+      "title": "Pour chaque déclaration de type de document, le code source généré de la page vérifie-t-il ces conditions ?\n- Les balises, attributs et valeurs d’attributs respectent les règles d’écriture ;\n- L’imbrication des balises est conforme ;\n- L’ouverture et la fermeture des balises sont conformes ;\n- Les valeurs d’attribut id sont uniques dans la page ;\n- Les attributs ne sont pas doublés sur un même élément."
+    },
+    {
+      "id": "8.3.1",
+      "title": "Pour chaque page web, l’indication de langue par défaut vérifie-t-elle une de ces conditions ?\n- L’indication de la langue de la page (attribut lang et/ou xml:lang) est donnée pour l’élément html ;\n- L’indication de la langue de la page (attribut lang et/ou xml:lang) est donnée sur chaque élément de texte ou sur l’un des éléments parents."
+    },
+    {
+      "id": "8.4.1",
+      "title": "Pour chaque page web ayant une langue par défaut, le code de langue vérifie-t-il ces conditions ?\n- Le code de langue est valide ;\n- Le code de langue est pertinent."
+    },
+    {
+      "id": "8.5.1",
+      "title": "Chaque page web a-t-elle un titre de page (balise <title>) ?"
+    },
+    {
+      "id": "8.6.1",
+      "title": "Pour chaque page web ayant un titre de page (balise <title>), le contenu de cette balise est-il pertinent ?"
+    },
+    {
+      "id": "8.7.1",
+      "title": "Dans chaque page web, chaque texte écrit dans une langue différente de la langue par défaut vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- L’indication de langue est donnée sur l’élément contenant le texte (attribut lang et/ou xml:lang) ;\n- L’indication de langue est donnée sur un des éléments parents (attribut lang et/ou xml:lang)."
+    },
+    {
+      "id": "8.8.1",
+      "title": "Pour chaque page web, le code de langue de chaque changement de langue vérifie-t-il ces conditions ?\n- Le code de langue est valide ;\n- Le code de langue est pertinent."
+    },
+    {
+      "id": "8.9.1",
+      "title": "Dans chaque page web les balises (à l’exception de <div>, <span> et <table>) ne doivent pas être utilisées uniquement à des fins de présentation. Cette règle est-elle respectée ?"
+    },
+    {
+      "id": "8.10.1",
+      "title": "Dans chaque page web, chaque texte dont le sens de lecture est différent du sens de lecture par défaut est contenu dans une balise possédant un attribut dir ?"
+    },
+    {
+      "id": "8.10.2",
+      "title": "Dans chaque page web, chaque changement du sens de lecture (attribut dir) vérifie-t-il ces conditions ?\n- La valeur de l’attribut dir est conforme (rtl ou ltr) ;\n- La valeur de l’attribut dir est pertinente."
+    },
+    {
+      "id": "9.1.1",
+      "title": "Dans chaque page web, la hiérarchie entre les titres (balise <hx> ou balise possédant un attribut WAI-ARIA role=\"heading\" associé à un attribut WAI-ARIA aria-level) est-elle pertinente ?"
+    },
+    {
+      "id": "9.1.2",
+      "title": "Dans chaque page web, le contenu de chaque titre (balise <hx> ou balise possédant un attribut WAI-ARIA role=\"heading\" associé à un attribut WAI-ARIA aria-level) est-il pertinent ?"
+    },
+    {
+      "id": "9.1.3",
+      "title": "Dans chaque page web, chaque passage de texte constituant un titre est-il structuré à l’aide d’une balise <hx> ou d’une balise possédant un attribut WAI-ARIA role=\"heading\" associé à un attribut WAI-ARIA aria-level ?"
+    },
+    {
+      "id": "9.2.1",
+      "title": "Dans chaque page web, la structure du document vérifie-t-elle ces conditions (hors cas particuliers) ?\n- La zone d’en-tête de la page est structurée via une balise <header> ;\n- Les zones de navigation principale et secondaire sont structurées via une balise <nav> ;\n- La balise <nav> est réservée à la structuration des zones de navigation principales et secondaires ;\n- La zone de contenu principal est structurée via une balise <main> ;\n- La structure du document utilise une balise <main> visible unique ;\n- La zone de pied de page est structurée via une balise <footer>."
+    },
+    {
+      "id": "9.3.1",
+      "title": "Dans chaque page web, les informations regroupées visuellement sous forme de liste non ordonnée vérifient-elles une de ces conditions ?\n- La liste utilise les balises HTML <ul> et <li> ;\n- La liste utilise les attributs WAI-ARIA role=\"list\" et role=\"listitem\"."
+    },
+    {
+      "id": "9.3.2",
+      "title": "Dans chaque page web, les informations regroupées visuellement sous forme de liste ordonnée vérifient-elles une de ces conditions ?\n- La liste utilise les balises HTML <ol> et <li> ;\n- La liste utilise les attributs WAI-ARIA role=\"list\" et role=\"listitem\"."
+    },
+    {
+      "id": "9.3.3",
+      "title": "Dans chaque page web, les informations regroupées sous forme de liste de description utilisent-elles les balises <dl> et <dt>/<dd> ?"
+    },
+    {
+      "id": "9.4.1",
+      "title": "Dans chaque page web, chaque citation courte utilise-t-elle une balise <q> ?"
+    },
+    {
+      "id": "9.4.2",
+      "title": "Dans chaque page web, chaque bloc de citation utilise-t-il une balise <blockquote> ?"
+    },
+    {
+      "id": "10.1.1",
+      "title": "Dans chaque page web, les balises servant à la présentation de l’information ne doivent pas être présentes dans le code source généré des pages. Cette règle est-elle respectée ?"
+    },
+    {
+      "id": "10.1.2",
+      "title": "Dans chaque page web, les attributs servant à la présentation de l’information ne doivent pas être présents dans le code source généré des pages. Cette règle est-elle respectée ?"
+    },
+    {
+      "id": "10.1.3",
+      "title": "Dans chaque page web, l’utilisation des espaces vérifie-t-elle ces conditions ?\n- Les espaces ne sont pas utilisées pour séparer les lettres d’un mot ;\n- Les espaces ne sont pas utilisées pour simuler des tableaux ;\n- Les espaces ne sont pas utilisées pour simuler des colonnes de texte."
+    },
+    {
+      "id": "10.2.1",
+      "title": "Dans chaque page web, l’information reste-t-elle présente lorsque les feuilles de styles sont désactivées ?"
+    },
+    {
+      "id": "10.3.1",
+      "title": "Dans chaque page web, l’information reste-t-elle compréhensible lorsque les feuilles de styles sont désactivées ?"
+    },
+    {
+      "id": "10.4.1",
+      "title": "Dans chaque page web, l’augmentation de la taille des caractères jusqu’à 200%, au moins, ne doit pas provoquer de perte d’information. Cette règle est-elle respectée selon une de ces conditions (hors cas particuliers) ?\n- Lors de l’utilisation de la fonction d’agrandissement du texte du navigateur ;\n- Lors de l’utilisation des fonctions de zoom graphique du navigateur ;\n- Lors de l’utilisation d’un composant d’interface propre au site permettant d’agrandir le texte ou de zoomer."
+    },
+    {
+      "id": "10.4.2",
+      "title": "Dans chaque page web, l’augmentation de la taille des caractères jusqu’à 200%, au moins, doit être possible pour l’ensemble du texte dans la page. Cette règle est-elle respectée selon une de ces conditions (hors cas particuliers) ?\n- Lors de l’utilisation de la fonction d’agrandissement du texte du navigateur ;\n- Lors de l’utilisation des fonctions de zoom graphique du navigateur ;\n- Lors de l’utilisation d’un composant d’interface propre au site permettant d’agrandir le texte ou de zoomer."
+    },
+    {
+      "id": "10.5.1",
+      "title": "Dans chaque page web, chaque déclaration CSS de couleurs de police (color), d’un élément susceptible de contenir du texte, est-elle accompagnée d’une déclaration de couleur de fond (background, background-color), au moins, héritée d’un parent ?"
+    },
+    {
+      "id": "10.5.2",
+      "title": "Dans chaque page web, chaque déclaration de couleur de fond (background, background-color), d’un élément susceptible de contenir du texte, est-elle accompagnée d’une déclaration de couleur de police (color) au moins, héritée d’un parent ?"
+    },
+    {
+      "id": "10.5.3",
+      "title": "Dans chaque page web, chaque utilisation d’une image pour créer une couleur de fond d’un élément susceptible de contenir du texte, via CSS (background, background-image), est-elle accompagnée d’une déclaration de couleur de fond (background, background-color), au moins, héritée d’un parent ?"
+    },
+    {
+      "id": "10.6.1",
+      "title": "Dans chaque page web, chaque lien texte signalé uniquement par la couleur, et dont la nature n’est pas évidente, vérifie-t-il ces conditions ?\n- La couleur du lien a un rapport de contraste supérieur ou égal à 3:1 par rapport au texte environnant ;\n- Le lien dispose d’une indication visuelle au survol autre qu’un changement de couleur ;\n- Le lien dispose d’une indication visuelle au focus autre qu’un changement de couleur."
+    },
+    {
+      "id": "10.7.1",
+      "title": "Pour chaque élément recevant le focus, la prise de focus vérifie-t-elle une de ces conditions ?\n- Le style du focus natif du navigateur n’est pas supprimé ou dégradé ;\n- Un style du focus défini par l’auteur est visible."
+    },
+    {
+      "id": "10.8.1",
+      "title": "Dans chaque page web, chaque contenu caché vérifie-t-il une de ces conditions ?\n- Le contenu caché a vocation à être ignoré par les technologies d’assistance ;\n- Le contenu caché n’a pas vocation à être ignoré par les technologies d’assistance et est rendu restituable par les technologies d’assistance suite à une action de l’utilisateur réalisable au clavier ou par tout dispositif de pointage sur un élément précédent le contenu caché ou suite à un repositionnement du focus dessus."
+    },
+    {
+      "id": "10.9.1",
+      "title": "Dans chaque page web, pour chaque texte ou ensemble de textes, l’information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée ?"
+    },
+    {
+      "id": "10.9.2",
+      "title": "Dans chaque page web, pour chaque image ou ensemble d’images, l’information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée ?"
+    },
+    {
+      "id": "10.9.3",
+      "title": "Dans chaque page web, pour chaque média temporel, l’information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée ?"
+    },
+    {
+      "id": "10.9.4",
+      "title": "Dans chaque page web, pour chaque média non temporel, l’information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée ?"
+    },
+    {
+      "id": "10.10.1",
+      "title": "Dans chaque page web, pour chaque texte ou ensemble de textes, l’information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle implémentée de façon pertinente ?"
+    },
+    {
+      "id": "10.10.2",
+      "title": "Dans chaque page web, pour chaque image ou ensemble d’images, l’information ne doit pas être donnée par la forme, taille ou position uniquement. Cette règle est-elle implémentée de façon pertinente ?"
+    },
+    {
+      "id": "10.10.3",
+      "title": "Dans chaque page web, pour chaque média temporel, l’information ne doit pas être donnée par la forme, taille ou position uniquement. Cette règle est-elle implémentée de façon pertinente ?"
+    },
+    {
+      "id": "10.10.4",
+      "title": "Dans chaque page web, pour chaque média non temporel, l’information ne doit pas être donnée par la forme, taille ou position uniquement. Cette règle est-elle implémentée de façon pertinente ?"
+    },
+    {
+      "id": "10.11.1",
+      "title": "Pour chaque page web, lorsque le contenu dont le sens de lecture est horizontal est affiché dans une fenêtre réduite à une largeur de 320px, l’ensemble des informations et des fonctionnalités sont-elles disponibles sans aucun défilement horizontal (hors cas particuliers) ?"
+    },
+    {
+      "id": "10.11.2",
+      "title": "Pour chaque page web, lorsque le contenu dont le sens de lecture est vertical est affiché dans une fenêtre réduite à une hauteur de 256px, l’ensemble des informations et des fonctionnalités sont-elles disponibles sans aucun défilement vertical (hors cas particuliers) ?"
+    },
+    {
+      "id": "10.12.1",
+      "title": "Dans chaque page web, le texte reste-t-il lisible lorsque l’affichage est modifié selon ces conditions (hors cas particuliers) ?\n- L’espacement entre les lignes (line-height) est augmenté jusqu’à 1,5 fois la taille de la police ;\n- L’espacement suivant les paragraphes (balise <p>) est augmenté jusqu’à 2 fois la taille de la police ;\n- L’espacement des lettres (letter-spacing) est augmenté jusqu’à 0,12 fois la taille de la police ;\n- L’espacement des mots (word-spacing) est augmenté jusqu’à 0,16 fois la taille de la police."
+    },
+    {
+      "id": "10.13.1",
+      "title": "Chaque contenu additionnel devenant visible à la prise de focus ou au survol d’un composant d’interface peut-il être masqué par une action de l’utilisateur sans déplacer le focus ou le pointeur de la souris (hors cas particuliers) ?"
+    },
+    {
+      "id": "10.13.2",
+      "title": "Chaque contenu additionnel qui apparait au survol d’un composant d’interface peut-il être survolé par le pointeur de la souris sans disparaître (hors cas particuliers) ?"
+    },
+    {
+      "id": "10.13.3",
+      "title": "Chaque contenu additionnel qui apparaît à la prise de focus ou au survol d’un composant d’interface vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- Le contenu additionnel reste visible jusqu’à ce que l’utilisateur retire le pointeur souris ou le focus du contenu additionnel et du composant d’interface ayant déclenché son apparition ;\n- Le contenu additionnel reste visible jusqu’à ce que l’utilisateur déclenche une action masquant ce contenu sans déplacer le focus ou le pointeur de la souris du composant d’interface ayant déclenché son apparition ;\n- Le contenu additionnel reste visible jusqu’à ce qu’il ne soit plus valide."
+    },
+    {
+      "id": "10.14.1",
+      "title": "Dans chaque page web, les contenus additionnels apparaissant au survol d’un composant d’interface via les styles CSS respectent-ils si nécessaire une de ces conditions ?\n- Les contenus additionnels apparaissent également à l’activation du composant via le clavier et tout dispositif de pointage ;\n- Les contenus additionnels apparaissent également à la prise de focus du composant ;\n- Les contenus additionnels apparaissent également par le biais de l’activation ou de la prise de focus d’un autre composant."
+    },
+    {
+      "id": "10.14.2",
+      "title": "Dans chaque page web, les contenus additionnels apparaissant au focus d’un composant d’interface via les styles CSS respectent-ils si nécessaire une de ces conditions ?\n- Les contenus additionnels apparaissent également à l’activation du composant via le clavier et tout dispositif de pointage ;\n- Les contenus additionnels apparaissent également au survol du composant ;\n- Les contenus additionnels apparaissent également par le biais de l’activation ou du survol d’un autre composant."
+    },
+    {
+      "id": "11.1.1",
+      "title": "Chaque champ de formulaire vérifie-t-il une de ces conditions ?\n- Le champ de formulaire possède un attribut WAI-ARIA aria-labelledby référençant un passage de texte identifié ;\n- Le champ de formulaire possède un attribut WAI-ARIA aria-label ;\n- Une balise <label> ayant un attribut for est associée au champ de formulaire ;\n- Le champ de formulaire possède un attribut title ;\n- Un bouton adjacent au champ de formulaire lui fournit une étiquette visible et un élément <label> visuellement caché ou un attribut WAI-ARIA aria-label, aria-labelledby ou title lui fournit un nom accessible."
+    },
+    {
+      "id": "11.1.2",
+      "title": "Chaque champ de formulaire associé à une balise <label> ayant un attribut for, vérifie-t-il ces conditions ?\n- Le champ de formulaire possède un attribut id ;\n- La valeur de l’attribut for est égale à la valeur de l’attribut id du champ de formulaire associé."
+    },
+    {
+      "id": "11.1.3",
+      "title": "Chaque champ de formulaire ayant une étiquette dont le contenu n’est pas visible ou à proximité (masqué, aria-label) ou qui n’est pas accolé au champ (aria-labelledby), vérifie-t-il une de ses conditions ?\n- Le champ de formulaire possède un attribut title dont le contenu permet de comprendre la nature de la saisie attendue ;\n- Le champ de formulaire est accompagné d’un passage de texte accolé au champ qui devient visible à la prise de focus permettant de comprendre la nature de la saisie attendue ;\n- Le champ de formulaire est accompagné d’un passage de texte visible accolé au champ permettant de comprendre la nature de la saisie attendue."
+    },
+    {
+      "id": "11.2.1",
+      "title": "Chaque balise <label> permet-elle de connaître la fonction exacte du champ de formulaire auquel elle est associée ?"
+    },
+    {
+      "id": "11.2.2",
+      "title": "Chaque attribut title permet-il de connaître la fonction exacte du champ de formulaire auquel il est associé ?"
+    },
+    {
+      "id": "11.2.3",
+      "title": "Chaque étiquette implémentée via l’attribut WAI-ARIA aria-label permet-elle de connaître la fonction exacte du champ de formulaire auquel elle est associée ?"
+    },
+    {
+      "id": "11.2.4",
+      "title": "Chaque passage de texte associé via l’attribut WAI-ARIA aria-labelledby permet-il de connaître la fonction exacte du champ de formulaire auquel il est associé ?"
+    },
+    {
+      "id": "11.2.5",
+      "title": "Chaque champ de formulaire ayant un intitulé visible vérifie-t-il ces conditions (hors cas particuliers) ?\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label du champ de formulaire contient au moins l’intitulé visible ;\n- S’il est présent, le passage de texte lié au champ de formulaire via un attribut WAI-ARIA aria-labelledby contient au moins l’intitulé visible ;\n- S’il est présent, le contenu de l’attribut title du champ de formulaire contient au moins l’intitulé visible ;\n- S’il est présent le contenu de la balise <label> associé au champ de formulaire contient au moins l’intitulé visible."
+    },
+    {
+      "id": "11.2.6",
+      "title": "Chaque bouton adjacent au champ de formulaire qui fournit une étiquette visible permet-il de connaître la fonction exacte du champ de formulaire auquel il est associé ?"
+    },
+    {
+      "id": "11.3.1",
+      "title": "Chaque étiquette associée à un champ de formulaire ayant la même fonction et répétée plusieurs fois dans une même page est-elle cohérente ?"
+    },
+    {
+      "id": "11.3.2",
+      "title": "Chaque étiquette associée à un champ de formulaire ayant la même fonction et répétée dans un ensemble de pages est-elle cohérente ?"
+    },
+    {
+      "id": "11.4.1",
+      "title": "Chaque étiquette de champ et son champ associé sont-ils accolés ?"
+    },
+    {
+      "id": "11.4.2",
+      "title": "Chaque étiquette accolée à un champ (à l’exception des cases à cocher, bouton radio ou balises ayant un attribut WAI-ARIA role=\"checkbox\", role=\"radio\" ou role=\"switch\"), vérifie-t-elle ces conditions (hors cas particuliers) ?\n- L’étiquette est visuellement accolée immédiatement au-dessus ou à gauche du champ de formulaire lorsque le sens de lecture de la langue de l’étiquette est de gauche à droite ;\n- L’étiquette est visuellement accolée immédiatement au-dessus ou à droite du champ de formulaire lorsque le sens de lecture de la langue de l’étiquette est de droite à gauche."
+    },
+    {
+      "id": "11.4.3",
+      "title": "Chaque étiquette accolée à un champ de type checkbox ou radio ou à une balise ayant un attribut WAI-ARIA role=\"checkbox\", role=\"radio\" ou role=\"switch\", vérifie-t-elle ces conditions (hors cas particuliers) ?\n- L’étiquette est visuellement accolée immédiatement au-dessous ou à droite du champ de formulaire lorsque le sens de lecture de la langue de l’étiquette est de gauche à droite ;\n- L’étiquette est visuellement accolée immédiatement au-dessous ou à gauche du champ de formulaire lorsque le sens de lecture de la langue de l’étiquette est de droite à gauche."
+    },
+    {
+      "id": "11.5.1",
+      "title": "Les champs de même nature vérifient-ils l’une de ces conditions, si nécessaire ?\n- Les champs de même nature sont regroupés dans une balise <fieldset> ;\n- Les champs de même nature sont regroupés dans une balise possédant un attribut WAI-ARIA role=\"group\" ;\n- Les champs de même nature de type radio (<input type=\"radio\">) ou balises possédant un attribut WAI-ARIA role=\"radio\") sont regroupés dans une balise possédant un attribut WAI-ARIA role=\"radiogroup\" ou role=\"group\"."
+    },
+    {
+      "id": "11.6.1",
+      "title": "Chaque regroupement de champs de même nature possède-t-il une légende ?"
+    },
+    {
+      "id": "11.7.1",
+      "title": "Chaque légende associée à un regroupement de champs de même nature est-elle pertinente ?"
+    },
+    {
+      "id": "11.8.1",
+      "title": "Pour chaque balise <select>, les items de même nature d’une liste de choix sont-ils regroupés avec une balise <optgroup>, si nécessaire ?"
+    },
+    {
+      "id": "11.8.2",
+      "title": "Dans chaque balise <select>, chaque balise <optgroup> possède-t-elle un attribut label ?"
+    },
+    {
+      "id": "11.8.3",
+      "title": "Pour chaque balise <optgroup> ayant un attribut label, le contenu de l’attribut label est-il pertinent ?"
+    },
+    {
+      "id": "11.9.1",
+      "title": "L’intitulé de chaque bouton est-il pertinent ?\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;\n- S’il est présent, le passage de texte lié au bouton via un attribut WAI-ARIA aria-labelledby est pertinent ;\n- S’il est présent, le contenu de l’attribut value d’une balise <input> de type submit, reset ou button est pertinent ;\n- S’il est présent, le contenu de la balise <button> est pertinent ;\n- S’il est présent, le contenu de l’attribut alt d’une balise <input> de type image est pertinent ;\n- S’il est présent, le contenu de l’attribut title est pertinent."
+    },
+    {
+      "id": "11.9.2",
+      "title": "Chaque bouton affichant un intitulé visible vérifie-t-il ces conditions (hors cas particuliers) ?\n- S’il est présent, le contenu de l’attribut WAI-ARIA aria-label contient au moins l’intitulé visible ;\n- S’il est présent, le passage de texte lié au bouton via un attribut WAI-ARIA aria-labelledby contient au moins l’intitulé visible ;\n- S’il est présent, le contenu de l’attribut value d’une balise <input> de type submit, reset ou button contient au moins l’intitulé visible ;\n- S’il est présent, le contenu de la balise <button> contient au moins l’intitulé visible ;\n- S’il est présent, le contenu de l’attribut alt d’une balise <input> de type image contient au moins l’intitulé visible ;\n- S’il est présent, le contenu de l’attribut title contient au moins l’intitulé visible."
+    },
+    {
+      "id": "11.10.1",
+      "title": "Les indications du caractère obligatoire de la saisie des champs vérifient-elles une de ces conditions (hors cas particuliers) ?\n- Une indication de champ obligatoire est visible et permet d’identifier nommément le champ concerné préalablement à la validation du formulaire ;\n- Le champ obligatoire dispose de l’attribut aria-required=\"true\" ou required préalablement à la validation du formulaire."
+    },
+    {
+      "id": "11.10.2",
+      "title": "Les champs obligatoires ayant l’attribut aria-required=\"true\" ou required vérifient-ils une de ces conditions ?\n- Une indication de champ obligatoire est visible et située dans l’étiquette associée au champ préalablement à la validation du formulaire ;\n- Une indication de champ obligatoire est visible et située dans le passage de texte associé au champ préalablement à la validation du formulaire."
+    },
+    {
+      "id": "11.10.3",
+      "title": "Les messages d’erreur indiquant l’absence de saisie d’un champ obligatoire vérifient-ils une de ces conditions ?\n- Le message d’erreur indiquant l’absence de saisie d’un champ obligatoire est visible et permet d’identifier nommément le champ concerné ;\n- Le champ obligatoire dispose de l’attribut aria-invalid=\"true\"."
+    },
+    {
+      "id": "11.10.4",
+      "title": "Les champs obligatoires ayant l’attribut aria-invalid=\"true\" vérifient-ils une de ces conditions ?\n- Le message d’erreur indiquant le caractère invalide de la saisie est visible et situé dans l’étiquette associée au champ ;\n- Le message d’erreur indiquant le caractère invalide de la saisie est visible et situé dans le passage de texte associé au champ."
+    },
+    {
+      "id": "11.10.5",
+      "title": "Les instructions et indications du type de données et/ou de format obligatoires vérifient-elles une de ces conditions ?\n- Une instruction ou une indication du type de données et/ou de format obligatoire est visible et permet d’identifier nommément le champ concerné préalablement à la validation du formulaire ;\n- Une instruction ou une indication du type de données et/ou de format obligatoire est visible dans l’étiquette ou le passage de texte associé au champ préalablement à la validation du formulaire."
+    },
+    {
+      "id": "11.10.6",
+      "title": "Les messages d’erreurs fournissant une instruction ou une indication du type de données et/ou de format obligatoire des champs vérifient-ils une de ces conditions ?\n- Le message d’erreur fournissant une instruction ou une indication du type de données et/ou de format obligatoires est visible et identifie le champ concerné ;\n- Le champ dispose de l’attribut aria-invalid=\"true\"."
+    },
+    {
+      "id": "11.10.7",
+      "title": "Les champs ayant l’attribut aria-invalid=\"true\" dont la saisie requiert un type de données et/ou de format obligatoires vérifient-ils une de ces conditions ?\n- Une instruction ou une indication du type de données et/ou de format obligatoire est visible et située dans la balise <label> associée au champ ;\n- Une instruction ou une indication du type de données et/ou de format obligatoire est visible et située dans le passage de texte associé au champ."
+    },
+    {
+      "id": "11.11.1",
+      "title": "Pour chaque erreur de saisie, les types et les formats de données sont-ils suggérés, si nécessaire ?"
+    },
+    {
+      "id": "11.11.2",
+      "title": "Pour chaque erreur de saisie, des exemples de valeurs attendues sont-ils suggérés, si nécessaire ?"
+    },
+    {
+      "id": "11.12.1",
+      "title": "Pour chaque formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou un examen, ou dont la validation a des conséquences financières ou juridiques, la saisie des données vérifie-t-elle une de ces conditions ?\n- L’utilisateur peut modifier ou annuler les données et les actions effectuées sur ces données après la validation du formulaire ;\n- L’utilisateur peut vérifier et corriger les données avant la validation d’un formulaire en plusieurs étapes ;\n- Un mécanisme de confirmation explicite, via une case à cocher (balise <input> de type checkbox ou balise ayant un attribut WAI-ARIA role=\"checkbox\") ou une étape supplémentaire, est présent."
+    },
+    {
+      "id": "11.12.2",
+      "title": "Chaque formulaire dont la validation modifie ou supprime des données à caractère financier, juridique ou personnel vérifie-t-il une de ces conditions ?\n- Un mécanisme permet de récupérer les données supprimées ou modifiées par l’utilisateur ;\n- Un mécanisme de demande de confirmation explicite de la suppression ou de la modification, via un champ de formulaire ou une étape supplémentaire, est proposé."
+    },
+    {
+      "id": "11.13.1",
+      "title": "Chaque champ de formulaire dont l’objet se rapporte à une information concernant l’utilisateur vérifie-t-il ces conditions ?\n- Le champ de formulaire possède un attribut autocomplete ;\n- L’attribut autocomplete est pourvu d’une valeur présente dans la liste des valeurs possibles pour l’attribut autocomplete associés à un champ de formulaire ;\n- La valeur indiquée pour l’attribut autocomplete est pertinente au regard du type d’information attendu."
+    },
+    {
+      "id": "12.1.1",
+      "title": "Chaque ensemble de pages vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- Un menu de navigation et un plan du site sont présents ;\n- Un menu de navigation et un moteur de recherche sont présents ;\n- Un moteur de recherche et un plan du site sont présents."
+    },
+    {
+      "id": "12.2.1",
+      "title": "Dans chaque ensemble de pages, chaque page disposant d’un menu ou de barres de navigation vérifie-t-elle ces conditions (hors cas particuliers) ?\n- Le menu ou les barres de navigation sont toujours à la même place dans la présentation ;\n- Le menu ou les barres de navigation se présentent toujours dans le même ordre relatif dans le code source."
+    },
+    {
+      "id": "12.3.1",
+      "title": "La page « plan du site » est-elle représentative de l’architecture générale du site ?"
+    },
+    {
+      "id": "12.3.2",
+      "title": "Les liens du plan du site sont-ils fonctionnels ?"
+    },
+    {
+      "id": "12.3.3",
+      "title": "Les liens du plan du site renvoient-ils bien vers les pages indiquées par l’intitulé ?"
+    },
+    {
+      "id": "12.4.1",
+      "title": "Dans chaque ensemble de pages, la page « plan du site » est-elle accessible à partir d’une fonctionnalité identique ?"
+    },
+    {
+      "id": "12.4.2",
+      "title": "Dans chaque ensemble de pages, la fonctionnalité vers la page « plan du site » est-elle située à la même place dans la présentation ?"
+    },
+    {
+      "id": "12.4.3",
+      "title": "Dans chaque ensemble de pages, la fonctionnalité vers la page « plan du site » se présente-t-elle toujours dans le même ordre relatif dans le code source ?"
+    },
+    {
+      "id": "12.5.1",
+      "title": "Dans chaque ensemble de pages, le moteur de recherche est-il accessible à partir d’une fonctionnalité identique ?"
+    },
+    {
+      "id": "12.5.2",
+      "title": "Dans chaque ensemble de pages, la fonctionnalité vers le moteur de recherche est-elle située à la même place dans la présentation ?"
+    },
+    {
+      "id": "12.5.3",
+      "title": "Dans chaque ensemble de pages, la fonctionnalité vers le moteur de recherche se présente-t-elle toujours dans le même ordre relatif dans le code source ?"
+    },
+    {
+      "id": "12.6.1",
+      "title": "Dans chaque page web où elles sont présentes, la zone d’en-tête, de navigation principale, de contenu principal, de pied de page et de moteur de recherche respectent-elles au moins une de ces conditions :\n- La zone possède un rôle WAI-ARIA de type landmark correspondant à sa nature ;\n- La zone possède un titre dont le contenu permet de comprendre la nature du contenu de la zone ;\n- La zone peut être masquée par le biais d’un bouton précédent directement la zone dans l’ordre du code source ;\n- La zone peut être évitée par le biais d’un lien d’évitement précédent directement la zone dans l’ordre du code source ;\n- La zone peut être atteinte par le biais d’un lien d’accès rapide visible ou, à défaut, visible à la prise de focus."
+    },
+    {
+      "id": "12.7.1",
+      "title": "Dans chaque page web, un lien permet-il d’éviter la zone de contenu principal ou d’y accéder (hors cas particuliers) ?"
+    },
+    {
+      "id": "12.7.2",
+      "title": "Dans chaque ensemble de pages, le lien d’évitement ou d’accès rapide à la zone de contenu principal vérifie-t-il ces conditions (hors cas particuliers) ?\n- Le lien est situé à la même place dans la présentation ;\n- Le lien se présente toujours dans le même ordre relatif dans le code source ;\n- Le lien est visible ou, à défaut, visible à la prise de focus ;\n- Le lien est fonctionnel."
+    },
+    {
+      "id": "12.8.1",
+      "title": "Dans chaque page web, l’ordre de tabulation dans le contenu est-il cohérent ?"
+    },
+    {
+      "id": "12.8.2",
+      "title": "Pour chaque script qui met à jour ou insère un contenu, l’ordre de tabulation reste-t-il cohérent ?"
+    },
+    {
+      "id": "12.9.1",
+      "title": "Dans chaque page web, chaque élément recevant le focus vérifie-t-il une de ces conditions ?\n- Il est possible d’atteindre l’élément suivant ou précédent pouvant recevoir le focus avec la touche de tabulation ;\n- L’utilisateur est informé d’un mécanisme fonctionnel permettant d’atteindre au clavier l’élément suivant ou précédent pouvant recevoir le focus."
+    },
+    {
+      "id": "12.10.1",
+      "title": "Dans chaque page web, chaque raccourci clavier n’utilisant qu’une seule touche (lettre minuscule ou majuscule, ponctuation, chiffre ou symbole) vérifie-t-il l’une de ces conditions ?\n- Un mécanisme est disponible pour désactiver le raccourci clavier ;\n- Un mécanisme est disponible pour configurer la touche de raccourci clavier au moyen des touches de modification (Ctrl, Alt, Maj, etc) ;\n- Dans le cas d’un composant d’interface utilisateur, le raccourci clavier qui lui est associé ne peut être activé que si le focus clavier est sur ce composant."
+    },
+    {
+      "id": "12.11.1",
+      "title": "Dans chaque page web, les contenus additionnels apparaissant au survol, à la prise de focus ou à l’activation d’un composant d’interface sont-ils si nécessaire atteignables au clavier ?"
+    },
+    {
+      "id": "13.1.1",
+      "title": "Pour chaque page web, chaque procédé de rafraîchissement (balise <object>, balise <embed>, balise <svg>, balise <canvas>, balise <meta>) vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- L’utilisateur peut arrêter ou relancer le rafraîchissement ;\n- L’utilisateur peut augmenter la limite de temps entre deux rafraîchissements de dix fois, au moins ;\n- L’utilisateur est averti de l’imminence du rafraîchissement et dispose de vingt secondes, au moins, pour augmenter la limite de temps avant le prochain rafraîchissement ;\n- La limite de temps entre deux rafraîchissements est de vingt heures, au moins."
+    },
+    {
+      "id": "13.1.2",
+      "title": "Pour chaque page web, chaque procédé de redirection effectué via une balise <meta> est-il immédiat (hors cas particuliers) ?"
+    },
+    {
+      "id": "13.1.3",
+      "title": "Pour chaque page web, chaque procédé de redirection effectué via un script vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- L’utilisateur peut arrêter ou relancer la redirection ;\n- L’utilisateur peut augmenter la limite de temps avant la redirection de dix fois, au moins ;\n- L’utilisateur est averti de l’imminence de la redirection et dispose de vingt secondes, au moins, pour augmenter la limite de temps avant la prochaine redirection ;\n- La limite de temps avant la redirection est de vingt heures, au moins."
+    },
+    {
+      "id": "13.1.4",
+      "title": "Pour chaque page web, chaque procédé limitant le temps d’une session vérifie-t-il une de ces conditions (hors cas particuliers) ?\n- L’utilisateur peut supprimer la limite de temps ;\n- L’utilisateur peut augmenter la limite de temps ;\n- La limite de temps avant la fin de la session est de vingt heures au moins."
+    },
+    {
+      "id": "13.2.1",
+      "title": "Dans chaque page web, l’ouverture d’une nouvelle fenêtre ne doit pas être déclenchée sans action de l’utilisateur. Cette règle est-elle respectée ?"
+    },
+    {
+      "id": "13.3.1",
+      "title": "Dans chaque page web, chaque fonctionnalité de téléchargement d’un document bureautique vérifie-t-elle une de ces conditions ?\n- Le document en téléchargement est compatible avec l’accessibilité ;\n- Il existe une version alternative du document en téléchargement compatible avec l’accessibilité ;\n- Il existe une version alternative du document en téléchargement au format HTML."
+    },
+    {
+      "id": "13.4.1",
+      "title": "Chaque document bureautique ayant une version accessible vérifie-t-il une de ces conditions ?\n- La version compatible avec l’accessibilité offre la même information ;\n- La version alternative au format HTML est pertinente et offre la même information."
+    },
+    {
+      "id": "13.5.1",
+      "title": "Dans chaque page web, chaque contenu cryptique (art ASCII, émoticône, syntaxe cryptique) vérifie-t-il une de ces conditions ?\n- Un attribut title est disponible ;\n- Une définition est donnée par le contexte adjacent."
+    },
+    {
+      "id": "13.6.1",
+      "title": "Dans chaque page web, chaque contenu cryptique (art ASCII, émoticône, syntaxe cryptique) vérifie-t-il une de ces conditions ?\n- Le contenu de l’attribut title est pertinent ;\n- La définition donnée par le contexte adjacent est pertinente."
+    },
+    {
+      "id": "13.7.1",
+      "title": "Dans chaque page web, chaque image ou élément multimédia (balise <video>, balise <img>, balise <svg>, balise <canvas>, balise <embed> ou balise <object>) qui provoque un changement brusque de luminosité ou un effet de flash vérifie-t-il une de ces conditions ?\n- La fréquence de l’effet est inférieure à 3 par seconde ;\n- La surface totale cumulée des effets est inférieure ou égale à 21824 pixels."
+    },
+    {
+      "id": "13.7.2",
+      "title": "Dans chaque page web, chaque script qui provoque un changement brusque de luminosité ou un effet de flash vérifie-t-il une de ces conditions ?\n- La fréquence de l’effet est inférieure à 3 par seconde ;\n- La surface totale cumulée des effets est inférieure ou égale à 21824 pixels."
+    },
+    {
+      "id": "13.7.3",
+      "title": "Dans chaque page web, chaque mise en forme CSS qui provoque un changement brusque de luminosité ou un effet de flash vérifie-t-elle une de ces conditions ?\n- La fréquence de l’effet est inférieure à 3 par seconde ;\n- La surface totale cumulée des effets est inférieure ou égale à 21824 pixels."
+    },
+    {
+      "id": "13.8.1",
+      "title": "Dans chaque page web, chaque contenu en mouvement déclenché automatiquement, vérifie-t-il une de ces conditions ?\n- La durée du mouvement est inférieure ou égale à 5 secondes ;\n- L’utilisateur peut arrêter et relancer le mouvement ;\n- L’utilisateur peut afficher et masquer le contenu en mouvement ;\n- L’utilisateur peut afficher la totalité de l’information sans le mouvement."
+    },
+    {
+      "id": "13.8.2",
+      "title": "Dans chaque page web, chaque contenu clignotant déclenché automatiquement, vérifie-t-il une de ces conditions ?\n- La durée du clignotement est inférieure ou égale à 5 secondes ;\n- L’utilisateur peut arrêter et relancer le clignotement ;\n- L’utilisateur peut afficher et masquer le contenu clignotant ;\n- L’utilisateur peut afficher la totalité de l’information sans le clignotement."
+    },
+    {
+      "id": "13.9.1",
+      "title": "Dans chaque page web, chaque contenu vérifie-t-il ces conditions (hors cas particuliers) ?\n- La consultation est possible quel que soit le mode d’orientation de l’écran ;\n- Le contenu proposé reste le même quel que soit le mode d’orientation de l’écran utilisé même si sa présentation et le moyen d’y accéder peut différer."
+    },
+    {
+      "id": "13.10.1",
+      "title": "Dans chaque page web, chaque fonctionnalité utilisable ou disponible suite à un contact multipoint est-elle également utilisable ou disponible suite à un contact en un point unique de l’écran (hors cas particuliers)."
+    },
+    {
+      "id": "13.10.2",
+      "title": "Dans chaque page web, chaque fonctionnalité utilisable ou disponible suite à un geste basé sur le suivi d’une trajectoire sur l’écran est-elle également utilisable ou disponible suite à un contact en un point unique de l’écran (hors cas particuliers)."
+    },
+    {
+      "id": "13.11.1",
+      "title": "Dans chaque page web, les actions déclenchées au moyen d’un dispositif de pointage sur un point unique de l’écran vérifient-elles l’une de ces conditions (hors cas particuliers) ?\n- L’action est déclenchée au moment où le dispositif de pointage est relâché ou relevé ;\n- L’action est déclenchée au moment où le dispositif de pointage est pressé ou posé puis annulée lorsque le dispositif de pointage est relâché ou relevé ;\n- Un mécanisme est disponible pour abandonner (avant achèvement de l’action) ou annuler (après achèvement) l’exécution de l’action."
+    },
+    {
+      "id": "13.12.1",
+      "title": "Dans chaque page web, les fonctionnalités disponibles en bougeant l’appareil peuvent-elles être accomplies avec des composants d’interface utilisateur (hors cas particuliers) ?"
+    },
+    {
+      "id": "13.12.2",
+      "title": "Dans chaque page web, les fonctionnalités disponibles en faisant un geste en direction de l’appareil peuvent-elles être accomplies avec des composants d’interface utilisateur (hors cas particuliers) ?"
+    },
+    {
+      "id": "13.12.3",
+      "title": "L’utilisateur a-t-il la possibilité de désactiver la détection du mouvement pour éviter un déclenchement accidentel de la fonctionnalité (hors cas particuliers) ?"
+    }
+  ]
+}
