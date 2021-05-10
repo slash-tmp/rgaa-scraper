@@ -1,8 +1,8 @@
-# RGAA Crawler
+# RGAA Scraper
 
-Ce projet parcourt
+Ce projet est une librairie Node.js qui parcourt
 [la page **"Critères et tests"** du RGAA (Référentiel général d'amélioration de l'accessibilité)"](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/)
-afin de fournir l'ensemble des données au format texte brut (plain text).
+afin de fournir l'ensemble des données à jour au format texte brut (plain text).
 
 ⚠️ **Cette API est fournie en [scrapant](https://fr.wiktionary.org/wiki/scraper)
 la page cible et son code HTML. Par conséquent, si ce dernier change, il se peut
@@ -14,46 +14,25 @@ Installer le package :
 
 ```sh
 # Avec npm
-npm install @slash-tmp/rgaa-crawler
+npm install @slash-tmp/rgaa-scraper
 
 # Avec yarn
-yarn add @slash-tmp/rgaa-crawler
+yarn add @slash-tmp/rgaa-scraper
 ```
 
-La fonction `crawlRgaa()` (**utilisable côté serveur uniquement**), renvoie une
-promesse qui permet de récupérer les résultats :
+La fonction `scrapeRgaa()` renvoie une promesse qui permet de récupérer les
+résultats :
 
 ```javascript
-const { crawlRgaa } = require('rgaa-crawler')
+const { scrapeRgaa } = require('@slash-tmp/rgaa-scraper')
 
-crawlRgaa().then(rgaaData => {
+scrapeRgaa().then(rgaaData => {
   console.log(
     `Fetched ${rgaaData.topics().length} topics, ${
       rgaaData.criteria().length
     } criteria and ${rgaaData.tests().length} tests.`
   )
 })
-```
-
-Les classes `RgaaTopicWrapper`, `RgaaCriterionWrapper`, `RgaaTestWrapper` et
-`RgaaResultWrapper` sont instantiables manuellement et permettent de formatter
-les données en entrée.
-
-⚠️ **Il est donc nécessaire d'avoir l'ensemble des données (thématiques,
-critères et tests) déjà présentes dans le projet.**
-
-```javascript
-import { RgaaResultWrapper } from '@slash-tmp/rgaa-crawler'
-
-import rawRgaaData from './rgaa.json'
-
-const rgaaData = new RgaaResultWrapper(rawRgaaData)
-
-console.log(
-  `Fetched ${rgaaData.topics().length} topics, ${
-    rgaaData.criteria().length
-  } criteria and ${rgaaData.tests().length} tests.`
-)
 ```
 
 ## API
@@ -199,9 +178,9 @@ un objet de filtre avec plusieurs propriétés :
 Quelques exemples d'utilisation des filtres :
 
 ```javascript
-import { crawlRgaa } from '@slash-tmp/rgaa-crawler'
+import { scrapeRgaa } from '@slash-tmp/rgaa-scraper'
 
-crawlRgaa().then(data => {
+scrapeRgaa().then(data => {
   // Critères appartenant à la thématique 1
   console.log(data.criteria({ topic: '1' }))
 
@@ -219,6 +198,17 @@ crawlRgaa().then(data => {
 })
 ```
 
+### Classes "wrapper"
+
+La valeur résolue de la promesse renvoyé par la fonction `scrapeRgaa()` est une
+instance de `RgaaResultWrapper`. Cette classe ainsi que les classes ci-dessous
+peuvent être importée.
+
+- `RgaaCriterionWrapper`
+- `RgaaRootWrapper`
+- `RgaaTestWrapper`
+- `RgaaTopicWrapper`
+
 ## Développement
 
 Installer les dépendances :
@@ -227,7 +217,7 @@ Installer les dépendances :
 yarn install
 ```
 
-Tester le crawler en local :
+Tester le scraper en local :
 
 ```shell
 yarn dev

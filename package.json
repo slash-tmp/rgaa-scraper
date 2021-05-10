@@ -1,6 +1,6 @@
 {
-  "name": "@slash-tmp/rgaa-crawler",
-  "description": "Crawl RGAA's website and fetch criteria and tests into a JSON format.",
+  "name": "@slash-tmp/rgaa-scraper",
+  "description": "Scrapes RGAA's website and fetch topics, criteria and tests into a JSON format.",
   "keywords": [
     "a11y",
     "accessibility",
@@ -17,11 +17,11 @@
     }
   ],
   "license": "MIT",
-  "homepage": "https://github.com/slash-tmp/rgaa-crawler",
-  "repository": "git://github.com/slash-tmp/rgaa-crawler.git",
+  "homepage": "https://github.com/slash-tmp/rgaa-scraper",
+  "repository": "git://github.com/slash-tmp/rgaa-scraper.git",
   "bugs": {
     "email": "contact@slash-tmp.dev",
-    "url": "https://github.com/slash-tmp/rgaa-crawler/issues"
+    "url": "https://github.com/slash-tmp/rgaa-scraper/issues"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

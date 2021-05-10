@@ -3,9 +3,9 @@ import RgaaTopicWrapper from './RgaaTopicWrapper'
 import RgaaCriterionWrapper from './RgaaCriterionWrapper'
 import RgaaTestWrapper from './RgaaTestWrapper'
 import {
-  RgaaCrawlerResult,
+  RgaaScraperResult,
   RgaaFilter,
-  RgaaRawCrawlerResult,
+  RgaaRawScraperResult,
   RgaaTopic,
   RgaaCriterion,
   RgaaTest,
@@ -14,8 +14,8 @@ import { filterElements } from './utils'
 
 export default class RgaaResultWrapper
   extends RgaaRootWrapper
-  implements RgaaCrawlerResult {
-  constructor(root: RgaaRawCrawlerResult) {
+  implements RgaaScraperResult {
+  constructor(root: RgaaRawScraperResult) {
     super(root)
   }
 

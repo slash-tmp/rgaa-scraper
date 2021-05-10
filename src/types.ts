@@ -81,13 +81,13 @@ export interface RgaaTest extends RgaaRawTest {
   topic: RgaaTopic
 }
 
-export interface RgaaRawCrawlerResult {
+export interface RgaaRawScraperResult {
   topics: RgaaRawTopic[]
   criteria: RgaaRawCriterion[]
   tests: RgaaRawTest[]
 }
 
-export interface RgaaCrawlerResult {
+export interface RgaaScraperResult {
   /** Get a list of topics, optionnaly filtered. */
   topics: (filter?: RgaaFilter) => RgaaTopic[]
 
