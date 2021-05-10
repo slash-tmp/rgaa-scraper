@@ -1,25 +1,23 @@
 <template>
-  <div>
-    <h1>Recherche des tests du RGAA</h1>
-    <form @submit.prevent="search">
-      <label for="search">Recherche textuelle</label>
-      <input v-model="searchValue" id="search" type="text" />
-      <button>Rechercher</button>
-      <button @click="reset" type="reset">Réinitialiser</button>
-    </form>
+  <h1>Recherche des tests du RGAA</h1>
 
-    <ul>
-      <li v-for="test in filteredTests" :key="test.id">
-        <strong>{{ test.id }}</strong>
-        {{ test.title }}
-      </li>
-    </ul>
-  </div>
+  <form @submit.prevent="search">
+    <label for="search">Recherche textuelle</label>
+    <input v-model="searchValue" id="search" type="text" />
+    <button>Rechercher</button>
+    <button @click="reset" type="reset">Réinitialiser</button>
+  </form>
+
+  <ul>
+    <li v-for="test in filteredTests" :key="test.id">
+      <strong>{{ test.id }}</strong>
+      {{ test.title }}
+    </li>
+  </ul>
 </template>
 
 <script>
-// TODO: code split
-import rgaaData from '../rgaa-data.json'
+import rgaaData from './assets/rgaa-data.json'
 import RgaaResultWrapper from '@slash-tmp/rgaa-scraper/build/esm/RgaaResultWrapper'
 
 const rgaa = new RgaaResultWrapper(rgaaData)
