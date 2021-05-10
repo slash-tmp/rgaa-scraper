@@ -23,9 +23,6 @@
     "email": "contact@slash-tmp.dev",
     "url": "https://github.com/slash-tmp/rgaa-scraper/issues"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "files": [
     "build/*"
   ],
