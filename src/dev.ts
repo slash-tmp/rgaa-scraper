@@ -1,8 +1,8 @@
 import { promises as fs } from 'fs'
 
-import { crawlRgaa } from './index'
+import { scrapeRgaa } from './index'
 
-crawlRgaa().then(async data => {
+scrapeRgaa().then(async data => {
   const json = JSON.stringify(
     {
       topics: data.topics(),

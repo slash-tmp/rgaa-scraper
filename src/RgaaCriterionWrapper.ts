@@ -5,7 +5,7 @@ import {
   RgaaCriterion,
   RgaaFilter,
   RgaaLevel,
-  RgaaRawCrawlerResult,
+  RgaaRawScraperResult,
   RgaaRawCriterion,
 } from './types'
 import { filterElements } from './utils'
@@ -23,7 +23,7 @@ export default class RgaaCriterionWrapper
   technicalNotes?: string
   level: RgaaLevel
 
-  constructor(data: RgaaRawCriterion, root: RgaaRawCrawlerResult) {
+  constructor(data: RgaaRawCriterion, root: RgaaRawScraperResult) {
     super(root)
     this.id = data.id
     this.title = data.title

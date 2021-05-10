@@ -4,8 +4,8 @@ import type { CrawlerRequestResponse } from 'crawler'
 import RgaaResultWrapper from './RgaaResultWrapper'
 import { parseCriteriaArticle, parseTestLi, parseTopicA } from './parser'
 import type {
-  RgaaCrawlerResult,
-  RgaaRawCrawlerResult,
+  RgaaScraperResult,
+  RgaaRawScraperResult,
   RgaaRawTopic,
 } from './types'
 
@@ -29,7 +29,7 @@ function queueAsPromise(
   })
 }
 
-function parseRgaaPage({ $ }: CrawlerRequestResponse): RgaaRawCrawlerResult {
+function parseRgaaPage({ $ }: CrawlerRequestResponse): RgaaRawScraperResult {
   const criteria = $('#criteres article')
     .toArray()
     .map(el => parseCriteriaArticle($(el)))
@@ -50,10 +50,10 @@ function parseRgaaPage({ $ }: CrawlerRequestResponse): RgaaRawCrawlerResult {
 }
 
 /**
- * Scraps the RGAA website and returns a promise to an object representing
+ * Scrapes the RGAA website and returns a promise to an object representing
  * topics, criteria and tests.
  */
-export default async function crawlRgaa(): Promise<RgaaCrawlerResult> {
+export default async function scrapeRgaa(): Promise<RgaaScraperResult> {
   const crawler = new Crawler({})
 
   // fetch RGAA page

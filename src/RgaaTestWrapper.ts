@@ -2,7 +2,7 @@ import RgaaCriterionWrapper from './RgaaCriterionWrapper'
 import RgaaTopicWrapper from './RgaaTopicWrapper'
 import { RgaaRootWrapper } from './RgaaRootWrapper'
 import type {
-  RgaaRawCrawlerResult,
+  RgaaRawScraperResult,
   RgaaRawTest,
   RgaaTest,
   RgaaCriterion,
@@ -15,7 +15,7 @@ export default class RgaaTestWrapper
   id: string
   title: string
 
-  constructor(data: RgaaRawTest, root: RgaaRawCrawlerResult) {
+  constructor(data: RgaaRawTest, root: RgaaRawScraperResult) {
     super(root)
     this.id = data.id
     this.title = data.title
