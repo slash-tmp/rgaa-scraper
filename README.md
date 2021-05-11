@@ -35,6 +35,9 @@ scrapeRgaa().then(rgaaData => {
 })
 ```
 
+_Un exemple d'utilisation plus complet est disponible dans
+[le dossier `examples`](https://github.com/slash-tmp/rgaa-scraper/tree/main/examples)._
+
 ## API
 
 Les propriétés marquée d'un astérisque (\*) sont des
