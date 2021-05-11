@@ -9,7 +9,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@slash-tmp/rgaa-scraper": "^1.2.0",
+    "@slash-tmp/rgaa-scraper": "file:../..",
     "vue": "^3.0.5"
   },
   "devDependencies": {
