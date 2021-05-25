@@ -29,7 +29,7 @@
 
 <script>
 import rgaaData from './assets/rgaa-data.json'
-import RgaaResultWrapper from '@slash-tmp/rgaa-scraper/build/esm/RgaaResultWrapper'
+import { RgaaResultWrapper } from '@slash-tmp/rgaa-scraper'
 
 const rgaa = new RgaaResultWrapper(rgaaData)
 
