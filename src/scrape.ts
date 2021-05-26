@@ -1,5 +1,5 @@
-import Crawler from 'crawler'
-import type { CrawlerRequestResponse } from 'crawler'
+import 'isomorphic-fetch'
+import cheerio from 'cheerio'
 
 import RgaaResultWrapper from './RgaaResultWrapper'
 import { parseCriteriaArticle, parseTestLi, parseTopicA } from './parser'
@@ -12,24 +12,7 @@ import type {
 const RGAA_URL =
   'https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/criteres/'
 
-function queueAsPromise(
-  uri: string,
-  crawler: Crawler
-): Promise<CrawlerRequestResponse> {
-  return new Promise((resolve, reject) => {
-    crawler.direct({
-      uri,
-      callback(error, response) {
-        if (error) {
-          reject(error)
-        }
-        resolve(response)
-      },
-    })
-  })
-}
-
-function parseRgaaPage({ $ }: CrawlerRequestResponse): RgaaRawScraperResult {
+function parseRgaaPage($: cheerio.Root): RgaaRawScraperResult {
   const criteria = $('#criteres article')
     .toArray()
     .map(el => parseCriteriaArticle($(el)))
@@ -54,13 +37,13 @@ function parseRgaaPage({ $ }: CrawlerRequestResponse): RgaaRawScraperResult {
  * topics, criteria and tests.
  */
 export default async function scrapeRgaa(): Promise<RgaaScraperResult> {
-  const crawler = new Crawler({})
+  const response = await fetch(RGAA_URL)
+  const html = await response.text()
 
-  // fetch RGAA page
-  const res = await queueAsPromise(RGAA_URL, crawler)
+  const $ = cheerio.load(html)
 
   // parse the page for criteria and tests
-  const data = parseRgaaPage(res)
+  const data = parseRgaaPage($)
 
   return new RgaaResultWrapper(data)
 }
