@@ -1,0 +1,17 @@
+{
+  "name": "rgaa-web-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@slash-tmp/rgaa-scraper": "file:../..",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "node-dev": "^7.0.0"
+  },
+  "scripts": {
+    "dev": "node-dev server.js",
+    "start": "node server.js"
+  }
+}
