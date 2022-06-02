@@ -1,3 +1,7 @@
+⚠️ : **Ce projet est déprécié**, lorsque ce projet a été créé, les critères du RGAA 4.1 n'étaient pas disponibles en JSON ou similaire. La dernière version du référentiel est maintenant [disponible au format JSON sur le repo du RGAA](https://github.com/DISIC/RGAA/blob/master/v4.1/JSON/criteres.json).
+
+---
+
 # RGAA Scraper
 
 Ce projet est une librairie Node.js qui parcourt
